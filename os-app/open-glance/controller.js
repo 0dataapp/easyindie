@@ -183,28 +183,29 @@ const mod = {
 			return Object.assign(coll, {
 				[item]: {
 					[mod.DataListingURLYunohost()]: function () {
-						return cheerio('table', param2).first().find('tr:not(tr:first-of-type)').map(function () {
+						return cheerio('.app-cards-list', param2).find('.app-card').map(function () {
+							const EASPlatformCategory = cheerio('.app-title .label', this).text();
+
+							const EASPlatformRepoURL = cheerio('.app-buttons a:nth-of-type(1)', this).attr('href');
 							return {
-								EASProjectName: cheerio('td:nth-child(1)', this).text(),
-								EASProjectBlurb: cheerio('td:nth-child(2)', this).text(),
-								EASProjectURL: cheerio('td:nth-child(1) a', this).attr('href'),
-								_EASProjectSupportsYunohost: true,
+								EASProjectName: cheerio('.app-title', this).text().slice(0, -EASPlatformCategory.length - 1).trim(),
+								EASProjectBlurb: cheerio('.app-descr', this).text(),
+
+								EASProjectURL: EASPlatformRepoURL,
+								EASProjectPlatforms: {
+									EASPlatformYunohost: {
+										EASPlatformCategory,
+										EASPlatformRepoURL,
+										EASPlatformDocsPath: cheerio('.app-buttons a:nth-of-type(2)', this).attr('href'),
+										EASPlatformInstallURL: cheerio('.app-buttons a:nth-of-type(3)', this).attr('href'),
+									},
+								},
 							};
 						});
 					},
 				}[item],
 			});
-		}, {})[param1]()).map(function (e) {
-			return Object.fromEntries(Object.entries(e).map(function (e) {
-				return e.map(function (e) {
-					if (typeof e !== 'string') {
-						return e;
-					}
-					
-					return e.trim();
-				});
-			}));
-		});
+		}, {})[param1]()).map(require('OLSKObject').OLSKObjectTrim);
 	},
 
 	DataListingProjects () {

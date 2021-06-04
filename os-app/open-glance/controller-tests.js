@@ -220,30 +220,46 @@ describe('_DataListingObjects', function test__DataListingObjects() {
 
 	context('yunohost', function tost_yunohost () {
 
-		const uTable = function (inputData = {}) {
+		const uListing = function (inputData = {}) {
 			const item = Object.assign({
 				EASProjectName: Math.random().toString(),
 				EASProjectBlurb: Math.random().toString(),
-				EASProjectURL: Math.random().toString(),
+				EASPlatformCategory: Math.random().toString(),
+				EASPlatformRepoURL: Math.random().toString(),
+				EASPlatformDocsPath: Math.random().toString(),
+				EASPlatformInstallURL: Math.random().toString(),
 			}, inputData);
 
-			return `<table><tr><th></th></tr><tr><td><a rel="nofollow" class="external text" href="${ item.EASProjectURL }">${ item.EASProjectName }</a></td><td>${ item.EASProjectBlurb }</td><td>${ Math.random().toString() }</td><td> <a rel="nofollow" class="external text" href="${ Math.random().toString() }">${ Math.random().toString() }</a></td><td></td><td><ul><li>${ Math.random().toString() }</li></ul></td></tr></table><table><tr><td>${ Math.random().toString() }</td></tr></table>`;
+			return `<div class="app-cards-list"><div class="app-card" data-appid="20euros" data-level="8"><div class="app-title"><i class="fa fa-star" style="color: gold"></i>${ item.EASProjectName } <span class="label">${ item.EASPlatformCategory }</span></div><div class="app-descr">${ item.EASProjectBlurb }</div><div class="app-footer"><div class="app-buttons"><a href="${ item.EASPlatformRepoURL }" target="_BLANK" type="button" class="btn"><i class="fa fa-code"></i>Code</a><a href="${ item.EASPlatformDocsPath }" target="_BLANK" type="button" class="btn"><i class="fa fa-book"></i> Doc </a><a href="${ item.EASPlatformInstallURL }" target="_BLANK" type="button" class="btn btn-success"><i class="fa fa-plus"></i>Install </a>`;
 		};
 		
-		it('parses table', function () {
+		it('parses listing', function () {
 			const EASProjectName = Math.random().toString();
 			const EASProjectBlurb = Math.random().toString();
-			const EASProjectURL = Math.random().toString();
+			const EASPlatformCategory = Math.random().toString();
+			const EASPlatformRepoURL = Math.random().toString();
+			const EASPlatformDocsPath = Math.random().toString();
+			const EASPlatformInstallURL = Math.random().toString();
 
-			deepEqual(mod._DataListingObjects(mod.DataListingURLYunohost(), uTable({
+			deepEqual(mod._DataListingObjects(mod.DataListingURLYunohost(), uListing({
 				EASProjectName,
 				EASProjectBlurb,
-				EASProjectURL,
+				EASPlatformCategory,
+				EASPlatformRepoURL,
+				EASPlatformDocsPath,
+				EASPlatformInstallURL,
 			})), [{
 				EASProjectName,
 				EASProjectBlurb,
-				EASProjectURL,
-				_EASProjectSupportsYunohost: true,
+				EASProjectURL: EASPlatformRepoURL,
+				EASProjectPlatforms: {
+					EASPlatformYunohost: {
+						EASPlatformCategory,
+						EASPlatformRepoURL,
+						EASPlatformDocsPath,
+						EASPlatformInstallURL,
+					},
+				},
 			}]);
 		});
 		
@@ -251,16 +267,30 @@ describe('_DataListingObjects', function test__DataListingObjects() {
 			const EASProjectName = Math.random().toString();
 			const EASProjectBlurb = Math.random().toString();
 			const EASProjectURL = Math.random().toString();
+			const EASPlatformCategory = Math.random().toString();
+			const EASPlatformRepoURL = Math.random().toString();
+			const EASPlatformDocsPath = Math.random().toString();
+			const EASPlatformInstallURL = Math.random().toString();
 
-			deepEqual(mod._DataListingObjects(mod.DataListingURLYunohost(), uTable({
+			deepEqual(mod._DataListingObjects(mod.DataListingURLYunohost(), uListing({
 				EASProjectName: ' ' + EASProjectName + ' ',
 				EASProjectBlurb: ' ' + EASProjectBlurb + ' ',
-				EASProjectURL: ' ' + EASProjectURL + ' ',
+				EASPlatformCategory: ' ' + EASPlatformCategory + ' ',
+				EASPlatformRepoURL: ' ' + EASPlatformRepoURL + ' ',
+				EASPlatformDocsPath: ' ' + EASPlatformDocsPath + ' ',
+				EASPlatformInstallURL: ' ' + EASPlatformInstallURL + ' ',
 			})), [{
 				EASProjectName,
 				EASProjectBlurb,
-				EASProjectURL,
-				_EASProjectSupportsYunohost: true,
+				EASProjectURL: EASPlatformRepoURL,
+				EASProjectPlatforms: {
+					EASPlatformYunohost: {
+						EASPlatformCategory,
+						EASPlatformRepoURL,
+						EASPlatformDocsPath,
+						EASPlatformInstallURL,
+					},
+				},
 			}]);
 		});
 	
