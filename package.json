@@ -1,0 +1,27 @@
+{
+  "scripts": {
+    "postinstall": "olsk-bundle tidy && node ./package-postinstall.js",
+    "setup": "npm install --no-save && olsk-bundle",
+    "start": "olsk-express",
+    "test": "olsk-spec"
+  },
+  "dependencies": {
+    "OLSKPithVitrine": "olsk/OLSKPithVitrine",
+    "OLSKRobots": "olsk/OLSKRobots",
+    "OLSKQueue": "olsk/OLSKQueue",
+    "OLSKCache": "olsk/OLSKCache",
+    "OLSKDisk": "olsk/OLSKDisk",
+    "OLSKDOM": "olsk/OLSKDOM",
+    "OLSKRootLink": "olsk/OLSKRootLink",
+    "SWARLink": "0dataapp/SWARLink",
+    "node-fetch": "latest",
+    "cheerio": "latest",
+    "list.js": "latest",
+    "// I sacrifice myself for the commas of others": null
+  },
+  "devDependencies": {
+    "OLSKPithToolchain": "olsk/OLSKPithToolchain",
+    "jsdom": "latest",
+    "// I sacrifice myself for the commas of others": null
+  }
+}

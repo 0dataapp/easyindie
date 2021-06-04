@@ -1,0 +1,35 @@
+<table class="EASGlanceList" lang="en">
+
+<% if (!locals.EASGlanceListData.length) { -%>
+	<p class="EASGlanceListEmpty"><%= OLSKLocalized('EASGlanceListEmptyText') %></p>
+<% } -%>
+
+<% if (locals.EASGlanceListData.length) { -%>
+<thead>
+	<tr class="EASGlanceListHead OLSKStickyHeader OLSKCommonEdgeBottom">
+		<th class="EASGlanceListHeadName EASGlanceListSort" data-sort="EASGlanceListItemName"><%= OLSKLocalized('EASGlanceListHeadNameText') %></th>
+	</tr>
+</thead>
+<% } -%>
+
+<tbody class="list">
+
+<% locals.EASGlanceListData.forEach(function (item) { -%>
+<tr class="EASGlanceListItem">
+	<td class="OLSKCommonCard">
+		<% if (item.EASProjectIconURL) { -%>
+			<a class="EASGlanceListItemIcon" href="<%= item.EASProjectURL %>" aria-hidden="true" tabindex="-1">
+				<img class="EASGlanceListItemIconImage" src="<%= item._EASProjectIconURLCachedPath || item.EASProjectIconURL %>" />
+			</a>
+		<% } -%>
+		<section>
+			<a class="EASGlanceListItemName" href="<%= item.EASProjectURL %>" target="_blank"><%= item.EASProjectName %></a>
+			<span class="EASGlanceListItemBlurb"><%= item.EASProjectBlurb %></span>
+		</section>
+	</td>
+</tr>
+<% }) -%>
+
+</tbody>
+
+</table>

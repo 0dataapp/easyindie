@@ -1,0 +1,30 @@
+<%
+locals.OLSKPageTitle = OLSKLocalized('EASVitrineTitle');
+locals.OLSKPageDescription = OLSKLocalized('EASVitrineDescription');
+locals.OLSKPageAssets = [
+	'/_shared/__external/normalize.css/normalize.css',
+	'/_shared/__external/OLSKDecor/ui-style.css',
+	'/_shared/__external/list.js/dist/list.min.js',
+	'ui-behaviour.js',
+	'ui-style.css',
+];
+locals.OLSKPageMetaViewport = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0';
+%>
+
+<div class="EASGlance OLSKDecor">
+
+<header class="EASGlanceHeader OLSKDecorFixedHeader OLSKCommonEdgeBottom">
+	<a class="EASGlanceRootLink" href="<%= OLSKCanonical('EASVitrineRoute') %>" title="<%= OLSKLocalized('OLSKRootLinkTextHome') %>">
+		<img class="EASGlanceRootLinkImage" src="<%= process.env.EAS_VITRINE_IDENTITY_URL %>">
+	</a>
+	<input class="EASGlanceFilterInput OLSKDecorInput" placeholder="<%= OLSKLocalized('EASGlanceFilterInputText') %>" accesskey="f" />
+	<a class="EASGlanceProjectsCompilationLink" href="<%= OLSKCanonical('EASProjectsJSONRoute') %>">JSON</a>
+</header>
+
+<%- include('../sub-list/ui-view.ejs') %>
+
+</div>
+
+<script type="text/javascript">
+mod.LifecyclePageWillLoad();
+</script>

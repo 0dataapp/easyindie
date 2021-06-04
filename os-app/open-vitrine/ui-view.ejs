@@ -1,0 +1,54 @@
+<%
+locals.OLSKPageTitle = OLSKLocalized('EASVitrineTitle');
+locals.OLSKPageDescription = OLSKLocalized('EASVitrineDescription');
+locals.OLSKPageAssets = [
+	'/_shared/__external/normalize.css/normalize.css',
+	'/_shared/__external/OLSKDecor/ui-style.css',
+	'ui-style.css',
+];
+%>
+
+<div class="EASVitrine OLSKDecor OLSKDecorCapped">
+
+<%- include('../../node_modules/OLSKCrown/main.ejs', {
+	OLSKCrownCardImageURL: process.env.EAS_VITRINE_IDENTITY_URL,
+	OLSKCrownCardNameText: OLSKLocalized('EASVitrineTitle'),
+}) %>
+
+<%- include('../../node_modules/OLSKLanding/main.ejs', {
+	OLSKLandingHeadingText: OLSKLocalized('EASVitrineDescription').replace(', all of it', ',<br /> all of it'),
+	OLSKLandingBlurbText: OLSKLocalized('OLSKLandingBlurbText'),
+	OLSKLandingActionText: OLSKFormatted(OLSKLocalized('OLSKLandingActionTextFormat'), EASGlanceProjectsCount()),
+	OLSKLandingActionHref: OLSKCanonical('EASGlanceRoute'),
+}) %>
+
+<h1 class="EASVitrineInformationHeading"><%= OLSKLocalized('EASVitrineInformationHeadingText') %></h1>
+
+<ul>
+	<li><a class="EASVitrineRepoLink" href="<%= process.env.EAS_VITRINE_REPO_URL %>"><%= OLSKLocalized('EASVitrineRepoLinkText') %></a></li>
+</ul>
+
+
+<h1 class="EASVitrineGazetteHeading"><%= OLSKLocalized('OLSKGazetteHeadingText') %></h1>
+<%- include('../../node_modules/OLSKFollow/main.ejs') %>
+<%- include('../../node_modules/OLSKGazette/main.ejs', {
+	OLSKGazetteProject: 'RP_005',
+}) %>
+
+<h1 class="EASVitrineProjectsSourcesHeading"><%= OLSKLocalized('EASVitrineProjectsSourcesHeadingText') %></h1>
+
+<p class="EASVitrineProjectsSourcesBlurb"><%= OLSKLocalized('EASVitrineProjectsSourcesBlurbText') %></p>
+
+<ul class="EASVitrineProjectsSourcesList">
+	<% EASGlanceProjectsSourceURLs.forEach(function (e) { -%>
+		<li><a class="EASVitrineProjectsSourcesListItem" href="<%= e %>"><%- e.replace('https://', '') %></a></li>
+	<% }) -%>
+</ul>
+
+<hr role="presentation" />
+
+<%- include('../../node_modules/SWARLink/main.ejs') %>
+
+<%- include('../_shared/__external/ROCORootLink/main.ejs') %>
+
+</div>

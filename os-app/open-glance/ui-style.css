@@ -1,0 +1,108 @@
+:root {
+	--EASGlanceToolbarHeight: 35px;
+	--OLSKStickyHeaderTop: var(--EASGlanceToolbarHeight);
+}
+
+@media screen and (max-width: 760px) {
+
+	:root {
+		--EASGlanceToolbarHeight: 45px;
+	}
+
+}
+
+.EASGlance {
+	padding: 0;
+	padding-top: calc(var(--EASGlanceToolbarHeight) + 1px);
+
+	font-family: Arial;
+	font-size: 9pt;
+}
+
+.EASGlanceHeader {
+	display: flex !important;
+
+	background: white;
+
+	align-items: center;
+}
+
+.EASGlanceRootLinkImage {
+	width: 24px;
+	padding: 3px;
+}
+
+.EASGlanceListSort {
+	cursor: pointer;
+}
+
+.EASGlanceListSort:after {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  content: "";
+  position: relative;
+}
+
+.EASGlanceListSort.asc:after {
+  border-bottom: 5px solid #000;
+  top: -10px;
+  right: -5px;
+}
+
+.EASGlanceListSort.desc:after {
+  border-top: 5px solid #000;
+  top: 10px;
+  right:-5px;
+}
+
+.EASGlanceFilterInput {
+	padding: 0 5px !important;
+	height: var(--EASGlanceToolbarHeight);
+	border-radius: 0 !important;
+	border: none !important;
+
+	flex-grow: 1;
+}
+
+.EASGlanceProjectsCompilationLink {
+	padding: 0 10px;
+}
+
+table {
+	position: relative;
+
+	margin: 0 !important;
+}
+
+.EASGlanceListHead {
+	background: #efefef;
+}
+
+td, th {
+	padding: 10px;
+}
+
+td {
+	border-top: none !important;
+	border-bottom: var(--OLSKCommonEdgeBorder);
+}
+
+.EASGlanceListItemIconImage {
+	--OLSKCommonCardImageSize: 36px !important;
+	padding: 3px;
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+.EASGlanceListItem a {
+	text-decoration: none;
+	color: black;
+	font-weight: bold;
+}
+
+.EASGlanceListItemBlurb {
+	display: inline-block;
+	max-width: 400px;
+}
