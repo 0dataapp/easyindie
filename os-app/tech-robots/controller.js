@@ -6,6 +6,7 @@ exports.OLSKControllerRoutes = function() {
 		OLSKRouteFunction (req, res, next) {
 			return res.send(require('OLSKRobots').OLSKRobotsTXT([
 				'EASVitrineRoute',
+				'EASGlanceRoute',
 				'EASProjectsJSONRoute',
 			].reduce(function (coll, item) {
 				return coll.concat(res.locals.OLSKCanonical(item)).concat((res.locals.OLSKRouteObjectFor(item).OLSKRouteLanguageCodes || []).map(function (e) {
