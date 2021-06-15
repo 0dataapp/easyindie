@@ -124,7 +124,7 @@ describe('DataListingProjects', function test_DataListingProjects() {
 	
 	const _DataListingProjects = function (inputData = {}) {
 		return Object.assign(Object.assign({}, mod), {
-			_ValueItemsCache: {},
+			_ValueCacheObject: {},
 			_DataListingObjects: (function () {}),
 		}, inputData).DataListingProjects();
 	};
@@ -132,14 +132,14 @@ describe('DataListingProjects', function test_DataListingProjects() {
 	it('calls _DataListingObjects', function () {
 		const item = [];
 
-		const _ValueItemsCache = mod.DataListingURLs().reduce(function (coll, item) {
+		const _ValueCacheObject = mod.DataListingURLs().reduce(function (coll, item) {
 			return Object.assign(coll, {
 				[item]: Math.random().toString(),
 			});
 		}, {});
 		
 		_DataListingProjects({
-			_ValueItemsCache,
+			_ValueCacheObject,
 			_DataListingObjects: (function () {
 				item.push([...arguments]);
 
@@ -148,7 +148,7 @@ describe('DataListingProjects', function test_DataListingProjects() {
 		});
 
 		deepEqual(item, mod.DataListingURLs().map(function (e) {
-			return [e, _ValueItemsCache[e]];
+			return [e, _ValueCacheObject[e]];
 		}));
 	});
 
@@ -227,21 +227,21 @@ describe('SetupFetchQueue', function test_SetupFetchQueue() {
 
 });
 
-describe('SetupItemsCache', function test_SetupItemsCache() {
+describe('SetupListingsCache', function test_SetupListingsCache() {
 
-	const _SetupItemsCache = function (inputData) {
+	const _SetupListingsCache = function (inputData) {
 		const _mod = Object.assign(Object.assign({}, mod), {
 			_DataFoilOLSKDisk: Object.assign({
 				OLSKDiskRead: (function () {}),
 			}, inputData),
 		});
-		return _mod.SetupItemsCache() || _mod;
+		return _mod.SetupListingsCache() || _mod;
 	};
 
 	it('calls OLSKDiskRead', function () {
 		const items = [];
 
-		_SetupItemsCache({
+		_SetupListingsCache({
 			OLSKDiskRead: (function () {
 				items.push(...arguments);
 			}),
@@ -252,14 +252,14 @@ describe('SetupItemsCache', function test_SetupItemsCache() {
 		}));
 	});
 
-	it('sets _ValueItemsCache', function () {
+	it('sets _ValueCacheObject', function () {
 		const OLSKDiskRead = uRandomElement(Math.random().toString(), null);
 
-		deepEqual(_SetupItemsCache({
+		deepEqual(_SetupListingsCache({
 			OLSKDiskRead: (function () {
 				return OLSKDiskRead;
 			}),
-		})._ValueItemsCache, mod.DataListingURLs().reduce(function (coll, item) {
+		})._ValueCacheObject, mod.DataListingURLs().reduce(function (coll, item) {
 			return Object.assign(coll, {
 				[item]: OLSKDiskRead,
 			});
@@ -268,9 +268,9 @@ describe('SetupItemsCache', function test_SetupItemsCache() {
 
 });
 
-describe('_SetupItem', function test__SetupItem() {
+describe('_SetupListing', function test__SetupListing() {
 
-	const __SetupItem = function (inputData) {
+	const __SetupListing = function (inputData) {
 		return Object.assign(Object.assign({}, mod), {
 			_DataContentString: (function () {}),
 
@@ -281,25 +281,25 @@ describe('_SetupItem', function test__SetupItem() {
 			_DataFoilOLSKDisk: Object.assign({
 				OLSKDiskWrite: (function () {}),
 			}, inputData),
-		}, inputData)._SetupItem(inputData.url || Math.random().toString());
+		}, inputData)._SetupListing(inputData.url || Math.random().toString());
 	};
 
 	it('calls OLSKCacheResultFetchRenew', function () {
 		const url = Math.random().toString();
-		const _ValueItemsCache = {
+		const _ValueCacheObject = {
 			[Math.random().toString()]: Math.random().toString(),
 		};
 
-		const item = __SetupItem({
+		const item = __SetupListing({
 			url,
-			_ValueItemsCache,
+			_ValueCacheObject,
 			OLSKCacheResultFetchRenew: (function () {
 				return [...arguments];
 			}),
 		}).pop();
 
 		deepEqual(item, {
-			ParamMap: _ValueItemsCache,
+			ParamMap: _ValueCacheObject,
 			ParamKey: url,
 			ParamCallback: item.ParamCallback,
 			ParamInterval: 1000 * 60 * 60 * 24,
@@ -312,7 +312,7 @@ describe('_SetupItem', function test__SetupItem() {
 		it('calls _DataContentString', async function () {
 			const url = Math.random().toString();
 
-			deepEqual(await __SetupItem({
+			deepEqual(await __SetupListing({
 				url,
 				OLSKCacheResultFetchRenew: (function (inputData) {
 					return inputData.ParamCallback();
@@ -331,9 +331,9 @@ describe('_SetupItem', function test__SetupItem() {
 			const url = uLink();
 			const data = Math.random().toString();
 			
-			deepEqual(await __SetupItem({
+			deepEqual(await __SetupListing({
 				url,
-				_ValueItemsCache: {
+				_ValueCacheObject: {
 					[url]: data,
 				},
 				OLSKCacheResultFetchRenew: (function (inputData) {
@@ -349,17 +349,17 @@ describe('_SetupItem', function test__SetupItem() {
 
 });
 
-describe('SetupItems', function test_SetupItems() {
+describe('SetupListings', function test_SetupListings() {
 
-	const _SetupItems = function (inputData = {}) {
+	const _SetupListings = function (inputData = {}) {
 		return Object.assign(Object.assign({}, mod), {
-			_SetupItem: (function () {}),
-		}, inputData).SetupItems();
+			_SetupListing: (function () {}),
+		}, inputData).SetupListings();
 	};
 
-	it('calls _SetupItem', async function () {
-		deepEqual(await _SetupItems({
-			_SetupItem: (function (e) {
+	it('calls _SetupListing', async function () {
+		deepEqual(await _SetupListings({
+			_SetupListing: (function (e) {
 				return e;
 			}),
 		}), mod.DataListingURLs());

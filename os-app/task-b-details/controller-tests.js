@@ -6,18 +6,18 @@ import { JSDOM } from 'jsdom';
 import OLSKLink from 'OLSKLink';
 import OLSKCache from 'OLSKCache';
 
-describe('DataCacheNameDetails', function test_DataCacheNameDetails() {
+describe('DataCacheAggregateBasename', function test_DataCacheAggregateBasename() {
 
 	it('returns string', function () {
-		deepEqual(mod.DataCacheNameDetails(), '_aggregate');
+		deepEqual(mod.DataCacheAggregateBasename(), '_aggregate');
 	});
 
 });
 
-describe('_DataDetailsDOMPropertyCandidates', function test__DataDetailsDOMPropertyCandidates() {
+describe('_DataDOMPropertyCandidates', function test__DataDOMPropertyCandidates() {
 
-	const __DataDetailsDOMPropertyCandidates = function (inputData = {}) {
-		return mod._DataDetailsDOMPropertyCandidates(Object.assign({
+	const __DataDOMPropertyCandidates = function (inputData = {}) {
+		return mod._DataDOMPropertyCandidates(Object.assign({
 			ParamURL: uLink(),
 			ParamMetadata: {},
 		}, inputData));
@@ -25,13 +25,13 @@ describe('_DataDetailsDOMPropertyCandidates', function test__DataDetailsDOMPrope
 
 	it('throws if not object', function () {
 		throws(function () {
-			mod._DataDetailsDOMPropertyCandidates(null);
+			mod._DataDOMPropertyCandidates(null);
 		}, /ZDRErrorInputNotValid/);
 	});
 
 	it('throws if ParamURL not string', function () {
 		throws(function () {
-			__DataDetailsDOMPropertyCandidates({
+			__DataDOMPropertyCandidates({
 				ParamURL: null,
 			});
 		}, /ZDRErrorInputNotValid/);
@@ -39,19 +39,19 @@ describe('_DataDetailsDOMPropertyCandidates', function test__DataDetailsDOMPrope
 
 	it('throws if ParamMetadata not object', function () {
 		throws(function () {
-			__DataDetailsDOMPropertyCandidates({
+			__DataDOMPropertyCandidates({
 				ParamMetadata: null,
 			});
 		}, /ZDRErrorInputNotValid/);
 	});
 
 	it('returns array', function () {
-		deepEqual(__DataDetailsDOMPropertyCandidates(), []);
+		deepEqual(__DataDOMPropertyCandidates(), []);
 	});
 
 	it('throws if ParamManifest not object', function () {
 		throws(function () {
-			__DataDetailsDOMPropertyCandidates({
+			__DataDOMPropertyCandidates({
 				ParamManifest: null,
 			});
 		}, /ZDRErrorInputNotValid/);
@@ -62,7 +62,7 @@ describe('_DataDetailsDOMPropertyCandidates', function test__DataDetailsDOMPrope
 		it('extracts apple-touch-icon', function () {
 			const path = uRandomElement('https://alfa.bravo/', Math.random().toString());
 			const ParamURL = 'https://example.com';
-			deepEqual(__DataDetailsDOMPropertyCandidates({
+			deepEqual(__DataDOMPropertyCandidates({
 				ParamMetadata: {
 					'apple-touch-icon': path,
 				},
@@ -75,7 +75,7 @@ describe('_DataDetailsDOMPropertyCandidates', function test__DataDetailsDOMPrope
 		it('extracts apple-touch-icon-precomposed', function () {
 			const path = uRandomElement('https://alfa.bravo/', Math.random().toString());
 			const ParamURL = 'https://example.com';
-			deepEqual(__DataDetailsDOMPropertyCandidates({
+			deepEqual(__DataDOMPropertyCandidates({
 				ParamMetadata: {
 					'apple-touch-icon-precomposed': path,
 				},
@@ -87,7 +87,7 @@ describe('_DataDetailsDOMPropertyCandidates', function test__DataDetailsDOMPrope
 
 		it('extracts description', function () {
 			const _EASProjectBlurb = Math.random().toString();
-			deepEqual(__DataDetailsDOMPropertyCandidates({
+			deepEqual(__DataDOMPropertyCandidates({
 				ParamMetadata: {
 					'description': _EASProjectBlurb,
 				},
@@ -98,7 +98,7 @@ describe('_DataDetailsDOMPropertyCandidates', function test__DataDetailsDOMPrope
 
 		it('extracts title', function () {
 			const _EASProjectBlurb = Math.random().toString();
-			deepEqual(__DataDetailsDOMPropertyCandidates({
+			deepEqual(__DataDOMPropertyCandidates({
 				ParamMetadata: {
 					'title': _EASProjectBlurb,
 				},
@@ -113,7 +113,7 @@ describe('_DataDetailsDOMPropertyCandidates', function test__DataDetailsDOMPrope
 
 		it('sets EASProjectHasManifest', function () {
 			const EASProjectIconURL = uLink();
-			deepEqual(__DataDetailsDOMPropertyCandidates({
+			deepEqual(__DataDOMPropertyCandidates({
 				ParamManifest: {},
 			}), Object.entries({
 				EASProjectHasManifest: true,
@@ -122,7 +122,7 @@ describe('_DataDetailsDOMPropertyCandidates', function test__DataDetailsDOMPrope
 
 		it('extracts icons', function () {
 			const EASProjectIconURL = uLink();
-			deepEqual(__DataDetailsDOMPropertyCandidates({
+			deepEqual(__DataDOMPropertyCandidates({
 				ParamManifest: {
 					'icons': [{
 						src: uLink(),
@@ -170,7 +170,7 @@ describe('SetupFetchQueue', function test_SetupFetchQueue() {
 
 });
 
-describe('SetupDetailsCache', function test_SetupDetailCache() {
+describe('SetupCacheObject', function test_SetupDetailCache() {
 
 	const _SetupDetailCache = function (inputData) {
 		const _mod = Object.assign(Object.assign({}, mod), {
@@ -178,7 +178,7 @@ describe('SetupDetailsCache', function test_SetupDetailCache() {
 				OLSKCacheReadFile: (function () {}),
 			}, inputData),
 		});
-		return _mod.SetupDetailsCache() || _mod;
+		return _mod.SetupCacheObject() || _mod;
 	};
 
 	it('calls OLSKCacheReadFile', function () {
@@ -190,7 +190,7 @@ describe('SetupDetailsCache', function test_SetupDetailCache() {
 			}),
 		});
 
-		deepEqual(items, [mod.DataCacheNameDetails(), require('path').join(__dirname, '__cached')]);
+		deepEqual(items, [mod.DataCacheAggregateBasename(), require('path').join(__dirname, '__cached')]);
 	});
 
 	it('sets _ValueCandidatesCache', function () {
@@ -205,9 +205,9 @@ describe('SetupDetailsCache', function test_SetupDetailCache() {
 
 });
 
-describe('_SetupDetailCandidates', function test__SetupDetailCandidates() {
+describe('_SetupCandidates', function test__SetupCandidates() {
 
-	const __SetupDetailCandidates = function (inputData) {
+	const __SetupCandidates = function (inputData) {
 		return Object.assign(Object.assign({}, mod), {
 			_DataContentString: (function () {
 				return inputData.ParamHTML
@@ -217,14 +217,14 @@ describe('_SetupDetailCandidates', function test__SetupDetailCandidates() {
 					return [...arguments].pop();
 				}),
 			}, inputData),
-		}, inputData)._SetupDetailCandidates(inputData.ParamURL || Math.random().toString());
+		}, inputData)._SetupCandidates(inputData.ParamURL || Math.random().toString());
 	};
 
 	it('calls _DataContentString', function () {
 		const ParamURL = uLink();
 
 		deepEqual(uCapture(function (_DataContentString) {
-			__SetupDetailCandidates({
+			__SetupCandidates({
 				ParamURL,
 				_DataContentString,
 			});
@@ -236,7 +236,7 @@ describe('_SetupDetailCandidates', function test__SetupDetailCandidates() {
 		const ParamHTML = Math.random().toString();
 
 		deepEqual(await new Promise(function (res) {
-			return __SetupDetailCandidates({
+			return __SetupCandidates({
 				ParamURL,
 				_DataContentString: (function () {
 					return ParamHTML;
@@ -248,13 +248,13 @@ describe('_SetupDetailCandidates', function test__SetupDetailCandidates() {
 		}), [OLSKCache.OLSKCachePath(__dirname, OLSKCache.OLSKCacheURLBasename(ParamURL)), ParamHTML]);
 	});
 
-	it('returns _DataDetailsDOMPropertyCandidates', async function () {
+	it('returns _DataDOMPropertyCandidates', async function () {
 		const ParamURL = uLink();
 		const ParamHTML = `<link rel="apple-touch-icon" href="${ Math.random().toString() }" /><link rel="apple-touch-icon-precomposed" href="${ Math.random().toString() }" /><meta name="description" content="${ Math.random().toString() }"><title>${ Math.random().toString() }</title>`;
-		deepEqual(await __SetupDetailCandidates({
+		deepEqual(await __SetupCandidates({
 			ParamURL,
 			ParamHTML,
-			_DataDetailsDOMPropertyCandidates: (function () {
+			_DataDOMPropertyCandidates: (function () {
 				return [
 					['arguments', [...arguments]],
 				];
@@ -282,7 +282,7 @@ describe('_SetupDetailCandidates', function test__SetupDetailCandidates() {
 		it('calls _DataContentString', async function () {
 			const items = [];
 
-			await __SetupDetailCandidates({
+			await __SetupCandidates({
 				ParamURL,
 				_DataContentString: (function () {
 					items.push(...arguments);
@@ -297,7 +297,7 @@ describe('_SetupDetailCandidates', function test__SetupDetailCandidates() {
 		it('calls OLSKDiskWrite', async function () {
 			const items = [];
 
-			await __SetupDetailCandidates({
+			await __SetupCandidates({
 				ParamURL,
 				_DataContentString: (function (inputData) {
 					return inputData === ParamURL ? ParamHTML : JSON.stringify(ParamManifest);
@@ -316,13 +316,13 @@ describe('_SetupDetailCandidates', function test__SetupDetailCandidates() {
 				]);
 		});
 
-		it('returns _DataDetailsDOMPropertyCandidates', async function () {
-			deepEqual(await __SetupDetailCandidates({
+		it('returns _DataDOMPropertyCandidates', async function () {
+			deepEqual(await __SetupCandidates({
 				ParamURL,
 				_DataContentString: (function (inputData) {
 					return inputData === ParamURL ? ParamHTML : JSON.stringify(ParamManifest);
 				}),
-				_DataDetailsDOMPropertyCandidates: (function () {
+				_DataDOMPropertyCandidates: (function () {
 					return [
 						['arguments', [...arguments]],
 					];
@@ -351,7 +351,7 @@ describe('_SetupDetail', function test__SetupDetail() {
 				OLSKCacheResultFetchRenew: (function () {}),
 				OLSKCacheWriteFile: (function () {}),
 			}, inputData),
-			_SetupDetailCandidates: (function () {}),
+			_SetupCandidates: (function () {}),
 		}, inputData)._SetupDetail(inputData.url || Math.random().toString());
 	};
 
@@ -393,7 +393,7 @@ describe('_SetupDetail', function test__SetupDetail() {
 			}), ['function']);
 		});
 
-		it('calls _SetupDetailCandidates', async function () {
+		it('calls _SetupCandidates', async function () {
 			const url = Math.random().toString();
 
 			deepEqual(await __SetupDetail({
@@ -404,7 +404,7 @@ describe('_SetupDetail', function test__SetupDetail() {
 				OLSKQueueAdd: (function (inputData) {
 					return inputData();
 				}),
-				_SetupDetailCandidates: (function () {
+				_SetupCandidates: (function () {
 					return [...arguments];
 				}),
 			}), [url]);
@@ -427,7 +427,7 @@ describe('_SetupDetail', function test__SetupDetail() {
 				OLSKCacheWriteFile: (function () {
 					return [...arguments];
 				}),
-			}), [_ValueCandidatesCache, mod.DataCacheNameDetails(), require('path').join(__dirname, '__cached')]);
+			}), [_ValueCandidatesCache, mod.DataCacheAggregateBasename(), require('path').join(__dirname, '__cached')]);
 		});
 	
 	});

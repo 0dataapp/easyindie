@@ -17,11 +17,11 @@ const mod = {
 		return (await require('node-fetch')(inputData)).text();
 	},
 
-	DataCacheNameDetails() {
+	DataCacheAggregateBasename() {
 		return '_aggregate';
 	},
 
-	_DataDetailsDOMPropertyCandidates (params) {
+	_DataDOMPropertyCandidates (params) {
 		if (typeof params !== 'object' || params === null) {
 			throw new Error('ZDRErrorInputNotValid');
 		}
@@ -64,22 +64,22 @@ const mod = {
 		_mod._ValueFetchQueue = _mod._DataFoilOLSKQueue.OLSKQueueAPI();
 	},
 
-	SetupDetailsCache () {
+	SetupCacheObject () {
 		const _mod = process.env.npm_lifecycle_script === 'olsk-spec' ? this : mod;
 		
 		Object.assign(mod, Object.assign(_mod, {
-			_ValueCandidatesCache: _mod._DataFoilOLSKCache.OLSKCacheReadFile(mod.DataCacheNameDetails(), require('path').join(__dirname, '__cached')) || {},
+			_ValueCandidatesCache: _mod._DataFoilOLSKCache.OLSKCacheReadFile(mod.DataCacheAggregateBasename(), require('path').join(__dirname, '__cached')) || {},
 		}));
 	},
 
-	async _SetupDetailCandidates (inputData) {
+	async _SetupCandidates (inputData) {
 		const _mod = process.env.npm_lifecycle_script === 'olsk-spec' ? this : mod;
 
 		const ParamMetadata = require('OLSKDOM').OLSKDOMMetadata(_mod._DataFoilOLSKDisk.OLSKDiskWrite(OLSKCache.OLSKCachePath(__dirname, OLSKCache.OLSKCacheURLBasename(inputData)), await _mod._DataContentString(inputData)), {
 			JSDOM: JSDOM.fragment,
 		});
 
-		return Object.fromEntries(_mod._DataDetailsDOMPropertyCandidates({
+		return Object.fromEntries(_mod._DataDOMPropertyCandidates({
 			ParamURL: inputData,
 			ParamMetadata,
 			ParamManifest: !ParamMetadata.manifest ? undefined : (function(body) {
@@ -100,12 +100,12 @@ const mod = {
 			ParamKey: inputData,
 			ParamCallback: (function () {
 				return _mod._ValueFetchQueue.OLSKQueueAdd(function () {
-					return _mod._SetupDetailCandidates(inputData);
+					return _mod._SetupCandidates(inputData);
 				});
 			}),
 			ParamInterval: 1000 * 60 * 60 * 24,
 			_ParamCallbackDidFinish: (function () {
-				return _mod._DataFoilOLSKCache.OLSKCacheWriteFile(_mod._ValueCandidatesCache, mod.DataCacheNameDetails(), require('path').join(__dirname, '__cached'));
+				return _mod._DataFoilOLSKCache.OLSKCacheWriteFile(_mod._ValueCandidatesCache, mod.DataCacheAggregateBasename(), require('path').join(__dirname, '__cached'));
 			}),
 		});
 	},

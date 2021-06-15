@@ -9,7 +9,7 @@ const mod = {
 		}
 	},
 
-	_ValueItemsCache: {},
+	_ValueCacheObject: {},
 
 	// DATA
 
@@ -74,7 +74,7 @@ const mod = {
 		const _mod = process.env.npm_lifecycle_script === 'olsk-spec' ? this : mod;
 
 		return mod.DataListingURLs().reduce(function (coll, item) {
-			return coll.concat(_mod._DataListingObjects(item, _mod._ValueItemsCache[item] || ''));
+			return coll.concat(_mod._DataListingObjects(item, _mod._ValueCacheObject[item] || ''));
 		}, []).reduce(function (coll, item) {
 			if (coll.urls.includes(item.EASProjectURL)) {
 				const e = coll.objects.filter(function (e) {
@@ -104,10 +104,10 @@ const mod = {
 		_mod._ValueFetchQueue = _mod._DataFoilOLSKQueue.OLSKQueueAPI();
 	},
 
-	SetupItemsCache () {
+	SetupListingsCache () {
 		const _mod = process.env.npm_lifecycle_script === 'olsk-spec' ? this : mod;
 		Object.assign(mod, Object.assign(_mod, {
-			_ValueItemsCache: mod.DataListingURLs().reduce(function (coll, item) {
+			_ValueCacheObject: mod.DataListingURLs().reduce(function (coll, item) {
 				return Object.assign(coll, {
 					[item]: _mod._DataFoilOLSKDisk.OLSKDiskRead(OLSKCache.OLSKCachePath(__dirname, OLSKCache.OLSKCacheURLBasename(item))),
 				});
@@ -115,25 +115,25 @@ const mod = {
 		}));
 	},
 
-	_SetupItem (inputData) {
+	_SetupListing (inputData) {
 		const _mod = process.env.npm_lifecycle_script === 'olsk-spec' ? this : mod;
 		return _mod._DataFoilOLSKCache.OLSKCacheResultFetchRenew({
-			ParamMap: _mod._ValueItemsCache,
+			ParamMap: _mod._ValueCacheObject,
 			ParamKey: inputData,
 			ParamCallback: (function () {
 				return _mod._DataContentString(inputData);
 			}),
 			ParamInterval: 1000 * 60 * 60 * 24,
 			_ParamCallbackDidFinish: (function () {
-				return _mod._DataFoilOLSKDisk.OLSKDiskWrite(OLSKCache.OLSKCachePath(__dirname, OLSKCache.OLSKCacheURLBasename(inputData)), _mod._ValueItemsCache[inputData]);
+				return _mod._DataFoilOLSKDisk.OLSKDiskWrite(OLSKCache.OLSKCachePath(__dirname, OLSKCache.OLSKCacheURLBasename(inputData)), _mod._ValueCacheObject[inputData]);
 			}),
 		});
 	},
 
-	SetupItems () {
+	SetupListings () {
 		const _mod = process.env.npm_lifecycle_script === 'olsk-spec' ? this : mod;
 		
-		return Promise.all(mod.DataListingURLs().map(_mod._SetupItem));
+		return Promise.all(mod.DataListingURLs().map(_mod._SetupListing));
 	},
 
 };
