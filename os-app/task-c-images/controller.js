@@ -2,6 +2,18 @@ const OLSKCache = require('OLSKCache');
 
 const mod = {
 
+	OLSKControllerTasks () {
+		return [{
+			OLSKTaskName: 'RCSWikiCacheTask',
+			OLSKTaskFireTimeInterval: 1,
+			OLSKTaskShouldBePerformed () {
+				return true;
+			},
+			OLSKTaskCallback: mod.SetupImages,
+			OLSKTaskFireLimit: 1,
+		}];
+	},
+
 	// DATA
 
 	_DataFoilOLSKQueue: require('OLSKQueue'),
@@ -18,8 +30,11 @@ const mod = {
 
 		const response = await fetch(url);
 
-		if (!response.ok)
+		if (!response.ok) {
 			throw new Error(`unexpected response ${response.statusText}`);
+		}
+
+		require('OLSKDisk').OLSKDiskCreateFolder(require('path').dirname(file));
 
 		await streamPipeline(response.body, createWriteStream(file));
 	},
@@ -51,7 +66,7 @@ const mod = {
 		const _mod = process.env.npm_lifecycle_script === 'olsk-spec' ? this : mod;
 
 		return _mod._ValueFetchQueue.OLSKQueueAdd(function () {
-			return _mod._DataImagePipe(inputData, mod.DataCachePath(OLSKCache.OLSKCacheURLFilename(inputData)));
+			return mod.DataCacheLocalPath(inputData) || _mod._DataImagePipe(inputData, mod.DataCachePath(OLSKCache.OLSKCacheURLFilename(inputData)));
 		});
 	},
 

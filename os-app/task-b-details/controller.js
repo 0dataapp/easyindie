@@ -6,6 +6,10 @@ const mod = {
 
 	_ValueCandidatesCache: {},
 
+	ValueCandidatesCache () {
+		return mod._ValueCandidatesCache;
+	},
+
 	// DATA
 
 	_DataFoilOLSKCache: require('OLSKCache'),

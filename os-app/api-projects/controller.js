@@ -58,7 +58,7 @@ const mod = {
 
 		const _mod = process.env.npm_lifecycle_script === 'olsk-spec' ? this : mod;
 
-		return Object.entries(_mod._DataFoilDetails._ValueCandidatesCache[inputData.EASProjectURL] || {}).reduce(function (coll, [key, value]) {
+		return Object.entries(_mod._DataFoilDetails.ValueCandidatesCache()[inputData.EASProjectURL] || {}).reduce(function (coll, [key, value]) {
 			if (key.startsWith('_') && coll[key.slice(1)]) {
 				return coll;
 			}

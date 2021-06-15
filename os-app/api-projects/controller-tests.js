@@ -87,9 +87,11 @@ describe('_DataProjectProperties', function test__DataProjectProperties() {
 	
 	const __DataProjectProperties = function (inputData = {}) {
 		return Object.assign(Object.assign({}, mod), {
-			_DataFoilDetails: Object.assign({
-				_ValueCandidatesCache: {},
-			}, inputData),
+			_DataFoilDetails: {
+				ValueCandidatesCache: function () {
+					return inputData._ValueCandidatesCache || {};
+				},
+			},
 			_DataDetailsDOMPropertyCandidates: (function () {
 				return [];
 			}),
@@ -174,7 +176,9 @@ describe('DataProjects', function test_DataProjects() {
 	const _DataProjects = function (inputData = {}) {
 		return Object.assign(Object.assign({}, mod), {
 			_DataFoilDetails: Object.assign({
-				_ValueCandidatesCache: {},
+				ValueCandidatesCache: function () {
+					return inputData._ValueCandidatesCache || {};
+				},
 			}, inputData),
 			_DataFoilListings: Object.assign({
 				DataListingProjects: (function () {}),
