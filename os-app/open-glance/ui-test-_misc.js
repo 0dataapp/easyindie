@@ -107,7 +107,7 @@ describe('EASGlance_Misc', function () {
 	describe('EASGlanceProjectsCompilationLink', function test_EASGlanceProjectsCompilationLink () {
 		
 		it('sets href', function () {
-			browser.assert.attribute(EASGlanceProjectsCompilationLink, 'href', require('./controller.js').OLSKControllerRoutes().pop().OLSKRoutePath);
+			browser.assert.attribute(EASGlanceProjectsCompilationLink, 'href', require('../api-projects/controller.js').OLSKControllerRoutes().shift().OLSKRoutePath);
 		});
 
 		it('sets text', function () {

@@ -4,6 +4,19 @@ const uDescending = function (a, b) {
 
 const mod = {
 
+	OLSKControllerRoutes () {
+		return [{
+			OLSKRoutePath: '/projects.json',
+			OLSKRouteMethod: 'get',
+			OLSKRouteSignature: 'EASProjectsJSONRoute',
+			OLSKRouteFunction: (function EASProjectsJSONRoute (req, res, next) {
+				return res.send(mod.DataProjectsJSON());
+			}),
+		}];
+	},
+
+	// DATA
+
 	_DataFoilListings: require('../task-a-listings/controller.js'),
 	_DataFoilDetails: require('../task-b-details/controller.js'),
 	_DataFoilImages: require('../task-c-images/controller.js'),
