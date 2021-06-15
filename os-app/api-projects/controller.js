@@ -4,6 +4,8 @@ const uDescending = function (a, b) {
 
 const mod = {
 
+	_DataFoilListings: require('../task-a-listings/controller.js'),
+	_DataFoilDetails: require('../task-b-details/controller.js'),
 	_DataFoilImages: require('../task-c-images/controller.js'),
 
 	DataProjectsSort (a, b) {
@@ -30,7 +32,7 @@ const mod = {
 		const _mod = process.env.npm_lifecycle_script === 'olsk-spec' ? this : mod;
 
 		if (inputData.EASProjectIconURL) {
-			inputData._EASProjectIconURLCachedPath = _mod._DataFoilImages.DataCacheImageLocalPath(inputData.EASProjectIconURL);
+			inputData._EASProjectIconURLCachedPath = _mod._DataFoilImages.DataCacheLocalPath(inputData.EASProjectIconURL);
 		}
 
 		return inputData;
@@ -43,7 +45,7 @@ const mod = {
 
 		const _mod = process.env.npm_lifecycle_script === 'olsk-spec' ? this : mod;
 
-		return Object.entries(_mod._ValueCandidatesCache[inputData.EASProjectURL] || {}).reduce(function (coll, [key, value]) {
+		return Object.entries(_mod._DataFoilDetails._ValueCandidatesCache[inputData.EASProjectURL] || {}).reduce(function (coll, [key, value]) {
 			if (key.startsWith('_') && coll[key.slice(1)]) {
 				return coll;
 			}
@@ -61,7 +63,7 @@ const mod = {
 	DataProjects () {
 		const _mod = process.env.npm_lifecycle_script === 'olsk-spec' ? this : mod;
 
-		return _mod.DataListingProjects().map(function (e) {
+		return _mod._DataFoilListings.DataListingProjects().map(function (e) {
 			return _mod._DataProjectProperties(e);
 		}).map(function (e) {
 			return _mod._DataProjectImageProperty(e);

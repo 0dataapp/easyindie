@@ -6,8 +6,9 @@ const mod = {
 
 	_DataFoilOLSKQueue: require('OLSKQueue'),
 	_DataFoilFS: require('fs'),
+	_DataFoilProjects: require('../api-projects/controller.js'),
 
-	async _DataContentImage (url, file) {
+	async _DataImagePipe (url, file) {
 		const {createWriteStream} = require('fs');
 		const {pipeline} = require('stream');
 		const {promisify} = require('util');
@@ -23,7 +24,7 @@ const mod = {
 		await streamPipeline(response.body, createWriteStream(file));
 	},
 
-	DataCachePathImages (inputData = '') {
+	DataCachePath (inputData = '') {
 		if (typeof inputData !== 'string') {
 			throw new Error('EASErrorInputNotValid');
 		}
@@ -31,10 +32,10 @@ const mod = {
 		return require('path').join(__dirname, '__cached', 'ui-assets', inputData);
 	},
 
-	DataCacheImageLocalPath (inputData) {
+	DataCacheLocalPath (inputData) {
 		const _mod = process.env.npm_lifecycle_script === 'olsk-spec' ? this : mod;
 
-		const localURL = mod.DataCachePathImages(OLSKCache.OLSKCacheURLFilename(inputData));
+		const localURL = mod.DataCachePath(OLSKCache.OLSKCacheURLFilename(inputData));
 		return _mod._DataFoilFS.existsSync(localURL) ? localURL.replace(require('path').join(__dirname, '../'), '/') : null;
 	},
 
@@ -50,14 +51,14 @@ const mod = {
 		const _mod = process.env.npm_lifecycle_script === 'olsk-spec' ? this : mod;
 
 		return _mod._ValueFetchQueue.OLSKQueueAdd(function () {
-			return _mod._DataContentImage(inputData, mod.DataCachePathImages(OLSKCache.OLSKCacheURLFilename(inputData)));
+			return _mod._DataImagePipe(inputData, mod.DataCachePath(OLSKCache.OLSKCacheURLFilename(inputData)));
 		});
 	},
 
 	SetupImages () {
 		const _mod = process.env.npm_lifecycle_script === 'olsk-spec' ? this : mod;
 
-		return _mod.DataProjects().filter(function (e) {
+		return _mod._DataFoilProjects.DataProjects().filter(function (e) {
 			return e.EASProjectIconURL && !e._EASProjectIconURLCachedPath;
 		}).map(function (e) {
 			return _mod._SetupImage(e.EASProjectIconURL);

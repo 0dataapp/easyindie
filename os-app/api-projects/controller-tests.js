@@ -62,22 +62,22 @@ describe('_DataProjectImageProperty', function test__DataProjectImageProperty() 
 		}), ParamProject);
 	});
 
-	it('sets _EASProjectIconURLCachedPath if _DataFoilImages.DataCacheImageLocalPath', function () {
+	it('sets _EASProjectIconURLCachedPath if _DataFoilImages.DataCacheLocalPath', function () {
 		const EASProjectIconURL = Math.random().toString();
-		const DataCacheImageLocalPath = Math.random().toString();
+		const DataCacheLocalPath = Math.random().toString();
 
 		deepEqual(__DataProjectImageProperty({
 			ParamProject: {
 				EASProjectIconURL,
 			},
 			_DataFoilImages: {
-				DataCacheImageLocalPath: (function () {
-					return DataCacheImageLocalPath;
+				DataCacheLocalPath: (function () {
+					return DataCacheLocalPath;
 				}),
 			},
 		}), {
 			EASProjectIconURL,
-			_EASProjectIconURLCachedPath: DataCacheImageLocalPath,
+			_EASProjectIconURLCachedPath: DataCacheLocalPath,
 		});
 	});
 
@@ -87,7 +87,9 @@ describe('_DataProjectProperties', function test__DataProjectProperties() {
 	
 	const __DataProjectProperties = function (inputData = {}) {
 		return Object.assign(Object.assign({}, mod), {
-			_ValueCandidatesCache: {},
+			_DataFoilDetails: Object.assign({
+				_ValueCandidatesCache: {},
+			}, inputData),
 			_DataDetailsDOMPropertyCandidates: (function () {
 				return [];
 			}),
@@ -171,8 +173,12 @@ describe('DataProjects', function test_DataProjects() {
 	
 	const _DataProjects = function (inputData = {}) {
 		return Object.assign(Object.assign({}, mod), {
-			_ValueCandidatesCache: {},
-			DataListingProjects: (function () {}),
+			_DataFoilDetails: Object.assign({
+				_ValueCandidatesCache: {},
+			}, inputData),
+			_DataFoilListings: Object.assign({
+				DataListingProjects: (function () {}),
+			}, inputData),
 		}, inputData).DataProjects();
 	};
 

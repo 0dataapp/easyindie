@@ -4,33 +4,33 @@ const mod = require('./controller.js');
 
 import OLSKCache from 'OLSKCache';
 
-describe('DataCachePathImages', function test_DataCachePathImages() {
+describe('DataCachePath', function test_DataCachePath() {
 
 	it('returns string', function () {
-		deepEqual(mod.DataCachePathImages(), require('path').join(__dirname, '__cached', 'ui-assets'));
+		deepEqual(mod.DataCachePath(), require('path').join(__dirname, '__cached', 'ui-assets'));
 	});
 
 	it('throws if not string', function () {
 		throws(function () {
-			mod.DataCachePathImages(null);
+			mod.DataCachePath(null);
 		}, /EASErrorInputNotValid/);
 	});
 
 	it('joins inputData', function () {
 		const item = Math.random().toString();
-		deepEqual(mod.DataCachePathImages(item), require('path').join(__dirname, '__cached', 'ui-assets', item));
+		deepEqual(mod.DataCachePath(item), require('path').join(__dirname, '__cached', 'ui-assets', item));
 	});
 
 });
 
-describe('DataCacheImageLocalPath', function test_DataCacheImageLocalPath() {
+describe('DataCacheLocalPath', function test_DataCacheLocalPath() {
 
-	const _DataCacheImageLocalPath = function (inputData) {
+	const _DataCacheLocalPath = function (inputData) {
 		return Object.assign(Object.assign({}, mod), {
 			_DataFoilFS: Object.assign({
 				existsSync: (function () {}),
 			}, inputData),
-		}, inputData).DataCacheImageLocalPath(inputData.url || uLink());
+		}, inputData).DataCacheLocalPath(inputData.url || uLink());
 	};
 
 	it('calls existsSync', function () {
@@ -38,29 +38,29 @@ describe('DataCacheImageLocalPath', function test_DataCacheImageLocalPath() {
 
 		const url = uLink();
 
-		_DataCacheImageLocalPath({
+		_DataCacheLocalPath({
 			url,
 			existsSync: (function () {
 				item.push(...arguments);
 			}),
 		});
 
-		deepEqual(item, [mod.DataCachePathImages(OLSKCache.OLSKCacheURLFilename(url))]);
+		deepEqual(item, [mod.DataCachePath(OLSKCache.OLSKCacheURLFilename(url))]);
 	});
 
 	it('returns local URL if existsSync', function () {
 		const url = uLink();
 
-		deepEqual(_DataCacheImageLocalPath({
+		deepEqual(_DataCacheLocalPath({
 			url,
 			existsSync: (function () {
 				return true;
 			}),
-		}), mod.DataCachePathImages(OLSKCache.OLSKCacheURLFilename(url)).replace(require('path').join(__dirname, '../'), '/'));
+		}), mod.DataCachePath(OLSKCache.OLSKCacheURLFilename(url)).replace(require('path').join(__dirname, '../'), '/'));
 	});
 
 	it('returns null', function () {
-		deepEqual(_DataCacheImageLocalPath({
+		deepEqual(_DataCacheLocalPath({
 			existsSync: (function () {
 				return false;
 			}),
@@ -104,7 +104,7 @@ describe('_SetupImage', function test__SetupImage() {
 	const __SetupImage = function (inputData = {}) {
 		return Object.assign(Object.assign({}, mod), {
 			_ValueFetchQueue: Object.assign({}, inputData),
-			_DataContentImage: (function () {}),
+			_DataImagePipe: (function () {}),
 		}, inputData)._SetupImage(inputData.url);
 	};
 
@@ -121,7 +121,7 @@ describe('_SetupImage', function test__SetupImage() {
 		}), ['function']);
 	});
 
-	it('calls _DataContentImage', async function () {
+	it('calls _DataImagePipe', async function () {
 		const url = uLink();
 
 		deepEqual(await __SetupImage({
@@ -129,10 +129,10 @@ describe('_SetupImage', function test__SetupImage() {
 			OLSKQueueAdd: (function (inputData) {
 				return inputData();
 			}),
-			_DataContentImage: (function () {
+			_DataImagePipe: (function () {
 				return [...arguments];
 			}),
-		}), [url, mod.DataCachePathImages(OLSKCache.OLSKCacheURLFilename(url))]);
+		}), [url, mod.DataCachePath(OLSKCache.OLSKCacheURLFilename(url))]);
 	});
 
 });
@@ -141,9 +141,11 @@ describe('SetupImages', function test_SetupImages() {
 
 	const _SetupImages = function (inputData = {}) {
 		return Object.assign(Object.assign({}, mod), {
-			DataProjects: (function () {
-				return [];
-			}),
+			_DataFoilProjects: Object.assign({
+				DataProjects: (function () {
+					return [];
+				}),
+			}, inputData),
 			_SetupImage: (function () {}),
 		}, inputData).SetupImages();
 	};
@@ -180,7 +182,7 @@ describe('SetupImages', function test_SetupImages() {
 					_EASProjectIconURLCachedPath: Math.random().toString(),
 				}];
 			}),
-			_DataContentImage: (function () {
+			_DataImagePipe: (function () {
 				return [...arguments];
 			}),
 		}), []);
