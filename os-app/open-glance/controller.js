@@ -1,5 +1,6 @@
 const cheerio = require('cheerio');
 const { JSDOM } = require('JSDOM');
+const OLSKLink = require('OLSKLink');
 
 const uSerial2 = function (inputData) {
 	return inputData.reduce(async function (coll, e) {
@@ -89,18 +90,6 @@ const mod = {
 
 	_DataHash (inputData) {
 		return require('crypto').createHash('md5').update(inputData).digest('hex');
-	},
-
-	DataRelativeURL (url, path) {
-		if (typeof url !== 'string') {
-			throw new Error('EASErrorInputNotValid');
-		}
-
-		if (typeof path !== 'string') {
-			throw new Error('EASErrorInputNotValid');
-		}
-
-		return (new URL(path, url)).href;
 	},
 
 	// * CACHE
@@ -260,7 +249,7 @@ const mod = {
 					return;
 				}
 
-				return !href ? null : mod.DataRelativeURL(params.ParamURL, href);
+				return !href ? null : OLSKLink.OLSKLinkRelativeURL(params.ParamURL, href);
 			})((((params.ParamManifest || {}).icons || []).pop() || {}).src || params.ParamMetadata['apple-touch-icon'] || params.ParamMetadata['apple-touch-icon-precomposed'])],
 			['_EASProjectBlurb', params.ParamMetadata.description],
 			['_EASProjectBlurb', params.ParamMetadata.title],
@@ -418,11 +407,11 @@ const mod = {
 			ParamMetadata,
 			ParamManifest: !ParamMetadata.manifest ? undefined : (function(body) {
 				try {
-					return JSON.parse(_this._DataFoilOLSKDisk.OLSKDiskWrite(mod.DataCachePathDetails(mod.DataCacheFilenameURL(mod.DataRelativeURL(inputData, ParamMetadata.manifest))), body));
+					return JSON.parse(_this._DataFoilOLSKDisk.OLSKDiskWrite(mod.DataCachePathDetails(mod.DataCacheFilenameURL(OLSKLink.OLSKLinkRelativeURL(inputData, ParamMetadata.manifest))), body));
 				} catch (error) {
 					return;
 				}
-			})(await _this._DataContentString(mod.DataRelativeURL(inputData, ParamMetadata.manifest))),
+			})(await _this._DataContentString(OLSKLink.OLSKLinkRelativeURL(inputData, ParamMetadata.manifest))),
 		}));
 	},
 
