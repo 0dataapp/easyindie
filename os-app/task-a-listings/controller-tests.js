@@ -4,21 +4,6 @@ const mod = require('./controller.js');
 
 import OLSKCache from 'OLSKCache';
 
-describe('DataCachePathItems', function test_DataCachePathItems() {
-
-	it('throws if not string', function () {
-		throws(function () {
-			mod.DataCachePathItems(null);
-		}, /EASErrorInputNotValid/);
-	});
-
-	it('returns string', function () {
-		const item = Math.random().toString();
-		deepEqual(mod.DataCachePathItems(item), require('path').join(__dirname, '__cached', item));
-	});
-
-});
-
 describe('DataListingURLs', function test_DataListingURLs() {
 
 	it('returns array', function () {
@@ -276,7 +261,9 @@ describe('SetupItemsCache', function test_SetupItemsCache() {
 			}),
 		});
 
-		deepEqual(items, mod.DataListingURLs().map(OLSKCache.OLSKCacheURLBasename).map(mod.DataCachePathItems));
+		deepEqual(items, mod.DataListingURLs().map(OLSKCache.OLSKCacheURLBasename).map(function (e) {
+			return OLSKCache.OLSKCachePath(__dirname, e);
+		}));
 	});
 
 	it('sets _ValueItemsCache', function () {
@@ -369,7 +356,7 @@ describe('_SetupItem', function test__SetupItem() {
 				OLSKDiskWrite: (function () {
 					return [...arguments];
 				}),
-			}), [mod.DataCachePathItems(OLSKCache.OLSKCacheURLBasename(url)), data]);
+			}), [OLSKCache.OLSKCachePath(__dirname, OLSKCache.OLSKCacheURLBasename(url)), data]);
 		});
 	
 	});

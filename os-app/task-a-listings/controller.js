@@ -34,14 +34,6 @@ const mod = {
 		return (await require('node-fetch')(inputData)).text();
 	},
 
-	DataCachePathItems (inputData) {
-		if (typeof inputData !== 'string') {
-			throw new Error('EASErrorInputNotValid');
-		}
-
-		return require('path').join(__dirname, '__cached', inputData);
-	},
-
 	DataListingURLs() {
 		return process.env.EAS_VITRINE_LISTING_URLS.split(',');
 	},
@@ -137,7 +129,7 @@ const mod = {
 		Object.assign(mod, Object.assign(_mod, {
 			_ValueItemsCache: mod.DataListingURLs().reduce(function (coll, item) {
 				return Object.assign(coll, {
-					[item]: _mod._DataFoilOLSKDisk.OLSKDiskRead(mod.DataCachePathItems(OLSKCache.OLSKCacheURLBasename(item))),
+					[item]: _mod._DataFoilOLSKDisk.OLSKDiskRead(OLSKCache.OLSKCachePath(__dirname, OLSKCache.OLSKCacheURLBasename(item))),
 				});
 			}, {}),
 		}));
@@ -153,7 +145,7 @@ const mod = {
 			}),
 			ParamInterval: 1000 * 60 * 60 * 24,
 			_ParamCallbackDidFinish: (function () {
-				return _mod._DataFoilOLSKDisk.OLSKDiskWrite(mod.DataCachePathItems(OLSKCache.OLSKCacheURLBasename(inputData)), _mod._ValueItemsCache[inputData]);
+				return _mod._DataFoilOLSKDisk.OLSKDiskWrite(OLSKCache.OLSKCachePath(__dirname, OLSKCache.OLSKCacheURLBasename(inputData)), _mod._ValueItemsCache[inputData]);
 			}),
 		});
 	},
