@@ -197,20 +197,6 @@ describe('DataListingProjects', function test_DataListingProjects() {
 
 });
 
-describe('_SetupMethods', function test__SetupMethods() {
-
-	it('returns array', function () {
-		const signature = 'Setup' + uRandomInt();
-
-		deepEqual(Object.assign(Object.assign({}, mod), {
-			[signature]: function () {},
-		})._SetupMethods(), Object.keys(mod).filter(function (e) {
-			return e.match(/^Setup/);
-		}).concat(signature));
-	});
-
-});
-
 describe('SetupFetchQueue', function test_SetupFetchQueue() {
 
 	const _SetupFetchQueue = function (inputData) {
@@ -377,30 +363,6 @@ describe('SetupItems', function test_SetupItems() {
 				return e;
 			}),
 		}), mod.DataListingURLs());
-	});
-
-});
-
-describe('LifecycleModuleDidLoad', function test_LifecycleModuleDidLoad() {
-
-	const _LifecycleModuleDidLoad = function (inputData = {}) {
-		return Object.assign(mod._SetupMethods().reduce(function (coll, item) {
-			return Object.assign(coll, {
-				[item]: function () {
-					return item;
-				},
-			});
-		}, Object.assign({}, mod)), inputData).LifecycleModuleDidLoad();
-	};
-
-	it('calls _SetupMethods', async function () {
-		const signature = 'Setup' + uRandomInt();
-
-		deepEqual(await _LifecycleModuleDidLoad({
-			[signature]: function () {
-				return signature;
-			},
-		}), mod._SetupMethods().concat(signature));
 	});
 
 });

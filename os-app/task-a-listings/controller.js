@@ -1,18 +1,6 @@
 const cheerio = require('cheerio');
 const OLSKCache = require('OLSKCache');
 
-const uSerial2 = function (inputData) {
-	return inputData.reduce(async function (coll, e) {
-		return (await coll).concat(await new Promise(function (res, rej) {
-			try {
-				res(e());
-			} catch (error) {
-				rej(error);
-			}
-		}));
-	}, Promise.resolve([]));
-};
-
 const mod = {
 
 	OLSKControllerSharedLocals () {
@@ -110,14 +98,6 @@ const mod = {
 
 	// SETUP
 
-	_SetupMethods () {
-		const _mod = process.env.npm_lifecycle_script === 'olsk-spec' ? this : mod;
-
-		return Object.keys(_mod).filter(function (e) {
-			return e.match(/^Setup/);
-		});
-	},
-
 	SetupFetchQueue () {
 		const _mod = process.env.npm_lifecycle_script === 'olsk-spec' ? this : mod;
 
@@ -156,20 +136,10 @@ const mod = {
 		return Promise.all(mod.DataListingURLs().map(_mod._SetupItem));
 	},
 
-	// LIFECYCLE
-
-	LifecycleModuleDidLoad () {
-		const _mod = process.env.npm_lifecycle_script === 'olsk-spec' ? this : mod;
-		
-		return uSerial2(_mod._SetupMethods().map(function (e) {
-			return _mod[e];
-		}));
-	},
-
 };
 
 if (process.env.NODE_ENV === 'production' || process.env.npm_lifecycle_script === 'olsk-express') {
-	mod.LifecycleModuleDidLoad();
+	require('OLSKModule').OLSKModuleLifecycleSetup(mod);
 }
 
 Object.assign(exports, mod);
