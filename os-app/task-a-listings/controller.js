@@ -5,6 +5,9 @@ const mod = {
 
 	OLSKControllerSharedLocals () {
 		return {
+			EASGlanceProjectsCount () {
+				return mod.DataListingProjects().length;
+			},
 			EASGlanceProjectsSourceURLs: mod.DataListingURLs(),
 		}
 	},
