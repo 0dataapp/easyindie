@@ -4,7 +4,7 @@ const mod = {
 
 	OLSKControllerTasks () {
 		return [{
-			OLSKTaskName: 'RCSWikiCacheTask',
+			OLSKTaskName: 'EASImagesTask',
 			OLSKTaskFireTimeInterval: 1,
 			OLSKTaskShouldBePerformed () {
 				return true;
