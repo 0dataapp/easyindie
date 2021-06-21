@@ -50,7 +50,7 @@ describe('_DataListingObjects', function test__DataListingObjects() {
 		deepEqual(mod._DataListingObjects(uRandomElement(mod.DataListingURLs()), ''), []);
 	});
 
-	context('yunohost', function tost_yunohost () {
+	context('Yunohost', function test_Yunohost () {
 
 		const uListing = function (inputData = {}) {
 			const item = Object.assign({
