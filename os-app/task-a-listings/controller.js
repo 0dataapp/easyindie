@@ -29,6 +29,12 @@ const mod = {
 		return process.env.EAS_VITRINE_LISTING_URLS.split(',');
 	},
 
+	DataListingURLCloudron () {
+		return mod.DataListingURLs().filter(function (e) {
+			return e.match(/Cloudron/i);
+		}).shift();
+	},
+
 	DataListingURLYunohost () {
 		return mod.DataListingURLs().filter(function (e) {
 			return e.match(/Yunohost/i);

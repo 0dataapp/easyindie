@@ -12,6 +12,16 @@ describe('DataListingURLs', function test_DataListingURLs() {
 
 });
 
+describe('DataListingURLCloudron', function test_DataListingURLCloudron() {
+
+	it('returns string', function () {
+		deepEqual(mod.DataListingURLCloudron(), mod.DataListingURLs().filter(function (e) {
+			return e.match(/Cloudron/i);
+		}).shift());
+	});
+
+});
+
 describe('DataListingURLYunohost', function test_DataListingURLYunohost() {
 
 	it('returns string', function () {
