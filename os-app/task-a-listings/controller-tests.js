@@ -50,6 +50,54 @@ describe('_DataListingObjects', function test__DataListingObjects() {
 		deepEqual(mod._DataListingObjects(uRandomElement(mod.DataListingURLs()), ''), []);
 	});
 
+	context('Cloudron', function test_Cloudron () {
+
+		const uListing = function (inputData = {}) {
+			const item = Object.assign({
+				EASProjectName: Math.random().toString(),
+				EASProjectBlurb: Math.random().toString(),
+				EASProjectURL: Math.random().toString(),
+				EASProjectImageURL: Math.random().toString(),
+				EASProjectTags: Array.from(Array(uRandomInt(5))).map(function () {
+					return Math.random().toString();
+				}),
+				EASPlatformDocsPath: Math.random().toString(),
+			}, inputData);
+
+			return `$scope.allApps = [{"id":"com.electerious.ackee","creationDate":"2021-02-22T22:59:39.000Z","publishState":"approved","ownerId":"bfa555ee-8db7-4027-94f6-7409feafd4cb","userId":"bfa555ee-8db7-4027-94f6-7409feafd4cb","visibility":"listed","releaseState":"stable","ts":"2021-02-22T23:02:27.000Z","manifest":{"id":"com.electerious.ackee","version":"1.0.0","title":"${ item.EASProjectName }","author":"Ackee Community","description":"This app packages Ackee <upstream>3.0.5</upstream>\\n\\nAckee is a self-hosted analytics tool that cares about privacy. We believe that you don't need to track every aspect of your visitors. Ackee keeps tracked data anonymized to avoid that users are identifiable, while still providing helpful insights. It's the right tool for everyone who doesn't need a full-featured marketing analytics platform like Google Analytics or Matomo.\\n\\n## Features\\n\\n* Self-hosted: Ackee runs on your own server and is 100% open-source\\n* Modern technologies: Lightweight Node.js and MongoDB architecture\\n* Beautiful: Minimal and focused interface\\n* No cookies: No unique user tracking and therefore no required cookie message\\n* Events: Track button clicks, newsletter subscriptions and more\\n* GraphQL API: Fully documented GraphQL API that allows you to build new tools upon Ackee\\n\\n","tagline":"${ item.EASProjectBlurb }","website":"${ item.EASProjectURL }","icon":"file://logo.png","mediaLinks":["https://screenshots.cloudron.io/com.electerious.ackee/1.png"],"healthCheckPath":"/","httpPort":3000,"addons":{"localstorage":{},"mongodb":{}},"contactEmail":"support@cloudron.io","tags":${ JSON.stringify(item.EASProjectTags) },"changelog":"* Initial stable version\\n* Update Ackee to 3.0.5\\n* [Full changelog](https://github.com/electerious/Ackee/releases/tag/v3.0.5)\\n","postInstallMessage":"This app is pre-setup with an admin account.\\n\\n**Username**: admin<br/>\\n**Password**: changeme<br/>\\n\\nPlease change the admin email and password credentials immediately by editing \`/app/data/env\`\\nand restarting the app.\\n\\n","documentationUrl":"${ item.EASPlatformDocsPath }","forumUrl":"https://forum.cloudron.io/category/125/ackee","minBoxVersion":"5.3.0","manifestVersion":2,"dockerImage":"cloudron/com.electerious.ackee:20210222-173644-5145b0590","memoryLimit":256,"richDescription":"<p>This app packages Ackee <upstream>3.0.5</upstream></p>\\n<p>Ackee is a self-hosted analytics tool that cares about privacy. We believe that you don&#39;t need to track every aspect of your visitors. Ackee keeps tracked data anonymized to avoid that users are identifiable, while still providing helpful insights. It&#39;s the right tool for everyone who doesn&#39;t need a full-featured marketing analytics platform like Google Analytics or Matomo.</p>\\n<h2 id=\\"features\\">Features</h2>\\n<ul>\\n<li>Self-hosted: Ackee runs on your own server and is 100% open-source</li>\\n<li>Modern technologies: Lightweight Node.js and MongoDB architecture</li>\\n<li>Beautiful: Minimal and focused interface</li>\\n<li>No cookies: No unique user tracking and therefore no required cookie message</li>\\n<li>Events: Track button clicks, newsletter subscriptions and more</li>\\n<li>GraphQL API: Fully documented GraphQL API that allows you to build new tools upon Ackee</li>\\n</ul>\\n"},"featured":false,"iconUrl":"${ item.EASProjectImageURL }","ranking":49,"installCount":49,"creationDateSortable":"20210222230200","creationDatePretty":"22 Feb 2021","version":"3.0.5","changes":["<p>Initial stable version</p>\\n","<p>Update Ackee to 3.0.5</p>\\n","<p><a href=\\"https://github.com/electerious/Ackee/releases/tag/v3.0.5\\">Full changelog</a></p>\\n"]}];
+    $scope.apps = null;`;
+		};
+		
+		it('parses listing', function () {
+			const EASProjectName = Math.random().toString();
+			const EASProjectBlurb = Math.random().toString();
+			const EASProjectURL = Math.random().toString();
+			const EASProjectTags = Array.from(Array(uRandomInt(5))).map(function () {
+				return Math.random().toString();
+			});
+			const EASPlatformDocsPath = Math.random().toString();
+
+			deepEqual(mod._DataListingObjects(mod.DataListingURLCloudron(), uListing({
+				EASProjectName,
+				EASProjectBlurb,
+				EASProjectURL,
+				EASProjectTags,
+				EASPlatformDocsPath,
+			})), [{
+				EASProjectName,
+				EASProjectBlurb,
+				EASProjectURL,
+				EASProjectTags,
+				EASProjectPlatforms: {
+					EASPlatformCloudron: {
+						EASPlatformDocsPath,
+					},
+				},
+			}]);
+		});
+	
+	});
+
 	context('Yunohost', function test_Yunohost () {
 
 		const uListing = function (inputData = {}) {

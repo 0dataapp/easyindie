@@ -53,6 +53,25 @@ const mod = {
 		return Array.from(mod.DataListingURLs().reduce(function (coll, item) {
 			return Object.assign(coll, {
 				[item]: {
+					[mod.DataListingURLCloudron()]: function () {
+						try {
+							return JSON.parse(param2.split('$scope.allApps = ').pop().split('$scope.apps = null;').shift().trim().slice(0, -1)).map(function (e) {
+								return {
+									EASProjectName: e.manifest.title,
+									EASProjectBlurb: e.manifest.tagline,
+									EASProjectURL: e.manifest.website,
+									EASProjectTags: e.manifest.tags,
+									EASProjectPlatforms: {
+										EASPlatformCloudron: {
+											EASPlatformDocsPath: e.manifest.documentationUrl,
+										},
+									},
+								};
+							});
+						} catch {
+							return [];
+						}
+					},
 					[mod.DataListingURLYunohost()]: function () {
 						return cheerio('.app-cards-list', param2).find('.app-card').map(function () {
 							const EASPlatformCategory = cheerio('.app-title .label', this).text();
