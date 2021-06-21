@@ -16,7 +16,7 @@ describe('DataListingURLYunohost', function test_DataListingURLYunohost() {
 
 	it('returns string', function () {
 		deepEqual(mod.DataListingURLYunohost(), mod.DataListingURLs().filter(function (e) {
-			return e.match(/yunohost/);
+			return e.match(/Yunohost/i);
 		}).shift());
 	});
 

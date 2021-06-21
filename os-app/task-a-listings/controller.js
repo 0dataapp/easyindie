@@ -31,7 +31,7 @@ const mod = {
 
 	DataListingURLYunohost () {
 		return mod.DataListingURLs().filter(function (e) {
-			return e.match(/yunohost/);
+			return e.match(/Yunohost/i);
 		}).shift();
 	},
 
