@@ -94,37 +94,6 @@ describe('_DataListingObjects', function test__DataListingObjects() {
 				},
 			}]);
 		});
-		
-		it('strips whitespace', function () {
-			const EASProjectName = Math.random().toString();
-			const EASProjectBlurb = Math.random().toString();
-			const EASProjectURL = Math.random().toString();
-			const EASPlatformCategory = Math.random().toString();
-			const EASPlatformRepoURL = Math.random().toString();
-			const EASPlatformDocsPath = Math.random().toString();
-			const EASPlatformInstallURL = Math.random().toString();
-
-			deepEqual(mod._DataListingObjects(mod.DataListingURLYunohost(), uListing({
-				EASProjectName: ' ' + EASProjectName + ' ',
-				EASProjectBlurb: ' ' + EASProjectBlurb + ' ',
-				EASPlatformCategory: ' ' + EASPlatformCategory + ' ',
-				EASPlatformRepoURL: ' ' + EASPlatformRepoURL + ' ',
-				EASPlatformDocsPath: ' ' + EASPlatformDocsPath + ' ',
-				EASPlatformInstallURL: ' ' + EASPlatformInstallURL + ' ',
-			})), [{
-				EASProjectName,
-				EASProjectBlurb,
-				EASProjectURL: EASPlatformRepoURL,
-				EASProjectPlatforms: {
-					EASPlatformYunohost: {
-						EASPlatformCategory,
-						EASPlatformRepoURL,
-						EASPlatformDocsPath,
-						EASPlatformInstallURL,
-					},
-				},
-			}]);
-		});
 	
 	});
 
@@ -174,6 +143,19 @@ describe('DataListingProjects', function test_DataListingProjects() {
 				EASProjectURL: item,
 			});
 		}, []));
+	});
+
+	it('trims properties', function () {
+		const item = Math.random().toString();
+		deepEqual(_DataListingProjects({
+			_DataListingObjects: (function () {
+				return [{
+					[item]: ' ' + item + ' ',
+				}];
+			}),
+		}), [{
+			[item]: item,
+		}]);
 	});
 
 	it('merges if EASProjectURL duplicate', function () {

@@ -76,14 +76,14 @@ const mod = {
 					},
 				}[item],
 			});
-		}, {})[param1]()).map(require('OLSKObject').OLSKObjectTrim);
+		}, {})[param1]());
 	},
 
 	DataListingProjects () {
 		const _mod = process.env.npm_lifecycle_script === 'olsk-spec' ? this : mod;
 
 		return mod.DataListingURLs().reduce(function (coll, item) {
-			return coll.concat(_mod._DataListingObjects(item, _mod._ValueCacheObject[item] || ''));
+			return coll.concat(_mod._DataListingObjects(item, _mod._ValueCacheObject[item] || '').map(require('OLSKObject').OLSKObjectTrim));
 		}, []).reduce(function (coll, item) {
 			if (coll.urls.includes(item.EASProjectURL)) {
 				const e = coll.objects.filter(function (e) {
