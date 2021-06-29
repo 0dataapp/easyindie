@@ -65,7 +65,7 @@ const mod = {
 									EASPlatformCloudron: {
 										EASPlatformName: e.manifest.title,
 										EASPlatformBlurb: e.manifest.tagline,
-										EASPlatformTags: e.manifest.tags,
+										EASPlatformTagSources: e.manifest.tags,
 										EASPlatformDocsPath: e.manifest.documentationUrl,
 									},
 								},
@@ -87,7 +87,7 @@ const mod = {
 										EASPlatformName: e.manifest.name,
 										EASPlatformBlurb: e.manifest.description.en,
 										EASPlatformCategory: category.title.en,
-										EASPlatformKeywordSources: [category.description.en].concat(category.subtags.filter(function (item) {
+										EASPlatformTagSources: [category.description.en].concat(category.subtags.filter(function (item) {
 											return e.subtags.includes(item.id);
 										}).map(function (e) {
 											return e.title.en;
