@@ -126,14 +126,22 @@ const mod = {
 		const _mod = process.env.npm_lifecycle_script === 'olsk-spec' ? this : mod;
 
 		return mod.DataListingURLs().reduce(function (coll, item) {
-			return coll.concat(_mod._DataListingObjects(item, _mod._ValueCacheObject[item] || '').map(require('OLSKObject').OLSKObjectTrim));
+			return coll.concat(_mod._DataListingObjects(item, _mod._ValueCacheObject[item] || '').map(function (e) {
+				return Object.assign(require('OLSKObject').OLSKObjectTrim(e), e.EASProjectURL ? {
+					EASProjectURL: require('OLSKLink').OLSKLinkCompareURL(e.EASProjectURL),
+				} : {});
+			}));
 		}, []).reduce(function (coll, item) {
 			if (coll.urls.includes(item.EASProjectURL)) {
 				const e = coll.objects.filter(function (e) {
 					return e.EASProjectURL === item.EASProjectURL;
 				}).shift();
+
+				const EASProjectPlatforms = Object.assign(item.EASProjectPlatforms || {}, e.EASProjectPlatforms || {});
 				
-				Object.assign(e, Object.assign(item, e));
+				Object.assign(e, Object.assign(item, e), {
+					EASProjectPlatforms,
+				});
 
 				return coll;
 			}

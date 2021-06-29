@@ -246,6 +246,7 @@ describe('DataListingProjects', function test_DataListingProjects() {
 			}),
 		}), [{
 			[item]: item,
+			EASProjectPlatforms: {},
 		}]);
 	});
 
@@ -253,22 +254,34 @@ describe('DataListingProjects', function test_DataListingProjects() {
 		const EASProjectURL = Math.random().toString();
 		const alfa = Math.random().toString();
 		const bravo = Math.random().toString();
+		const charlie = Math.random().toString();
+		const delta = Math.random().toString();
 		
 		deepEqual(_DataListingProjects({
 			_DataListingObjects: (function () {
 				return [{
-				EASProjectURL,
-				alfa: alfa,
-			}, {
-				EASProjectURL,
-				alfa: Math.random().toString(),
-				bravo: bravo,
-			}];
+					EASProjectURL: EASProjectURL + '/',
+					alfa: alfa,
+					EASProjectPlatforms: {
+						charlie,
+					},
+				}, {
+					EASProjectURL,
+					alfa: Math.random().toString(),
+					bravo: bravo,
+					EASProjectPlatforms: {
+						delta,
+					},
+				}];
 			}),
 		}), [{
 			EASProjectURL,
 			alfa: alfa,
 			bravo: bravo,
+			EASProjectPlatforms: {
+				charlie,
+				delta
+			},
 		}]);
 	});
 
