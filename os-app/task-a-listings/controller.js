@@ -103,16 +103,17 @@ const mod = {
 							return {
 								EASProjectURL: e.manifest.url,
 								EASProjectPlatforms: {
-									EASPlatformYunohost: {
+									EASPlatformYunohost: Object.assign({
 										EASPlatformName: e.manifest.name,
 										EASPlatformBlurb: e.manifest.description.en,
+									}, category ? {
 										EASPlatformCategory: category.title.en,
-										EASPlatformTagSources: [category.description.en].concat(category.subtags.filter(function (item) {
+										EASPlatformTagSources: [category.description.en].concat((category.subtags || []).filter(function (item) {
 											return e.subtags.includes(item.id);
 										}).map(function (e) {
 											return e.title.en;
 										})),
-									},
+									} : {}),
 								},
 							};
 						});
