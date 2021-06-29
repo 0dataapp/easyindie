@@ -137,7 +137,7 @@ describe('_DataListingObjects', function test__DataListingObjects() {
 					EASPlatformCaprover: {
 						EASPlatformName,
 						EASPlatformBlurb,
-						EASPlatformImageURL,
+						EASPlatformImageURL: 'https://oneclickapps.caprover.com/v4/logos/' + EASPlatformImageURL,
 						EASPlatformID,
 					},
 				},

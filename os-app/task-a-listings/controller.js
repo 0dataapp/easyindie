@@ -85,7 +85,7 @@ const mod = {
 									EASPlatformCaprover: {
 										EASPlatformName: e.displayName,
 										EASPlatformBlurb: e.description,
-										EASPlatformImageURL: e.logoUrl,
+										EASPlatformImageURL: 'https://oneclickapps.caprover.com/v4/logos/' + e.logoUrl,
 										EASPlatformID: e.name,
 									},
 								},
