@@ -60,12 +60,12 @@ const mod = {
 					[mod.DataListingURLCloudron()]: function () {
 						return JSON.parse(param2.split('$scope.allApps = ').pop().split('$scope.apps = null;').shift().trim().slice(0, -1)).map(function (e) {
 							return {
-								EASProjectName: e.manifest.title,
-								EASProjectBlurb: e.manifest.tagline,
 								EASProjectURL: e.manifest.website,
-								EASProjectTags: e.manifest.tags,
 								EASProjectPlatforms: {
 									EASPlatformCloudron: {
+										EASPlatformName: e.manifest.title,
+										EASPlatformBlurb: e.manifest.tagline,
+										EASPlatformTags: e.manifest.tags,
 										EASPlatformDocsPath: e.manifest.documentationUrl,
 									},
 								},
