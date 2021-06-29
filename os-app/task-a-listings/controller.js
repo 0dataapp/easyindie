@@ -79,7 +79,7 @@ const mod = {
 						});
 					},
 					[mod.DataListingURLCaprover()]: function () {
-						return JSON.parse(param2).data.oneClickApps.map(function (e) {
+						return JSON.parse(param2).oneClickApps.map(function (e) {
 							return {
 								EASProjectPlatforms: {
 									EASPlatformCaprover: {

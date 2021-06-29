@@ -118,7 +118,7 @@ describe('_DataListingObjects', function test__DataListingObjects() {
 				EASPlatformID: Math.random().toString(),
 			}, inputData);
 
-			return `{"status":100,"description":"All one click apps are retrieved","data":{"oneClickApps":[{"baseUrl":"https://oneclickapps.caprover.com","name":"${ item.EASPlatformID }","displayName":"${ item.EASPlatformName }","isOfficial":true,"description":"${ item.EASPlatformBlurb }","logoUrl":"${ item.EASPlatformImageURL }"}]}}`;
+			return `{"oneClickApps":[{"baseUrl":"https://oneclickapps.caprover.com","name":"${ item.EASPlatformID }","displayName":"${ item.EASPlatformName }","isOfficial":true,"description":"${ item.EASPlatformBlurb }","logoUrl":"${ item.EASPlatformImageURL }"}]}`;
 		};
 		
 		it('parses listing', function () {
