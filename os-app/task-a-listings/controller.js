@@ -123,38 +123,32 @@ const mod = {
 		}, {})[param1]());
 	},
 
+	_DataMergeProjects (inputData) {
+		if (!Array.isArray(inputData)) {
+			throw new Error('EASErrorInputNotValid');
+		}
+
+		return Object.values(inputData.reduce(function (coll, item) {
+			const id = require('OLSKLink').OLSKLinkCompareURL(item.EASProjectURL || '');
+
+			const merged = coll[id] || {};
+
+			const EASProjectPlatforms = Object.assign(merged.EASProjectPlatforms || {}, item.EASProjectPlatforms || {});
+			
+			return Object.assign(coll, {
+				[id]: Object.assign(item, Object.assign(merged, item), merged.EASProjectPlatforms ? {
+					EASProjectPlatforms,
+				} : {}),
+			});
+		}, {}));
+	},
+
 	DataListingProjects () {
 		const _mod = process.env.npm_lifecycle_script === 'olsk-spec' ? this : mod;
 
-		return mod.DataListingURLs().reduce(function (coll, item) {
-			return coll.concat(_mod._DataListingObjects(item, _mod._ValueCacheObject[item] || '').map(function (e) {
-				return Object.assign(require('OLSKObject').OLSKObjectTrim(e), e.EASProjectURL ? {
-					EASProjectURL: require('OLSKLink').OLSKLinkCompareURL(e.EASProjectURL),
-				} : {});
-			}));
-		}, []).reduce(function (coll, item) {
-			if (coll.urls.includes(item.EASProjectURL)) {
-				const e = coll.objects.filter(function (e) {
-					return e.EASProjectURL === item.EASProjectURL;
-				}).shift();
-
-				const EASProjectPlatforms = Object.assign(item.EASProjectPlatforms || {}, e.EASProjectPlatforms || {});
-				
-				Object.assign(e, Object.assign(item, e), {
-					EASProjectPlatforms,
-				});
-
-				return coll;
-			}
-
-			coll.urls.push(item.EASProjectURL);
-			coll.objects.push(item);
-
-			return coll;
-		}, {
-			urls: [],
-			objects: [],
-		}).objects;
+		return _mod._DataMergeProjects(mod.DataListingURLs().reduce(function (coll, item) {
+			return coll.concat(_mod._DataListingObjects(item, _mod._ValueCacheObject[item] || '').map(require('OLSKObject').OLSKObjectTrim));
+		}, []));
 	},
 
 	// SETUP

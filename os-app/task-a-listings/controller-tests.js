@@ -190,12 +190,98 @@ describe('_DataListingObjects', function test__DataListingObjects() {
 
 });
 
+describe('_DataMergeProjects', function test__DataMergeProjects() {
+
+	const __DataMergeProjects = function (param1, param2) {
+		const EASProjectURL = Math.random().toString();
+		return mod._DataMergeProjects([Object.assign({
+			EASProjectURL,
+		}, param1), Object.assign({
+			EASProjectURL,
+		}, param2)]).map(function (e) {
+			delete e.EASProjectURL;
+
+			return e
+		});
+	};
+
+	it('throws if not array', function () {
+		throws(function () {
+			mod._DataMergeProjects(null);
+		}, /EASErrorInputNotValid/);
+	});
+
+	it('returns input', function () {
+		const item = [{
+			[Math.random().toString()]: Math.random().toString(),
+		}];
+		deepEqual(mod._DataMergeProjects(item.slice()), item.slice());
+	});
+
+	it('merges if EASProjectURL exact', function () {
+		const EASProjectURL = Math.random().toString();
+		deepEqual(mod._DataMergeProjects([{
+			EASProjectURL,
+		}, {
+			EASProjectURL,
+		}]), [{
+			EASProjectURL,
+		}]);
+	});
+
+	it('merges if EASProjectURL trailing slash', function () {
+		const EASProjectURL = Math.random().toString();
+		deepEqual(mod._DataMergeProjects([{
+			EASProjectURL: EASProjectURL + '/',
+		}, {
+			EASProjectURL,
+		}]), [{
+			EASProjectURL,
+		}]);
+	});
+
+	it('copies properties', function () {
+		const alfa = Math.random().toString();
+		const bravo = Math.random().toString();
+		deepEqual(__DataMergeProjects({
+			alfa
+		}, {
+			bravo
+		}), [{
+			alfa,
+			bravo
+		}]);
+	});
+
+	it('copies EASProjectPlatforms', function () {
+		const alfa = Math.random().toString();
+		const bravo = Math.random().toString();
+		deepEqual(__DataMergeProjects({
+			EASProjectPlatforms: {
+				alfa,
+			},
+		}, {
+			EASProjectPlatforms: {
+				bravo,
+			},
+		}), [{
+			EASProjectPlatforms: {
+				alfa,
+				bravo,
+			},
+		}]);
+	});
+
+});
+
 describe('DataListingProjects', function test_DataListingProjects() {
 	
 	const _DataListingProjects = function (inputData = {}) {
 		return Object.assign(Object.assign({}, mod), {
 			_ValueCacheObject: {},
-			_DataListingObjects: (function () {}),
+			_DataListingObjects: (function () {
+				return [];
+			}),
 		}, inputData).DataListingProjects();
 	};
 
@@ -222,18 +308,24 @@ describe('DataListingProjects', function test_DataListingProjects() {
 		}));
 	});
 
-	it('returns _DataListingObjects', function () {
+	it('returns _DataMergeProjects', function () {
+		const item = Math.random().toString();
 		deepEqual(_DataListingProjects({
 			_DataListingObjects: (function () {
 				return [{
 					EASProjectURL: arguments[0],
+					item,
 				}];
 			}),
-		}), mod.DataListingURLs().reduce(function (coll, item) {
+			_DataMergeProjects: (function () {
+				return [...arguments];
+			}),
+		}), [mod.DataListingURLs().reduce(function (coll, EASProjectURL) {
 			return coll.concat({
-				EASProjectURL: item,
+				EASProjectURL,
+				item,
 			});
-		}, []));
+		}, [])]);
 	});
 
 	it('trims properties', function () {
@@ -241,48 +333,16 @@ describe('DataListingProjects', function test_DataListingProjects() {
 		deepEqual(_DataListingProjects({
 			_DataListingObjects: (function () {
 				return [{
+					EASProjectURL: arguments[0],
 					[item]: ' ' + item + ' ',
 				}];
 			}),
-		}), [{
-			[item]: item,
-			EASProjectPlatforms: {},
-		}]);
-	});
-
-	it('merges if EASProjectURL duplicate', function () {
-		const EASProjectURL = Math.random().toString();
-		const alfa = Math.random().toString();
-		const bravo = Math.random().toString();
-		const charlie = Math.random().toString();
-		const delta = Math.random().toString();
-		
-		deepEqual(_DataListingProjects({
-			_DataListingObjects: (function () {
-				return [{
-					EASProjectURL: EASProjectURL + '/',
-					alfa: alfa,
-					EASProjectPlatforms: {
-						charlie,
-					},
-				}, {
-					EASProjectURL,
-					alfa: Math.random().toString(),
-					bravo: bravo,
-					EASProjectPlatforms: {
-						delta,
-					},
-				}];
-			}),
-		}), [{
-			EASProjectURL,
-			alfa: alfa,
-			bravo: bravo,
-			EASProjectPlatforms: {
-				charlie,
-				delta
-			},
-		}]);
+		}), mod.DataListingURLs().reduce(function (coll, EASProjectURL) {
+			return coll.concat({
+				EASProjectURL,
+				[item]: item,
+			});
+		}, []));
 	});
 
 	it('passes default value if cache empty', function () {
