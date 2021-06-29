@@ -50,44 +50,48 @@ const mod = {
 			throw new Error('EASErrorInputNotValid');
 		}
 
+		if (!param2) {
+			return [];
+		}
+
 		return Array.from(mod.DataListingURLs().reduce(function (coll, item) {
 			return Object.assign(coll, {
 				[item]: {
 					[mod.DataListingURLCloudron()]: function () {
-						try {
-							return JSON.parse(param2.split('$scope.allApps = ').pop().split('$scope.apps = null;').shift().trim().slice(0, -1)).map(function (e) {
-								return {
-									EASProjectName: e.manifest.title,
-									EASProjectBlurb: e.manifest.tagline,
-									EASProjectURL: e.manifest.website,
-									EASProjectTags: e.manifest.tags,
-									EASProjectPlatforms: {
-										EASPlatformCloudron: {
-											EASPlatformDocsPath: e.manifest.documentationUrl,
-										},
+						return JSON.parse(param2.split('$scope.allApps = ').pop().split('$scope.apps = null;').shift().trim().slice(0, -1)).map(function (e) {
+							return {
+								EASProjectName: e.manifest.title,
+								EASProjectBlurb: e.manifest.tagline,
+								EASProjectURL: e.manifest.website,
+								EASProjectTags: e.manifest.tags,
+								EASProjectPlatforms: {
+									EASPlatformCloudron: {
+										EASPlatformDocsPath: e.manifest.documentationUrl,
 									},
-								};
-							});
-						} catch {
-							return [];
-						}
+								},
+							};
+						});
 					},
 					[mod.DataListingURLYunohost()]: function () {
-						return cheerio('.app-cards-list', param2).find('.app-card').map(function () {
-							const EASPlatformCategory = cheerio('.app-title .label', this).text();
+						const json = JSON.parse(param2);
+						const categories = json.categories;
+						return Object.values(json.apps).map(function (e) {
+							const category = categories.filter(function (item) {
+								return item.id === e.category;
+							}).shift();
 
-							const EASPlatformRepoURL = cheerio('.app-buttons a:nth-of-type(1)', this).attr('href');
 							return {
-								EASProjectName: cheerio('.app-title', this).text().slice(0, -EASPlatformCategory.length - 1).trim(),
-								EASProjectBlurb: cheerio('.app-descr', this).text(),
-
-								EASProjectURL: EASPlatformRepoURL,
+								EASProjectURL: e.manifest.url,
 								EASProjectPlatforms: {
 									EASPlatformYunohost: {
-										EASPlatformCategory,
-										EASPlatformRepoURL,
-										EASPlatformDocsPath: cheerio('.app-buttons a:nth-of-type(2)', this).attr('href'),
-										EASPlatformInstallURL: cheerio('.app-buttons a:nth-of-type(3)', this).attr('href'),
+										EASPlatformName: e.manifest.name,
+										EASPlatformBlurb: e.manifest.description.en,
+										EASPlatformCategory: category.title.en,
+										EASPlatformKeywordSources: [category.description.en].concat(category.subtags.filter(function (item) {
+											return e.subtags.includes(item.id);
+										}).map(function (e) {
+											return e.title.en;
+										})),
 									},
 								},
 							};
