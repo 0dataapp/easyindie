@@ -35,6 +35,12 @@ const mod = {
 		}).shift();
 	},
 
+	DataListingURLCaprover () {
+		return mod.DataListingURLs().filter(function (e) {
+			return e.match(/Caprover/i);
+		}).shift();
+	},
+
 	DataListingURLYunohost () {
 		return mod.DataListingURLs().filter(function (e) {
 			return e.match(/Yunohost/i);
@@ -67,6 +73,20 @@ const mod = {
 										EASPlatformBlurb: e.manifest.tagline,
 										EASPlatformTagSources: e.manifest.tags,
 										EASPlatformDocsPath: e.manifest.documentationUrl,
+									},
+								},
+							};
+						});
+					},
+					[mod.DataListingURLCaprover()]: function () {
+						return JSON.parse(param2).data.oneClickApps.map(function (e) {
+							return {
+								EASProjectPlatforms: {
+									EASPlatformCaprover: {
+										EASPlatformName: e.displayName,
+										EASPlatformBlurb: e.description,
+										EASPlatformImageURL: e.logoUrl,
+										EASPlatformID: e.name,
 									},
 								},
 							};

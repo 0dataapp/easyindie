@@ -22,6 +22,16 @@ describe('DataListingURLCloudron', function test_DataListingURLCloudron() {
 
 });
 
+describe('DataListingURLCaprover', function test_DataListingURLCaprover() {
+
+	it('returns string', function () {
+		deepEqual(mod.DataListingURLCaprover(), mod.DataListingURLs().filter(function (e) {
+			return e.match(/Caprover/i);
+		}).shift());
+	});
+
+});
+
 describe('DataListingURLYunohost', function test_DataListingURLYunohost() {
 
 	it('returns string', function () {
@@ -91,6 +101,44 @@ describe('_DataListingObjects', function test__DataListingObjects() {
 						EASPlatformBlurb,
 						EASPlatformTagSources,
 						EASPlatformDocsPath,
+					},
+				},
+			}]);
+		});
+	
+	});
+	
+	context('Caprover', function test_Caprover () {
+
+		const uListing = function (inputData = {}) {
+			const item = Object.assign({
+				EASPlatformName: Math.random().toString(),
+				EASPlatformBlurb: Math.random().toString(),
+				EASPlatformImageURL: Math.random().toString(),
+				EASPlatformID: Math.random().toString(),
+			}, inputData);
+
+			return `{"status":100,"description":"All one click apps are retrieved","data":{"oneClickApps":[{"baseUrl":"https://oneclickapps.caprover.com","name":"${ item.EASPlatformID }","displayName":"${ item.EASPlatformName }","isOfficial":true,"description":"${ item.EASPlatformBlurb }","logoUrl":"${ item.EASPlatformImageURL }"}]}}`;
+		};
+		
+		it('parses listing', function () {
+			const EASPlatformName = Math.random().toString();
+			const EASPlatformBlurb = Math.random().toString();
+			const EASPlatformImageURL = Math.random().toString();
+			const EASPlatformID = Math.random().toString();
+
+			deepEqual(mod._DataListingObjects(mod.DataListingURLCaprover(), uListing({
+				EASPlatformName,
+				EASPlatformBlurb,
+				EASPlatformImageURL,
+				EASPlatformID,
+			})), [{
+				EASProjectPlatforms: {
+					EASPlatformCaprover: {
+						EASPlatformName,
+						EASPlatformBlurb,
+						EASPlatformImageURL,
+						EASPlatformID,
 					},
 				},
 			}]);
