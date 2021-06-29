@@ -339,26 +339,6 @@ describe('DataListingProjects', function test_DataListingProjects() {
 		}));
 	});
 
-	it('returns _DataMergeProjects', function () {
-		const item = Math.random().toString();
-		deepEqual(_DataListingProjects({
-			_DataListingObjects: (function () {
-				return [{
-					EASProjectURL: arguments[0],
-					item,
-				}];
-			}),
-			_DataMergeProjects: (function () {
-				return [...arguments];
-			}),
-		}), [mod.DataListingURLs().reduce(function (coll, EASProjectURL) {
-			return coll.concat({
-				EASProjectURL,
-				item,
-			});
-		}, [])]);
-	});
-
 	it('trims properties', function () {
 		const item = Math.random().toString();
 		deepEqual(_DataListingProjects({
@@ -380,6 +360,26 @@ describe('DataListingProjects', function test_DataListingProjects() {
 		deepEqual(_DataListingProjects({
 			_DataListingObjects: mod._DataListingObjects,
 		}), []);
+	});
+
+	it('returns _DataMergeProjects', function () {
+		const item = Math.random().toString();
+		deepEqual(_DataListingProjects({
+			_DataListingObjects: (function () {
+				return [{
+					EASProjectURL: arguments[0],
+					item,
+				}];
+			}),
+			_DataMergeProjects: (function () {
+				return [...arguments];
+			}),
+		}), [mod.DataListingURLs().reduce(function (coll, EASProjectURL) {
+			return coll.concat({
+				EASProjectURL,
+				item,
+			});
+		}, [])]);
 	});
 
 });
