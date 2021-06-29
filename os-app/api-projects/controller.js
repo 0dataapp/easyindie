@@ -76,6 +76,8 @@ const mod = {
 	DataProjects () {
 		const _mod = process.env.npm_lifecycle_script === 'olsk-spec' ? this : mod;
 
+		// require('OLSKDisk').OLSKDiskWrite(require('OLSKCache').OLSKCachePath(__dirname, '1-listings.json'), JSON.stringify(_mod._DataFoilListings.DataListingProjects(), null, ' '));
+
 		return _mod._DataFoilListings.DataListingProjects().map(function (e) {
 			return _mod._DataProjectProperties(e);
 		}).map(function (e) {
