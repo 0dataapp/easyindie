@@ -129,14 +129,30 @@ const mod = {
 		}
 
 		return Object.values(inputData.reduce(function (coll, item) {
-			const id = require('OLSKLink').OLSKLinkCompareURL(item.EASProjectURL || '');
+			let id = require('OLSKLink').OLSKLinkCompareURL(item.EASProjectURL || '');
 
-			const merged = coll[id] || {};
+			const match = coll[id] || (function() {
+				const caprover = (item.EASProjectPlatforms || {}).EASPlatformCaprover;
 
-			const EASProjectPlatforms = Object.assign(merged.EASProjectPlatforms || {}, item.EASProjectPlatforms || {});
+				if (!caprover) {
+					return;
+				}
+
+				return Object.values(coll).filter(function (e) {
+					return Object.values(e.EASProjectPlatforms).filter(function (e) {
+						return e.EASPlatformName.match(caprover.EASPlatformName)
+					}).length
+				}).shift();
+			})() || {};
+
+			if (!item.EASProjectURL) {
+				id = item.EASProjectURL = match.EASProjectURL;
+			}
+
+			const EASProjectPlatforms = Object.assign(match.EASProjectPlatforms || {}, item.EASProjectPlatforms || {});
 			
 			return Object.assign(coll, {
-				[id]: Object.assign(item, Object.assign(merged, item), merged.EASProjectPlatforms ? {
+				[id]: Object.assign(item, Object.assign(match, item), match.EASProjectPlatforms ? {
 					EASProjectPlatforms,
 				} : {}),
 			});

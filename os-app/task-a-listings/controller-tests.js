@@ -240,6 +240,37 @@ describe('_DataMergeProjects', function test__DataMergeProjects() {
 		}]);
 	});
 
+	it('merges if EASPlatformCaprover.EASPlatformName matches existing EASPlatformName', function () {
+		const existing = Math.random().toString();
+		const EASProjectURL = Math.random().toString();
+		const EASPlatformName = Math.random().toString();
+		deepEqual(mod._DataMergeProjects([{
+			EASProjectURL,
+			EASProjectPlatforms: {
+				[existing]: {
+					EASPlatformName,
+				},
+			},
+		}, {
+			EASProjectURL: undefined,
+			EASProjectPlatforms: {
+				EASPlatformCaprover: {
+					EASPlatformName,
+				},
+			},
+		}]), [{
+			EASProjectURL,
+			EASProjectPlatforms: {
+				[existing]: {
+					EASPlatformName,
+				},
+				EASPlatformCaprover: {
+					EASPlatformName,
+				},
+			},
+		}]);
+	});
+
 	it('copies properties', function () {
 		const alfa = Math.random().toString();
 		const bravo = Math.random().toString();
