@@ -256,6 +256,16 @@ describe('_DataMergeProjects', function test__DataMergeProjects() {
 		deepEqual(mod._DataMergeProjects([item]), [item]);
 	});
 
+	it('excludes WordPress (Developer)', function () {
+		deepEqual(mod._DataMergeProjects([{
+			EASProjectPlatforms: {
+				[Math.random().toString()]: {
+					EASPlatformName: 'WordPress (Developer)',
+				},
+			},
+		}]), []);
+	});
+
 	it('merges if EASProjectURL exact', function () {
 		const EASProjectURL = Math.random().toString();
 		deepEqual(mod._DataMergeProjects([{
