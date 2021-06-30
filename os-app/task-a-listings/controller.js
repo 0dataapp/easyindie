@@ -123,12 +123,22 @@ const mod = {
 		}, {})[param1]());
 	},
 
+	_DataHotfixProject (e) {
+		if (e.EASProjectURL === 'https://element.im') {
+			e.EASProjectURL = 'https://element.io';
+		}
+
+		return e;
+	},
+
 	_DataMergeProjects (inputData) {
 		if (!Array.isArray(inputData)) {
 			throw new Error('EASErrorInputNotValid');
 		}
 
 		return Object.values(inputData.reduce(function (coll, item) {
+			mod._DataHotfixProject(item);
+
 			let id = require('OLSKLink').OLSKLinkCompareURL(item.EASProjectURL || '');
 
 			const match = coll[id] || (function() {

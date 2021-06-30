@@ -190,6 +190,25 @@ describe('_DataListingObjects', function test__DataListingObjects() {
 
 });
 
+describe('_DataHotfixProject', function test__DataHotfixProject() {
+
+	it('returns input', function () {
+		const item = {
+			[Math.random().toString()]: Math.random().toString(),
+		};
+		deepEqual(mod._DataHotfixProject(item), item);
+	});
+
+	it('hotfixes yunohost element', function () {
+		deepEqual(mod._DataHotfixProject({
+			EASProjectURL: 'https://element.im',
+		}), {
+			EASProjectURL: 'https://element.io',
+		});
+	});
+
+});
+
 describe('_DataMergeProjects', function test__DataMergeProjects() {
 
 	const __DataMergeProjects = function (param1, param2) {
