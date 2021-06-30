@@ -158,7 +158,7 @@ const mod = {
 
 			let id = require('OLSKLink').OLSKLinkCompareURL(item.EASProjectURL || '');
 
-			const match = coll[id] || (function() {
+			const match = coll[id || Math.random().toString()] || (function() {
 				const caprover = (item.EASProjectPlatforms || {}).EASPlatformCaprover;
 
 				if (!caprover) {
