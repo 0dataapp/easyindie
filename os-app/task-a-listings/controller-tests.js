@@ -223,6 +223,14 @@ describe('_DataHotfixProject', function test__DataHotfixProject() {
 		});
 	});
 
+	it('hotfixes yunohost lychee', function () {
+		deepEqual(mod._DataHotfixProject({
+			EASProjectURL: 'https://lycheeorg.github.io/',
+		}), {
+			EASProjectURL: 'https://lychee.electerious.com',
+		});
+	});
+
 	it('hotfixes gitlab', function () {
 		deepEqual(mod._DataHotfixProject({
 			EASProjectURL: 'https://gitlab.com',
