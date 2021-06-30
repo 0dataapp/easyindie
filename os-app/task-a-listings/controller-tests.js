@@ -210,6 +210,7 @@ describe('_DataHotfixProject', function test__DataHotfixProject() {
 			'https://github.com/opf/openproject': 'https://www.openproject.org/',
 			'https://github.com/Chocobozzz/PeerTube': 'https://joinpeertube.org',
 			'www.phpservermonitor.org': 'https://www.phpservermonitor.org/',
+			'https://wekan.io': 'https://wekan.github.io',
 			'https://gitlab.com': 'https://about.gitlab.com',
 		}).forEach(function ([key, value]) {
 			
