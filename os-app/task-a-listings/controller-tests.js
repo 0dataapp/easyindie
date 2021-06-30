@@ -215,6 +215,14 @@ describe('_DataHotfixProject', function test__DataHotfixProject() {
 		});
 	});
 
+	it('hotfixes yunohost jirafeau', function () {
+		deepEqual(mod._DataHotfixProject({
+			EASProjectURL: 'https://gitlab.com/mojo42/Jirafeau',
+		}), {
+			EASProjectURL: 'https://jirafeau.net',
+		});
+	});
+
 	it('hotfixes gitlab', function () {
 		deepEqual(mod._DataHotfixProject({
 			EASProjectURL: 'https://gitlab.com',

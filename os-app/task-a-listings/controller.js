@@ -128,6 +128,7 @@ const mod = {
 			EASProjectURL: {
 				'https://element.im': 'https://element.io',
 				'http://grafana.org/': 'https://grafana.com',
+				'https://gitlab.com/mojo42/Jirafeau': 'https://jirafeau.net',
 				'https://gitlab.com': 'https://about.gitlab.com',
 			},
 		}).forEach(function ([key, changes]) {
