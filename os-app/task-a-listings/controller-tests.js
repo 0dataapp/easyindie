@@ -207,6 +207,14 @@ describe('_DataHotfixProject', function test__DataHotfixProject() {
 		});
 	});
 
+	it('hotfixes yunohost grafana', function () {
+		deepEqual(mod._DataHotfixProject({
+			EASProjectURL: 'http://grafana.org/',
+		}), {
+			EASProjectURL: 'https://grafana.com',
+		});
+	});
+
 	it('hotfixes gitlab', function () {
 		deepEqual(mod._DataHotfixProject({
 			EASProjectURL: 'https://gitlab.com',
