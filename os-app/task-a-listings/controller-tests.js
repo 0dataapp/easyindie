@@ -211,6 +211,7 @@ describe('_DataHotfixProject', function test__DataHotfixProject() {
 			'https://github.com/Chocobozzz/PeerTube': 'https://joinpeertube.org',
 			'www.phpservermonitor.org': 'https://www.phpservermonitor.org/',
 			'https://wekan.io': 'https://wekan.github.io',
+			'https://github.com/YOURLS/YOURLS': 'https://yourls.org',
 			'https://gitlab.com': 'https://about.gitlab.com',
 		}).forEach(function ([key, value]) {
 			
