@@ -124,10 +124,19 @@ const mod = {
 	},
 
 	_DataHotfixProject (e) {
-		if (e.EASProjectURL === 'https://element.im') {
-			e.EASProjectURL = 'https://element.io';
-		}
-
+		Object.entries({
+			EASProjectURL: {
+				'https://element.im': 'https://element.io',
+				'https://gitlab.com': 'https://about.gitlab.com',
+			},
+		}).forEach(function ([key, changes]) {
+			Object.entries(changes).forEach(function ([source, destination]) {
+				if (e[key] === source) {
+					e[key] = destination;
+				}
+			});
+		});
+		
 		return e;
 	},
 

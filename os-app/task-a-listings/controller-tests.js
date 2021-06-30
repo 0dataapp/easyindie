@@ -207,6 +207,14 @@ describe('_DataHotfixProject', function test__DataHotfixProject() {
 		});
 	});
 
+	it('hotfixes gitlab', function () {
+		deepEqual(mod._DataHotfixProject({
+			EASProjectURL: 'https://gitlab.com',
+		}), {
+			EASProjectURL: 'https://about.gitlab.com',
+		});
+	});
+
 });
 
 describe('_DataMergeProjects', function test__DataMergeProjects() {
