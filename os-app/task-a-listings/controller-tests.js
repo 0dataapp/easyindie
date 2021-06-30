@@ -212,10 +212,10 @@ describe('_DataMergeProjects', function test__DataMergeProjects() {
 	});
 
 	it('returns input', function () {
-		const item = [{
+		const item = {
 			[Math.random().toString()]: Math.random().toString(),
-		}];
-		deepEqual(mod._DataMergeProjects(item.slice()), item.slice());
+		};
+		deepEqual(mod._DataMergeProjects([item]), [item]);
 	});
 
 	it('merges if EASProjectURL exact', function () {
