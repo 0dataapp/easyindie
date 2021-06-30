@@ -239,6 +239,14 @@ describe('_DataHotfixProject', function test__DataHotfixProject() {
 		});
 	});
 
+	it('hotfixes yunohost openproject', function () {
+		deepEqual(mod._DataHotfixProject({
+			EASProjectURL: 'https://github.com/opf/openproject',
+		}), {
+			EASProjectURL: 'https://www.openproject.org/',
+		});
+	});
+
 	it('hotfixes gitlab', function () {
 		deepEqual(mod._DataHotfixProject({
 			EASProjectURL: 'https://gitlab.com',
