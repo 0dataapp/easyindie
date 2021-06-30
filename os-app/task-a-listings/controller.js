@@ -167,8 +167,8 @@ const mod = {
 
 				return Object.values(coll).filter(function (e) {
 					return Object.values(e.EASProjectPlatforms).filter(function (e) {
-						return e.EASPlatformName.match(caprover.EASPlatformName)
-					}).length
+						return require('OLSKString').OLSKStringMatch(e.EASPlatformName, caprover.EASPlatformName);
+					}).length;
 				}).shift();
 			})() || {};
 

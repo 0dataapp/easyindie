@@ -281,7 +281,7 @@ describe('_DataMergeProjects', function test__DataMergeProjects() {
 	it('merges if EASPlatformCaprover.EASPlatformName matches existing EASPlatformName', function () {
 		const existing = Math.random().toString();
 		const EASProjectURL = Math.random().toString();
-		const EASPlatformName = Math.random().toString();
+		const EASPlatformName = Math.random().toString() + 'alfa';
 		deepEqual(mod._DataMergeProjects([{
 			EASProjectURL,
 			EASProjectPlatforms: {
@@ -293,7 +293,7 @@ describe('_DataMergeProjects', function test__DataMergeProjects() {
 			EASProjectURL: undefined,
 			EASProjectPlatforms: {
 				EASPlatformCaprover: {
-					EASPlatformName,
+					EASPlatformName: EASPlatformName.toUpperCase(),
 				},
 			},
 		}]), [{
@@ -303,7 +303,7 @@ describe('_DataMergeProjects', function test__DataMergeProjects() {
 					EASPlatformName,
 				},
 				EASPlatformCaprover: {
-					EASPlatformName,
+					EASPlatformName: EASPlatformName.toUpperCase(),
 				},
 			},
 		}]);
