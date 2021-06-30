@@ -199,60 +199,28 @@ describe('_DataHotfixProject', function test__DataHotfixProject() {
 		deepEqual(mod._DataHotfixProject(item), item);
 	});
 
-	it('hotfixes yunohost element', function () {
-		deepEqual(mod._DataHotfixProject({
-			EASProjectURL: 'https://element.im',
-		}), {
-			EASProjectURL: 'https://element.io',
-		});
-	});
+	context('EASProjectURL', function () {
+		
+		Object.entries({
+			'https://element.im': 'https://element.io',
+			'http://grafana.org/': 'https://grafana.com',
+			'https://gitlab.com/mojo42/Jirafeau': 'https://jirafeau.net',
+			'https://lycheeorg.github.io/': 'https://lychee.electerious.com',
+			'https://github.com/tootsuite/mastodon': 'https://joinmastodon.org/',
+			'https://github.com/opf/openproject': 'https://www.openproject.org/',
+			'https://gitlab.com': 'https://about.gitlab.com',
+		}).forEach(function ([key, value]) {
+			
+			it(`hotfixes ${ key }`, function () {
+				deepEqual(mod._DataHotfixProject({
+					EASProjectURL: key,
+				}), {
+					EASProjectURL: value,
+				});
+			});
 
-	it('hotfixes yunohost grafana', function () {
-		deepEqual(mod._DataHotfixProject({
-			EASProjectURL: 'http://grafana.org/',
-		}), {
-			EASProjectURL: 'https://grafana.com',
 		});
-	});
-
-	it('hotfixes yunohost jirafeau', function () {
-		deepEqual(mod._DataHotfixProject({
-			EASProjectURL: 'https://gitlab.com/mojo42/Jirafeau',
-		}), {
-			EASProjectURL: 'https://jirafeau.net',
-		});
-	});
-
-	it('hotfixes yunohost lychee', function () {
-		deepEqual(mod._DataHotfixProject({
-			EASProjectURL: 'https://lycheeorg.github.io/',
-		}), {
-			EASProjectURL: 'https://lychee.electerious.com',
-		});
-	});
-
-	it('hotfixes yunohost mastodon', function () {
-		deepEqual(mod._DataHotfixProject({
-			EASProjectURL: 'https://github.com/tootsuite/mastodon',
-		}), {
-			EASProjectURL: 'https://joinmastodon.org/',
-		});
-	});
-
-	it('hotfixes yunohost openproject', function () {
-		deepEqual(mod._DataHotfixProject({
-			EASProjectURL: 'https://github.com/opf/openproject',
-		}), {
-			EASProjectURL: 'https://www.openproject.org/',
-		});
-	});
-
-	it('hotfixes gitlab', function () {
-		deepEqual(mod._DataHotfixProject({
-			EASProjectURL: 'https://gitlab.com',
-		}), {
-			EASProjectURL: 'https://about.gitlab.com',
-		});
+	
 	});
 
 });
