@@ -232,9 +232,9 @@ describe('_DataMergeProjects', function test__DataMergeProjects() {
 	it('merges if EASProjectURL trailing slash', function () {
 		const EASProjectURL = Math.random().toString();
 		deepEqual(mod._DataMergeProjects([{
-			EASProjectURL: EASProjectURL + '/',
-		}, {
 			EASProjectURL,
+		}, {
+			EASProjectURL: EASProjectURL + '/',
 		}]), [{
 			EASProjectURL,
 		}]);

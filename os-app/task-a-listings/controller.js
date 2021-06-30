@@ -145,8 +145,8 @@ const mod = {
 				}).shift();
 			})() || {};
 
-			if (!item.EASProjectURL) {
-				id = item.EASProjectURL = match.EASProjectURL;
+			if (match.EASProjectURL) {
+				id = require('OLSKLink').OLSKLinkCompareURL(item.EASProjectURL = match.EASProjectURL);
 			}
 
 			const EASProjectPlatforms = Object.assign(match.EASProjectPlatforms || {}, item.EASProjectPlatforms || {});
