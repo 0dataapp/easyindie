@@ -305,6 +305,81 @@ describe('_DataMergeProjects', function test__DataMergeProjects() {
 
 });
 
+describe('_DataFillProjects', function test__DataFillProjects() {
+
+	it('throws if not array', function () {
+		throws(function () {
+			mod._DataFillProjects(null);
+		}, /EASErrorInputNotValid/);
+	});
+
+	it('returns input', function () {
+		const item = {
+			[Math.random().toString()]: Math.random().toString(),
+		};
+		deepEqual(mod._DataFillProjects([item]), [item]);
+	});
+
+	context('EASPlatformName', function () {
+		
+		it('copies EASPlatformName', function () {
+			const EASPlatformName = Math.random().toString();
+			deepEqual(mod._DataFillProjects([{
+				EASProjectPlatforms: {
+					[Math.random().toString()]: {
+						EASPlatformName,
+					},
+				},
+			}])[0].EASProjectName, EASPlatformName);
+		});
+
+		it('select first EASPlatformName', function () {
+			const EASPlatformName = Math.random().toString();
+			deepEqual(mod._DataFillProjects([{
+				EASProjectPlatforms: {
+					[Math.random().toString()]: {
+						EASPlatformName,
+					},
+					[Math.random().toString()]: {
+						EASPlatformName: Math.random().toString(),
+					},
+				},
+			}])[0].EASProjectName, EASPlatformName);
+		});
+	
+	});
+
+	context('EASPlatformBlurb', function () {
+		
+		it('copies EASPlatformBlurb', function () {
+			const EASPlatformBlurb = Math.random().toString();
+			deepEqual(mod._DataFillProjects([{
+				EASProjectPlatforms: {
+					[Math.random().toString()]: {
+						EASPlatformBlurb,
+					},
+				},
+			}])[0].EASProjectBlurb, EASPlatformBlurb);
+		});
+
+		it('select first EASPlatformBlurb', function () {
+			const EASPlatformBlurb = Math.random().toString();
+			deepEqual(mod._DataFillProjects([{
+				EASProjectPlatforms: {
+					[Math.random().toString()]: {
+						EASPlatformBlurb,
+					},
+					[Math.random().toString()]: {
+						EASPlatformBlurb: Math.random().toString(),
+					},
+				},
+			}])[0].EASProjectBlurb, EASPlatformBlurb);
+		});
+	
+	});
+
+});
+
 describe('DataListingProjects', function test_DataListingProjects() {
 	
 	const _DataListingProjects = function (inputData = {}) {
@@ -362,7 +437,7 @@ describe('DataListingProjects', function test_DataListingProjects() {
 		}), []);
 	});
 
-	it('returns _DataMergeProjects', function () {
+	it('calls _DataMergeProjects', function () {
 		const item = Math.random().toString();
 		deepEqual(_DataListingProjects({
 			_DataListingObjects: (function () {
@@ -380,6 +455,20 @@ describe('DataListingProjects', function test_DataListingProjects() {
 				item,
 			});
 		}, [])]);
+	});
+
+	it('returns _DataFillProjects', function () {
+		const item = {
+			[Math.random().toString()]: Math.random().toString(),
+		};
+		deepEqual(_DataListingProjects({
+			_DataMergeProjects: (function () {
+				return [item];
+			}),
+			_DataFillProjects: (function () {
+				return [...arguments].concat(item);
+			}),
+		}), [[item], item]);
 	});
 
 });

@@ -159,12 +159,35 @@ const mod = {
 		}, {}));
 	},
 
+	_DataFillProjects (inputData) {
+		if (!Array.isArray(inputData)) {
+			throw new Error('EASErrorInputNotValid');
+		}
+		
+		return inputData.map(function (e) {
+			return Object.assign(e, Object.entries({
+				EASPlatformName: 'EASProjectName',
+				EASPlatformBlurb: 'EASProjectBlurb',
+			}).reduce(function (coll, [source, destination]) {
+				const data = Object.values(e.EASProjectPlatforms || {}).map(function (e) {
+					return e[source];
+				}).shift();
+
+				if (data) {
+					coll[destination] = data;
+				}
+				
+				return coll;
+			}, {}));
+		});
+	},
+
 	DataListingProjects () {
 		const _mod = process.env.npm_lifecycle_script === 'olsk-spec' ? this : mod;
 
-		return _mod._DataMergeProjects(mod.DataListingURLs().reduce(function (coll, item) {
+		return _mod._DataFillProjects(_mod._DataMergeProjects(mod.DataListingURLs().reduce(function (coll, item) {
 			return coll.concat(_mod._DataListingObjects(item, _mod._ValueCacheObject[item] || '').map(require('OLSKObject').OLSKObjectTrim));
-		}, []));
+		}, [])));
 	},
 
 	// SETUP
