@@ -231,6 +231,14 @@ describe('_DataHotfixProject', function test__DataHotfixProject() {
 		});
 	});
 
+	it('hotfixes yunohost mastodon', function () {
+		deepEqual(mod._DataHotfixProject({
+			EASProjectURL: 'https://github.com/tootsuite/mastodon',
+		}), {
+			EASProjectURL: 'https://joinmastodon.org/',
+		});
+	});
+
 	it('hotfixes gitlab', function () {
 		deepEqual(mod._DataHotfixProject({
 			EASProjectURL: 'https://gitlab.com',

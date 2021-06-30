@@ -130,6 +130,7 @@ const mod = {
 				'http://grafana.org/': 'https://grafana.com',
 				'https://gitlab.com/mojo42/Jirafeau': 'https://jirafeau.net',
 				'https://lycheeorg.github.io/': 'https://lychee.electerious.com',
+				'https://github.com/tootsuite/mastodon': 'https://joinmastodon.org/',
 				'https://gitlab.com': 'https://about.gitlab.com',
 			},
 		}).forEach(function ([key, changes]) {
