@@ -208,6 +208,7 @@ describe('_DataHotfixProject', function test__DataHotfixProject() {
 			'https://lycheeorg.github.io/': 'https://lychee.electerious.com',
 			'https://github.com/tootsuite/mastodon': 'https://joinmastodon.org/',
 			'https://github.com/opf/openproject': 'https://www.openproject.org/',
+			'https://github.com/Chocobozzz/PeerTube': 'https://joinpeertube.org',
 			'https://gitlab.com': 'https://about.gitlab.com',
 		}).forEach(function ([key, value]) {
 			
