@@ -203,6 +203,7 @@ describe('_DataFilterProject', function test__DataFilterProject() {
 		
 		[
 			'WordPress (Developer)',
+			'Anarchism',
 		].forEach(function (EASPlatformName) {
 			
 			it(`filters ${ EASPlatformName }`, function () {

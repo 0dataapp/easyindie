@@ -127,6 +127,7 @@ const mod = {
 		if (e.EASProjectPlatforms && Object.values(e.EASProjectPlatforms).filter(function (e) {
 			return [
 				'WordPress (Developer)',
+				'Anarchism',
 			].includes(e.EASPlatformName);
 		}).length) {
 			return false;
