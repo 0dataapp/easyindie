@@ -14,6 +14,18 @@ describe('DataCacheAggregateBasename', function test_DataCacheAggregateBasename(
 
 });
 
+describe('DataCacheImageAttributeCandidates', function test_DataCacheImageAttributeCandidates() {
+
+	it('returns array', function () {
+		deepEqual(mod.DataCacheImageAttributeCandidates(), [
+			'apple-touch-icon',
+			'apple-touch-icon-precomposed',
+			'og:image',
+			]);
+	});
+
+});
+
 describe('_DataDOMPropertyCandidates', function test__DataDOMPropertyCandidates() {
 
 	const __DataDOMPropertyCandidates = function (inputData = {}) {
@@ -58,44 +70,22 @@ describe('_DataDOMPropertyCandidates', function test__DataDOMPropertyCandidates(
 	});
 
 	context('ParamMetadata', function () {
-		
-		it('extracts apple-touch-icon', function () {
-			const path = uRandomElement('https://alfa.bravo/', Math.random().toString());
-			const ParamURL = 'https://example.com';
-			deepEqual(__DataDOMPropertyCandidates({
-				ParamMetadata: {
-					'apple-touch-icon': path,
-				},
-				ParamURL,
-			}), Object.entries({
-				EASProjectIconURL: OLSKLink.OLSKLinkRelativeURL(ParamURL, path),
-			}));
-		});
 
-		it('extracts apple-touch-icon-precomposed', function () {
-			const path = uRandomElement('https://alfa.bravo/', Math.random().toString());
-			const ParamURL = 'https://example.com';
-			deepEqual(__DataDOMPropertyCandidates({
-				ParamMetadata: {
-					'apple-touch-icon-precomposed': path,
-				},
-				ParamURL,
-			}), Object.entries({
-				EASProjectIconURL: OLSKLink.OLSKLinkRelativeURL(ParamURL, path),
-			}));
-		});
+		mod.DataCacheImageAttributeCandidates().forEach(function (e) {
+			
+			it(`extracts ${ e }`, function () {
+				const path = uRandomElement('https://alfa.bravo/', Math.random().toString());
+				const ParamURL = 'https://example.com';
+				deepEqual(__DataDOMPropertyCandidates({
+					ParamMetadata: {
+						[e]: path,
+					},
+					ParamURL,
+				}), Object.entries({
+					EASProjectIconURL: OLSKLink.OLSKLinkRelativeURL(ParamURL, path),
+				}));
+			});
 
-		it('extracts og:image', function () {
-			const path = uRandomElement('https://alfa.bravo/', Math.random().toString());
-			const ParamURL = 'https://example.com';
-			deepEqual(__DataDOMPropertyCandidates({
-				ParamMetadata: {
-					'og:image': path,
-				},
-				ParamURL,
-			}), Object.entries({
-				EASProjectIconURL: OLSKLink.OLSKLinkRelativeURL(ParamURL, path),
-			}));
 		});
 
 		it('extracts description', function () {
