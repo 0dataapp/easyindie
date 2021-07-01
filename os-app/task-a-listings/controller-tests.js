@@ -219,6 +219,46 @@ describe('_DataFilterProject', function test__DataFilterProject() {
 	
 	});
 
+	context('EASPlatformCategory', function () {
+		
+		[
+			'Games',
+		].forEach(function (EASPlatformCategory) {
+			
+			it(`filters ${ EASPlatformCategory }`, function () {
+				deepEqual(mod._DataFilterProject({
+					EASProjectPlatforms: {
+						[Math.random().toString()]: {
+							EASPlatformCategory,
+						},
+					},
+				}), false);
+			});
+
+		});
+	
+	});
+
+	context('EASPlatformTagSources', function () {
+		
+		[
+			'game',
+		].forEach(function (e) {
+			
+			it(`filters ${ e }`, function () {
+				deepEqual(mod._DataFilterProject({
+					EASProjectPlatforms: {
+						[Math.random().toString()]: {
+							EASPlatformTagSources: [e],
+						},
+					},
+				}), false);
+			});
+
+		});
+	
+	});
+
 });
 
 describe('_DataHotfixProject', function test__DataHotfixProject() {

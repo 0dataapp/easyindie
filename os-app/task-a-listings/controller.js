@@ -130,6 +130,18 @@ const mod = {
 			return false;
 		}
 
+		if (e.EASProjectPlatforms && Object.values(e.EASProjectPlatforms).filter(function (e) {
+			return e.EASPlatformCategory === 'Games'; 
+		}).length) {
+			return false;
+		}
+
+		if (e.EASProjectPlatforms && Object.values(e.EASProjectPlatforms).filter(function (e) {
+			return e.EASPlatformTagSources?.includes('game') 
+		}).length) {
+			return false;
+		}
+
 		return true;
 	},
 
