@@ -123,6 +123,16 @@ const mod = {
 		}, {})[param1]());
 	},
 
+	_DataFilterProject (e) {
+		if (e.EASProjectPlatforms && Object.values(e.EASProjectPlatforms).filter(function (e) {
+			return e.EASPlatformName === 'WordPress (Developer)'; 
+		}).length) {
+			return false;
+		}
+
+		return true;
+	},
+
 	_DataHotfixProject (e) {
 		Object.entries({
 			EASProjectURL: {
@@ -154,15 +164,7 @@ const mod = {
 			throw new Error('EASErrorInputNotValid');
 		}
 
-		return Object.values(inputData.filter(function (e) {
-			if (e.EASProjectPlatforms && Object.values(e.EASProjectPlatforms).filter(function (e) {
-				return e.EASPlatformName === 'WordPress (Developer)'; 
-			}).length) {
-				return false;
-			}
-
-			return true;
-		}).reduce(function (coll, item) {
+		return Object.values(inputData.filter(mod._DataFilterProject).reduce(function (coll, item) {
 			mod._DataHotfixProject(item);
 
 			let id = require('OLSKLink').OLSKLinkCompareURL(item.EASProjectURL || '');

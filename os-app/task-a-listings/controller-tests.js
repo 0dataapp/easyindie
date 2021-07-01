@@ -190,6 +190,37 @@ describe('_DataListingObjects', function test__DataListingObjects() {
 
 });
 
+describe('_DataFilterProject', function test__DataFilterProject() {
+
+	it('returns true', function () {
+		const item = {
+			[Math.random().toString()]: Math.random().toString(),
+		};
+		deepEqual(mod._DataFilterProject(item), true);
+	});
+
+	context('EASPlatformName', function () {
+		
+		[
+			'WordPress (Developer)',
+		].forEach(function (EASPlatformName) {
+			
+			it(`filters ${ EASPlatformName }`, function () {
+				deepEqual(mod._DataFilterProject({
+					EASProjectPlatforms: {
+						[Math.random().toString()]: {
+							EASPlatformName,
+						},
+					},
+				}), false);
+			});
+
+		});
+	
+	});
+
+});
+
 describe('_DataHotfixProject', function test__DataHotfixProject() {
 
 	it('returns input', function () {
