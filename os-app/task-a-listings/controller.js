@@ -71,6 +71,7 @@ const mod = {
 									EASPlatformCloudron: {
 										EASPlatformName: e.manifest.title,
 										EASPlatformBlurb: e.manifest.tagline,
+										EASPlatformImageURL: e.iconUrl,
 										EASPlatformTagSources: e.manifest.tags,
 										EASPlatformDocsPath: e.manifest.documentationUrl,
 									},

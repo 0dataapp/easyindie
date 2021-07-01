@@ -82,6 +82,7 @@ describe('_DataListingObjects', function test__DataListingObjects() {
 			const EASProjectURL = Math.random().toString();
 			const EASPlatformName = Math.random().toString();
 			const EASPlatformBlurb = Math.random().toString();
+			const EASPlatformImageURL = Math.random().toString();
 			const EASPlatformTagSources = Array.from(Array(uRandomInt(5))).map(function () {
 				return Math.random().toString();
 			});
@@ -91,6 +92,7 @@ describe('_DataListingObjects', function test__DataListingObjects() {
 				EASProjectURL,
 				EASPlatformName,
 				EASPlatformBlurb,
+				EASPlatformImageURL,
 				EASPlatformTagSources,
 				EASPlatformDocsPath,
 			})), [{
@@ -99,6 +101,7 @@ describe('_DataListingObjects', function test__DataListingObjects() {
 					EASPlatformCloudron: {
 						EASPlatformName,
 						EASPlatformBlurb,
+						EASPlatformImageURL,
 						EASPlatformTagSources,
 						EASPlatformDocsPath,
 					},
