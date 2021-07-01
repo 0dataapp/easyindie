@@ -22,6 +22,10 @@ const mod = {
 	_DataFoilImages: require('../task-c-images/controller.js'),
 
 	DataProjectsSort (a, b) {
+		if (process.env.npm_lifecycle_script === 'olsk-express') {
+			return uDescending(b.EASProjectName, a.EASProjectName)
+		}
+
 		const unmatched = [
 			'EASProjectIconURL',
 			'EASProjectBlurb',
