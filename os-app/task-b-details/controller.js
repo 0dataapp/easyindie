@@ -29,6 +29,7 @@ const mod = {
 		return [
 			'apple-touch-icon',
 			'apple-touch-icon-precomposed',
+			'mask-icon',
 			'og:image',
 		];
 	},
@@ -59,7 +60,13 @@ const mod = {
 				}
 
 				return !href ? null : OLSKLink.OLSKLinkRelativeURL(params.ParamURL, href);
-			})((((params.ParamManifest || {}).icons || []).pop() || {}).src || params.ParamMetadata['apple-touch-icon'] || params.ParamMetadata['apple-touch-icon-precomposed'] || params.ParamMetadata['og:image'])],
+			})((((params.ParamManifest || {}).icons || []).pop() || {}).src || mod.DataCacheImageAttributeCandidates().reduce(function (coll, item) {
+				if (params.ParamMetadata[item]) {
+					coll.push(params.ParamMetadata[item]);
+				}
+
+				return coll;
+			}, []).shift())],
 			['_EASProjectBlurb', params.ParamMetadata.description],
 			['_EASProjectBlurb', params.ParamMetadata.title],
 			['EASProjectHasManifest', !!params.ParamManifest],

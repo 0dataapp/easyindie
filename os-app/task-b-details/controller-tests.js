@@ -20,6 +20,7 @@ describe('DataCacheImageAttributeCandidates', function test_DataCacheImageAttrib
 		deepEqual(mod.DataCacheImageAttributeCandidates(), [
 			'apple-touch-icon',
 			'apple-touch-icon-precomposed',
+			'mask-icon',
 			'og:image',
 			]);
 	});
