@@ -85,6 +85,19 @@ describe('_DataDOMPropertyCandidates', function test__DataDOMPropertyCandidates(
 			}));
 		});
 
+		it('extracts og:image', function () {
+			const path = uRandomElement('https://alfa.bravo/', Math.random().toString());
+			const ParamURL = 'https://example.com';
+			deepEqual(__DataDOMPropertyCandidates({
+				ParamMetadata: {
+					'og:image': path,
+				},
+				ParamURL,
+			}), Object.entries({
+				EASProjectIconURL: OLSKLink.OLSKLinkRelativeURL(ParamURL, path),
+			}));
+		});
+
 		it('extracts description', function () {
 			const _EASProjectBlurb = Math.random().toString();
 			deepEqual(__DataDOMPropertyCandidates({

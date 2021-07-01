@@ -51,7 +51,7 @@ const mod = {
 				}
 
 				return !href ? null : OLSKLink.OLSKLinkRelativeURL(params.ParamURL, href);
-			})((((params.ParamManifest || {}).icons || []).pop() || {}).src || params.ParamMetadata['apple-touch-icon'] || params.ParamMetadata['apple-touch-icon-precomposed'])],
+			})((((params.ParamManifest || {}).icons || []).pop() || {}).src || params.ParamMetadata['apple-touch-icon'] || params.ParamMetadata['apple-touch-icon-precomposed'] || params.ParamMetadata['og:image'])],
 			['_EASProjectBlurb', params.ParamMetadata.description],
 			['_EASProjectBlurb', params.ParamMetadata.title],
 			['EASProjectHasManifest', !!params.ParamManifest],
