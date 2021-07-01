@@ -125,7 +125,9 @@ const mod = {
 
 	_DataFilterProject (e) {
 		if (e.EASProjectPlatforms && Object.values(e.EASProjectPlatforms).filter(function (e) {
-			return e.EASPlatformName === 'WordPress (Developer)'; 
+			return [
+				'WordPress (Developer)',
+			].includes(e.EASPlatformName);
 		}).length) {
 			return false;
 		}
