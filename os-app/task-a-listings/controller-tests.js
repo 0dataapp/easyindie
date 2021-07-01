@@ -506,6 +506,35 @@ describe('_DataFillProjects', function test__DataFillProjects() {
 	
 	});
 
+	context('EASPlatformImageURL', function () {
+		
+		it('copies EASPlatformImageURL', function () {
+			const EASPlatformImageURL = Math.random().toString();
+			deepEqual(mod._DataFillProjects([{
+				EASProjectPlatforms: {
+					[Math.random().toString()]: {
+						EASPlatformImageURL,
+					},
+				},
+			}])[0].EASProjectIconURL, EASPlatformImageURL);
+		});
+
+		it('select first EASPlatformImageURL', function () {
+			const EASPlatformImageURL = Math.random().toString();
+			deepEqual(mod._DataFillProjects([{
+				EASProjectPlatforms: {
+					[Math.random().toString()]: {
+						EASPlatformImageURL,
+					},
+					[Math.random().toString()]: {
+						EASPlatformImageURL: Math.random().toString(),
+					},
+				},
+			}])[0].EASProjectIconURL, EASPlatformImageURL);
+		});
+	
+	});
+
 });
 
 describe('DataListingProjects', function test_DataListingProjects() {

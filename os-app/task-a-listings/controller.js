@@ -226,9 +226,12 @@ const mod = {
 			return Object.assign(e, Object.entries({
 				EASPlatformName: 'EASProjectName',
 				EASPlatformBlurb: 'EASProjectBlurb',
+				EASPlatformImageURL: 'EASProjectIconURL',
 			}).reduce(function (coll, [source, destination]) {
 				const data = Object.values(e.EASProjectPlatforms || {}).map(function (e) {
 					return e[source];
+				}).filter(function (e) {
+					return !!e;
 				}).shift();
 
 				if (data) {
