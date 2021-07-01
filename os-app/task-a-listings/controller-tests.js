@@ -207,6 +207,7 @@ describe('_DataFilterProject', function test__DataFilterProject() {
 			'Fallback server',
 			'Phpinfo',
 			'WemaWema',
+			'ssh chroot directory',
 		].forEach(function (EASPlatformName) {
 			
 			it(`filters ${ EASPlatformName }`, function () {

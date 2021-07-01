@@ -131,6 +131,7 @@ const mod = {
 				'Fallback server',
 				'Phpinfo',
 				'WemaWema',
+				'ssh chroot directory',
 			].includes(e.EASPlatformName);
 		}).length) {
 			return false;
