@@ -206,6 +206,7 @@ describe('_DataFilterProject', function test__DataFilterProject() {
 			'Anarchism',
 			'Fallback server',
 			'Phpinfo',
+			'WemaWema',
 		].forEach(function (EASPlatformName) {
 			
 			it(`filters ${ EASPlatformName }`, function () {

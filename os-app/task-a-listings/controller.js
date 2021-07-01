@@ -130,6 +130,7 @@ const mod = {
 				'Anarchism',
 				'Fallback server',
 				'Phpinfo',
+				'WemaWema',
 			].includes(e.EASPlatformName);
 		}).length) {
 			return false;
