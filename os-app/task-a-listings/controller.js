@@ -129,6 +129,7 @@ const mod = {
 				'WordPress (Developer)',
 				'Anarchism',
 				'Fallback server',
+				'Phpinfo',
 			].includes(e.EASPlatformName);
 		}).length) {
 			return false;

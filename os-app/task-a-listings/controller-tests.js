@@ -205,6 +205,7 @@ describe('_DataFilterProject', function test__DataFilterProject() {
 			'WordPress (Developer)',
 			'Anarchism',
 			'Fallback server',
+			'Phpinfo',
 		].forEach(function (EASPlatformName) {
 			
 			it(`filters ${ EASPlatformName }`, function () {
