@@ -6,6 +6,10 @@ const uDescending = function (a, b) {
   return (a > b) ? -1 : ((a < b) ? 1 : 0);
 };
 
+const uNeutralize = function (inputData = '') {
+  return inputData.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+};
+
 const mod = {
 
 	OLSKControllerRoutes () {
@@ -87,6 +91,8 @@ const mod = {
 			return _mod._DataProjectProperties(e);
 		}).map(function (e) {
 			return _mod._DataProjectImageProperty(e);
+		}).sort(function (a, b) {
+			return uAscending(uNeutralize(a.EASProjectName), uNeutralize(b.EASProjectName));
 		}).sort(mod.DataProjectsSort);
 	},
 
