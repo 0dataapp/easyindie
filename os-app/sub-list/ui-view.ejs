@@ -26,9 +26,11 @@
 			<a class="EASGlanceListItemName" href="<%= item.EASProjectURL %>" target="_blank"><%= item.EASProjectName %></a>
 			<span class="EASGlanceListItemBlurb"><%= item.EASProjectBlurb %></span>
 
-			<span> (<%= Object.keys(item.EASProjectPlatforms).map(function (e) {
-				return e.replace('EASPlatform', '');
-			}) %>)</span>
+			<% if (locals.OLSKSharedHostname !== 'loc.tests') { -%>
+				<span> (<%= Object.keys(item.EASProjectPlatforms).map(function (e) {
+					return e.replace('EASPlatform', '');
+				}) %>)</span>
+			<% } -%>
 		</section>
 	</td>
 </tr>
