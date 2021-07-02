@@ -71,7 +71,10 @@
 .EASGlanceList .list {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-around;
+}
+
+.list-container {
+	display: flex;
 }
 
 .EASGlanceListItem {
@@ -94,5 +97,5 @@
 .EASGlanceListItemIcon {
 	width: 100%;
 	padding: 10px;
-	border-radius: 5px;
+	border-radius: 15px;
 }
