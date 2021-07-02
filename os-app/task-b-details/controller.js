@@ -109,7 +109,15 @@ const mod = {
 			ParamMetadata,
 			ParamManifest: !ParamMetadata.manifest ? undefined : (function(body) {
 				try {
-					return JSON.parse(_mod._DataFoilOLSKDisk.OLSKDiskWrite(OLSKCache.OLSKCachePath(__dirname, OLSKCache.OLSKCacheURLBasename(OLSKLink.OLSKLinkRelativeURL(inputData, ParamMetadata.manifest))), body));
+					const manifestLink = OLSKLink.OLSKLinkRelativeURL(inputData, ParamMetadata.manifest);
+
+					const outputData = JSON.parse(_mod._DataFoilOLSKDisk.OLSKDiskWrite(OLSKCache.OLSKCachePath(__dirname, OLSKCache.OLSKCacheURLBasename(manifestLink)), body));
+
+					(outputData.icons || []).forEach(function (e) {
+						e.src = OLSKLink.OLSKLinkRelativeURL(manifestLink, e);
+					});
+					
+					return outputData;
 				} catch (error) {
 					return;
 				}
