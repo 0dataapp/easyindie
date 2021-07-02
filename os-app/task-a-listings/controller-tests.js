@@ -211,6 +211,7 @@ describe('_DataFilterProject', function test__DataFilterProject() {
 			'Phpinfo',
 			'WemaWema',
 			'ssh chroot directory',
+			'Riot',
 		].forEach(function (EASPlatformName) {
 			
 			it(`filters ${ EASPlatformName }`, function () {

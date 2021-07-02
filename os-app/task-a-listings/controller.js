@@ -133,6 +133,7 @@ const mod = {
 				'Phpinfo',
 				'WemaWema',
 				'ssh chroot directory',
+				'Riot',
 			].includes(e.EASPlatformName);
 		}).length) {
 			return false;
