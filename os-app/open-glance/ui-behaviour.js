@@ -19,6 +19,7 @@ const mod = {
 			// sortClass: 'EASGlanceListSort',
 			valueNames: [
 				'EASGlanceListItemName',
+				{ attr: 'title', name: 'EASGlanceListItem' },
 			],
 		});
 
