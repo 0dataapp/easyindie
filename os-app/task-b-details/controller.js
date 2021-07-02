@@ -30,7 +30,6 @@ const mod = {
 			'apple-touch-icon',
 			'apple-touch-icon-precomposed',
 			'mask-icon',
-			'og:image',
 		];
 	},
 
@@ -67,6 +66,13 @@ const mod = {
 
 				return coll;
 			}, []).shift())],
+			['_EASProjectIconURL', (function(href) {
+				if (!href) {
+					return;
+				}
+
+				return !href ? null : OLSKLink.OLSKLinkRelativeURL(params.ParamURL, href);
+			})(params.ParamMetadata['og:image'])],
 			['_EASProjectBlurb', params.ParamMetadata.description],
 			['_EASProjectBlurb', params.ParamMetadata.title],
 			['EASProjectHasManifest', !!params.ParamManifest],

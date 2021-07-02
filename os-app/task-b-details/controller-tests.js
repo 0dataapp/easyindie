@@ -21,7 +21,6 @@ describe('DataCacheImageAttributeCandidates', function test_DataCacheImageAttrib
 			'apple-touch-icon',
 			'apple-touch-icon-precomposed',
 			'mask-icon',
-			'og:image',
 			]);
 	});
 
@@ -87,6 +86,19 @@ describe('_DataDOMPropertyCandidates', function test__DataDOMPropertyCandidates(
 				}));
 			});
 
+		});
+
+		it('extracts og:image', function () {
+			const path = uRandomElement('https://alfa.bravo/', Math.random().toString());
+			const ParamURL = 'https://example.com';
+			deepEqual(__DataDOMPropertyCandidates({
+				ParamMetadata: {
+					'og:image': path,
+				},
+				ParamURL,
+			}), Object.entries({
+				_EASProjectIconURL: OLSKLink.OLSKLinkRelativeURL(ParamURL, path),
+			}));
 		});
 
 		it('extracts description', function () {
