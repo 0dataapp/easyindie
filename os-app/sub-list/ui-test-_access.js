@@ -6,11 +6,8 @@ Object.entries({
 	EASGlanceListEmpty: '.EASGlanceListEmpty',
 
 	EASGlanceListItem: '.EASGlanceListItem',
-	
 	EASGlanceListItemIcon: '.EASGlanceListItemIcon',
-	EASGlanceListItemIconImage: '.EASGlanceListItemIconImage',
 	EASGlanceListItemName: '.EASGlanceListItemName',
-	EASGlanceListItemBlurb: '.EASGlanceListItemBlurb',
 }).map(function (e) {
 	return global[e.shift()]  = e.pop();
 });
@@ -57,16 +54,8 @@ describe('EASGlanceList_Access', function () {
 			browser.assert.elements(EASGlanceListItemIcon, count);
 		});
 
-		it('shows EASGlanceListItemIconImage', function () {
-			browser.assert.elements(EASGlanceListItemIconImage, count);
-		});
-
 		it('shows EASGlanceListItemName', function () {
 			browser.assert.elements(EASGlanceListItemName, count);
-		});
-
-		it('shows EASGlanceListItemBlurb', function () {
-			browser.assert.elements(EASGlanceListItemBlurb, count);
 		});
 
 	});

@@ -25,50 +25,34 @@ describe('EASGlanceList_Misc', function  () {
 
 	});
 
-	describe('EASGlanceListItemIcon', function test_EASGlanceListItemIcon () {
+	describe('EASGlanceListItem', function test_EASGlanceListItem () {
 
 		it('sets href', function () {
-			browser.assert.attribute(EASGlanceListItemIcon, 'href', item.EASProjectURL);
+			browser.assert.attribute(EASGlanceListItem, 'href', item.EASProjectURL);
 		});
 
-		it('sets aria-hidden', function () {
-			browser.assert.attribute(EASGlanceListItemIcon, 'aria-hidden', 'true');
+		it('sets target', function () {
+			browser.assert.attribute(EASGlanceListItem, 'target', '_blank');
 		});
 
-		it('sets tabindex', function () {
-			browser.assert.attribute(EASGlanceListItemIcon, 'tabindex', '-1');
+		it('sets title', function () {
+			browser.assert.attribute(EASGlanceListItem, 'title', item.EASProjectBlurb);
 		});
 
 	});
 
-	describe('EASGlanceListItemIconImage', function test_EASGlanceListItemIconImage () {
+	describe('EASGlanceListItemIcon', function test_EASGlanceListItemIconImage () {
 
 		it('sets src', function () {
-			browser.assert.attribute(EASGlanceListItemIconImage, 'src', item._EASProjectIconURLCachedPath || item.EASProjectIconURL || '/_shared/__external/OLSKUIAssets/_OLSKSharedIconPlaceholder.svg');
+			browser.assert.attribute(EASGlanceListItemIcon, 'src', item._EASProjectIconURLCachedPath || item.EASProjectIconURL || '/_shared/__external/OLSKUIAssets/_OLSKSharedIconPlaceholder.svg');
 		});
 
 	});
 
 	describe('EASGlanceListItemName', function test_EASGlanceListItemName () {
 
-		it('sets href', function () {
-			browser.assert.attribute(EASGlanceListItemName, 'href', item.EASProjectURL);
-		});
-
-		it('sets target', function () {
-			browser.assert.attribute(EASGlanceListItemName, 'target', '_blank');
-		});
-
 		it('binds EASProjectName', function () {
 			browser.assert.text(EASGlanceListItemName, item.EASProjectName);
-		});
-
-	});
-
-	describe('EASGlanceListItemBlurb', function test_EASGlanceListItemBlurb () {
-
-		it('binds EASProjectBlurb', function () {
-			browser.assert.text(EASGlanceListItemBlurb, item.EASProjectBlurb);
 		});
 
 	});

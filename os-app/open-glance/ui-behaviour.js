@@ -19,7 +19,6 @@ const mod = {
 			sortClass: 'EASGlanceListSort',
 			valueNames: [
 				'EASGlanceListItemName',
-				'EASGlanceListItemBlurb',
 			],
 		});
 

@@ -70,32 +70,31 @@
 	padding: 0 10px;
 }
 
-table {
-	position: relative;
-
-	margin: 0 !important;
+.EASGlanceList .list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
 }
 
-td {
-	padding: 10px;
-	border-top: none !important;
-	border-bottom: var(--OLSKCommonEdgeBorder);
-}
+.EASGlanceListItem {
+	--size: 64px;
+	
+	width: var(--size);
 
-.EASGlanceListItemIconImage {
-	--OLSKCommonCardImageSize: 36px !important;
-	padding: 3px;
-	border-radius: 5px;
-	overflow: hidden;
-}
+	margin: 10px;
 
-.EASGlanceListItem a {
 	text-decoration: none;
 	color: black;
 	font-weight: bold;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-end;
 }
 
-.EASGlanceListItemBlurb {
-	display: inline-block;
-	max-width: 400px;
+.EASGlanceListItemIcon {
+	width: 100%;
+	padding: 10px;
+	border-radius: 5px;
 }
