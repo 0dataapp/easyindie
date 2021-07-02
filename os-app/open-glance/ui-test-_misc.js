@@ -116,7 +116,7 @@ describe('EASGlance_Misc', function () {
 	
 	});
 
-	describe('EASGlanceListSort', function test_EASGlanceListSort () {
+	describe.skip('EASGlanceListSort', function test_EASGlanceListSort () {
 
 		before(function () {
 			browser.assert.text('.EASGlanceListItem:first-of-type .EASGlanceListItemName', item.EASProjectName);

@@ -76,15 +76,8 @@ table {
 	margin: 0 !important;
 }
 
-.EASGlanceListHead {
-	background: #efefef;
-}
-
-td, th {
-	padding: 10px;
-}
-
 td {
+	padding: 10px;
 	border-top: none !important;
 	border-bottom: var(--OLSKCommonEdgeBorder);
 }

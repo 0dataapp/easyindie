@@ -4,14 +4,6 @@
 	<p class="EASGlanceListEmpty"><%= OLSKLocalized('EASGlanceListEmptyText') %></p>
 <% } -%>
 
-<% if (locals.EASGlanceListData.length) { -%>
-<thead>
-	<tr class="EASGlanceListHead OLSKStickyHeader OLSKCommonEdgeBottom">
-		<th class="EASGlanceListHeadName EASGlanceListSort" data-sort="EASGlanceListItemName"><%= OLSKLocalized('EASGlanceListHeadNameText') %></th>
-	</tr>
-</thead>
-<% } -%>
-
 <tbody class="list">
 
 <% locals.EASGlanceListData.forEach(function (item) { -%>

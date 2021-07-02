@@ -18,7 +18,7 @@ kDefaultRoute.OLSKRouteLanguageCodes.forEach(function (OLSKRoutingLanguage) {
 			browser.assert.text(EASGlanceListEmpty, uLocalized('EASGlanceListEmptyText'));
 		});
 
-		context('EASGlanceListData', function () {
+		context.skip('EASGlanceListData', function () {
 
 			before(function() {
 				return browser.OLSKVisit(kDefaultRoute, {

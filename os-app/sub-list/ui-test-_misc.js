@@ -25,30 +25,6 @@ describe('EASGlanceList_Misc', function  () {
 
 	});
 
-	describe('EASGlanceListHead', function test_EASGlanceListHead () {
-
-		it('classes OLSKStickyHeader', function () {
-			browser.assert.hasClass(EASGlanceListHead, 'OLSKStickyHeader');
-		});
-
-		it('classes OLSKCommonEdgeBottom', function () {
-			browser.assert.hasClass(EASGlanceListHead, 'OLSKCommonEdgeBottom');
-		});
-	
-	});
-
-	describe('EASGlanceListHeadName', function test_EASGlanceListHeadName () {
-
-		it('classes EASGlanceListSort', function () {
-			browser.assert.hasClass(EASGlanceListHeadName, 'EASGlanceListSort');
-		});
-
-		it('sets data-sort', function () {
-			browser.assert.attribute(EASGlanceListHeadName, 'data-sort', 'EASGlanceListItemName')
-		});
-
-	});
-
 	describe('EASGlanceListItemIcon', function test_EASGlanceListItemIcon () {
 
 		it('sets href', function () {

@@ -5,9 +5,6 @@ Object.entries({
 	
 	EASGlanceListEmpty: '.EASGlanceListEmpty',
 
-	EASGlanceListHead: '.EASGlanceListHead',
-	EASGlanceListHeadName: '.EASGlanceListHeadName',
-	
 	EASGlanceListItem: '.EASGlanceListItem',
 	
 	EASGlanceListItemIcon: '.EASGlanceListItemIcon',
@@ -32,10 +29,6 @@ describe('EASGlanceList_Access', function () {
 		browser.assert.elements(EASGlanceListEmpty, 1);
 	});
 
-	it('hides EASGlanceListHead', function () {
-		browser.assert.elements(EASGlanceListHead, 0);
-	});
-
 	it('hides EASGlanceListItem', function () {
 		browser.assert.elements(EASGlanceListItem, 0);
 	});
@@ -54,14 +47,6 @@ describe('EASGlanceList_Access', function () {
 
 		it('hides EASGlanceListEmpty', function () {
 			browser.assert.elements(EASGlanceListEmpty, 0);
-		});
-
-		it('shows EASGlanceListHead', function () {
-			browser.assert.elements(EASGlanceListHead, 1);
-		});
-
-		it('shows EASGlanceListHeadName', function () {
-			browser.assert.elements(EASGlanceListHeadName, 1);
 		});
 
 		it('shows EASGlanceListItem', function () {
