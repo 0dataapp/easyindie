@@ -218,6 +218,16 @@ const mod = {
 		}, {}));
 	},
 
+	__DataTidyTags (inputData) {
+		if (!Array.isArray(inputData)) {
+			throw new Error('EASErrorInputNotValid');
+		}
+		
+		return inputData.reduce(function (coll, item) {
+			return coll.concat(item.replace(/\.\.\./, '').split(/\, | \& | and | or /));
+		}, []);
+	},
+
 	_DataFillProjects (inputData) {
 		if (!Array.isArray(inputData)) {
 			throw new Error('EASErrorInputNotValid');
@@ -228,15 +238,18 @@ const mod = {
 				EASPlatformName: 'EASProjectName',
 				EASPlatformBlurb: 'EASProjectBlurb',
 				EASPlatformImageURL: 'EASProjectIconURL',
+				EASPlatformCategory: 'EASProjectTags',
+				EASPlatformTagSources: 'EASProjectTags',
 			}).reduce(function (coll, [source, destination]) {
-				const data = Object.values(e.EASProjectPlatforms || {}).map(function (e) {
+				const raw = Object.values(e.EASProjectPlatforms || {}).map(function (e) {
 					return e[source];
 				}).filter(function (e) {
 					return !!e;
-				}).shift();
+				});
+				const data = raw[0];
 
 				if (data) {
-					coll[destination] = data;
+					coll[destination] = destination === 'EASProjectTags' ? mod.__DataTidyTags((coll[destination] || []).concat(...raw)) : data;
 				}
 				
 				return coll;

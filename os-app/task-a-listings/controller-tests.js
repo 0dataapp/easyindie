@@ -434,6 +434,41 @@ describe('_DataMergeProjects', function test__DataMergeProjects() {
 
 });
 
+describe('__DataTidyTags', function test___DataTidyTags() {
+
+	it('throws if not array', function () {
+		throws(function () {
+			mod.__DataTidyTags(null);
+		}, /EASErrorInputNotValid/);
+	});
+
+	it('returns input', function () {
+		const item = Math.random().toString();
+		deepEqual(mod.__DataTidyTags([item]), [item]);
+	});
+
+	it('splits comma-separated', function () {
+		deepEqual(mod.__DataTidyTags(['alfa, bravo, charlie']), ['alfa', 'bravo', 'charlie']);
+	});
+
+	it('splits ampersand', function () {
+		deepEqual(mod.__DataTidyTags(['alfa & bravo']), ['alfa', 'bravo']);
+	});
+
+	it('splits and', function () {
+		deepEqual(mod.__DataTidyTags(['alfa and bravo']), ['alfa', 'bravo']);
+	});
+
+	it('splits or', function () {
+		deepEqual(mod.__DataTidyTags(['alfa or bravo']), ['alfa', 'bravo']);
+	});
+
+	it('purges ...', function () {
+		deepEqual(mod.__DataTidyTags(['alfa...']), ['alfa']);
+	});
+
+});
+
 describe('_DataFillProjects', function test__DataFillProjects() {
 
 	it('throws if not array', function () {
@@ -534,6 +569,32 @@ describe('_DataFillProjects', function test__DataFillProjects() {
 			}])[0].EASProjectIconURL, EASPlatformImageURL);
 		});
 	
+	});
+
+	context('EASProjectTags', function () {
+		
+		it('adds EASPlatformCategory', function () {
+			const EASPlatformCategory = Math.random().toString();
+			deepEqual(mod._DataFillProjects([{
+				EASProjectPlatforms: {
+					[Math.random().toString()]: {
+						EASPlatformCategory,
+					},
+				},
+			}])[0].EASProjectTags, [EASPlatformCategory]);
+		});
+
+		it('adds EASPlatformTagSources', function () {
+			const EASPlatformTagSources = [Math.random().toString()];
+			deepEqual(mod._DataFillProjects([{
+				EASProjectPlatforms: {
+					[Math.random().toString()]: {
+						EASPlatformTagSources,
+					},
+				},
+			}])[0].EASProjectTags, EASPlatformTagSources);
+		});
+
 	});
 
 });
