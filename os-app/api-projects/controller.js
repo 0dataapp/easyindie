@@ -99,6 +99,7 @@ const mod = {
 			EASProjectBlurb: 'description',
 			EASProjectURL: 'url',
 			EASProjectIconURL: 'image',
+			EASProjectTags: 'keywords',
 		}).reduce(function (coll, item) {
 			return !inputData[item[0]] ? coll : Object.assign(coll, {
 				[item[1]]: inputData[item[0]],

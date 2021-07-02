@@ -279,6 +279,15 @@ describe('DataProjectJSONSchema', function test_DataProjectJSONSchema() {
 		});
 	});
 
+	it('maps EASProjectTags', function () {
+		const item = Math.random().toString();
+		deepEqual(mod.DataProjectJSONSchema({
+			EASProjectTags: item,
+		}), {
+			keywords: item,
+		});
+	});
+
 });
 
 describe('DataProjectsJSON', function test_DataProjectsJSON() {
