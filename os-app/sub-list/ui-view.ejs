@@ -7,7 +7,7 @@
 <div class="list">
 <% locals.EASGlanceListData.forEach(function (item) { -%>
 	<div class="list-container">
-		<a class="EASGlanceListItem" href="<%= item.EASProjectURL %>" target="_blank" title="<%= item.EASProjectBlurb %>">
+		<a class="EASGlanceListItem" href="<%= item.EASProjectURL %>" target="_blank" title="<%= item.EASProjectBlurb %>" data-tags="<%= (item.EASProjectTags || []).join(', ') %>">
 			<img class="EASGlanceListItemIcon" src="<%= item._EASProjectIconURLCachedPath || item.EASProjectIconURL || '/_shared/__external/OLSKUIAssets/_OLSKSharedIconPlaceholder.svg' %>" />
 			<span class="EASGlanceListItemName"><%= item.EASProjectName %></span>
 		</a>

@@ -9,6 +9,9 @@ describe('EASGlanceList_Misc', function  () {
 		EASProjectIconURL: uRandomElement(undefined, Math.random().toString()),
 		_EASProjectIconURLCachedPath: uRandomElement(undefined, Math.random().toString()),
 		_EASProjectSupportsYunohost: uRandomElement(true, false),
+		EASProjectTags: Array.from(Array(uRandomInt(10))).map(function (e) {
+			return Math.random().toString();
+		}),
 	};
 
 	before(function() {
@@ -37,6 +40,10 @@ describe('EASGlanceList_Misc', function  () {
 
 		it('sets title', function () {
 			browser.assert.attribute(EASGlanceListItem, 'title', item.EASProjectBlurb);
+		});
+
+		it('sets data-tags', function () {
+			browser.assert.attribute(EASGlanceListItem, 'data-tags', item.EASProjectTags.join(', '));
 		});
 
 	});
