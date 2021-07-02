@@ -1,3 +1,7 @@
+const uAscending = function (a, b) {
+  return (a < b) ? -1 : ((a > b) ? 1 : 0);
+};
+
 const uDescending = function (a, b) {
   return (a > b) ? -1 : ((a < b) ? 1 : 0);
 };
@@ -22,16 +26,11 @@ const mod = {
 	_DataFoilImages: require('../task-c-images/controller.js'),
 
 	DataProjectsSort (a, b) {
-		if (process.env.npm_lifecycle_script === 'olsk-express') {
-			return uDescending(b.EASProjectName, a.EASProjectName)
-		}
-
 		const unmatched = [
 			'EASProjectIconURL',
 			'EASProjectBlurb',
-			'EASProjectHasManifest',
 		].filter(function (e) {
-			return a[e] !== b[e];
+			return (!!a[e]) !== (!!b[e]);
 		});
 
 		if (unmatched.length) {
@@ -42,7 +41,9 @@ const mod = {
 			}, 0));
 		}
 
-		return 0;
+		const pattern = /git(?!hub.io)(?!ea)/i;
+		const exclude = /(pages.github.com|about.gitlab.com)/i;
+		return uAscending(a.EASProjectURL?.match(pattern) && !a.EASProjectURL?.match(exclude), b.EASProjectURL?.match(pattern) && !b.EASProjectURL?.match(exclude));
 	},
 
 	_DataProjectImageProperty (inputData) {

@@ -7,7 +7,66 @@ import OLSKLink from 'OLSKLink';
 import OLSKCache from 'OLSKCache';
 
 describe('DataProjectsSort', function test_DataProjectsSort() {
+
+	context('EASProjectURL', function () {
+		
+		it('bumps if not git', function () {
+			const item1 = {
+				EASProjectURL: 'git' + Math.random().toString(),
+			};
+			const item2 = {
+				EASProjectURL: Math.random().toString(),
+			};
+
+			deepEqual([item1, item2].sort(mod.DataProjectsSort), [item2, item1]);
+		});
+
+		it('bumps github.io', function () {
+			const item1 = {
+				EASProjectURL: 'git' + Math.random().toString(),
+			};
+			const item2 = {
+				EASProjectURL: 'github.io' + Math.random().toString(),
+			};
+
+			deepEqual([item1, item2].sort(mod.DataProjectsSort), [item2, item1]);
+		});
+
+		it('bumps gitea', function () {
+			const item1 = {
+				EASProjectURL: 'git' + Math.random().toString(),
+			};
+			const item2 = {
+				EASProjectURL: 'gitea' + Math.random().toString(),
+			};
+
+			deepEqual([item1, item2].sort(mod.DataProjectsSort), [item2, item1]);
+		});
+
+		it('bumps pages.github.com', function () {
+			const item1 = {
+				EASProjectURL: 'git' + Math.random().toString(),
+			};
+			const item2 = {
+				EASProjectURL: 'pages.github.com' + Math.random().toString(),
+			};
+
+			deepEqual([item1, item2].sort(mod.DataProjectsSort), [item2, item1]);
+		});
+
+		it('bumps about.gitlab.com', function () {
+			const item1 = {
+				EASProjectURL: 'git' + Math.random().toString(),
+			};
+			const item2 = {
+				EASProjectURL: 'about.gitlab.com' + Math.random().toString(),
+			};
+
+			deepEqual([item1, item2].sort(mod.DataProjectsSort), [item2, item1]);
+		});
 	
+	});
+
 	it('bumps EASProjectIconURL', function () {
 		const item1 = {};
 		const item2 = {
@@ -24,21 +83,6 @@ describe('DataProjectsSort', function test_DataProjectsSort() {
 		const item2 = {
 			EASProjectBlurb: Math.random().toString(),
 			EASProjectIconURL: Math.random().toString(),
-		};
-
-		deepEqual([item1, item2].sort(mod.DataProjectsSort), [item2, item1]);
-	});
-
-	it('bumps EASProjectHasManifest', function () {
-		const item1 = {
-			EASProjectBlurb: Math.random().toString(),
-			EASProjectIconURL: Math.random().toString(),
-			EASProjectHasManifest: false,
-		};
-		const item2 = {
-			EASProjectBlurb: Math.random().toString(),
-			EASProjectIconURL: Math.random().toString(),
-			EASProjectHasManifest: true,
 		};
 
 		deepEqual([item1, item2].sort(mod.DataProjectsSort), [item2, item1]);
