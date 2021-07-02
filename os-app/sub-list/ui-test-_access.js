@@ -68,8 +68,12 @@ describe('EASGlanceList_Access', function () {
 			browser.assert.elements(EASGlanceListItem, count);
 		});
 
-		it('hides EASGlanceListItemIcon', function () {
-			browser.assert.elements(EASGlanceListItemIcon, 0);
+		it('shows EASGlanceListItemIcon', function () {
+			browser.assert.elements(EASGlanceListItemIcon, count);
+		});
+
+		it('shows EASGlanceListItemIconImage', function () {
+			browser.assert.elements(EASGlanceListItemIconImage, count);
 		});
 
 		it('shows EASGlanceListItemName', function () {
@@ -78,28 +82,6 @@ describe('EASGlanceList_Access', function () {
 
 		it('shows EASGlanceListItemBlurb', function () {
 			browser.assert.elements(EASGlanceListItemBlurb, count);
-		});
-
-		context('EASProjectIconURL', function () {
-			
-			before(function() {
-				return browser.OLSKVisit(kDefaultRoute, {
-					EASGlanceListData: JSON.stringify(Array.from(Array(count)).map(function (e) {
-						return {
-							EASProjectIconURL: Math.random().toString(),
-						};
-					})),
-				});
-			});
-
-			it('shows EASGlanceListItemIcon', function () {
-				browser.assert.elements(EASGlanceListItemIcon, count);
-			});
-
-			it('shows EASGlanceListItemIconImage', function () {
-				browser.assert.elements(EASGlanceListItemIconImage, count);
-			});
-
 		});
 
 	});

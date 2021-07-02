@@ -17,11 +17,9 @@
 <% locals.EASGlanceListData.forEach(function (item) { -%>
 <tr class="EASGlanceListItem">
 	<td class="OLSKCommonCard">
-		<% if (item.EASProjectIconURL) { -%>
-			<a class="EASGlanceListItemIcon" href="<%= item.EASProjectURL %>" aria-hidden="true" tabindex="-1">
-				<img class="EASGlanceListItemIconImage" src="<%= item._EASProjectIconURLCachedPath || item.EASProjectIconURL %>" />
-			</a>
-		<% } -%>
+		<a class="EASGlanceListItemIcon" href="<%= item.EASProjectURL %>" aria-hidden="true" tabindex="-1">
+			<img class="EASGlanceListItemIconImage" src="<%= item._EASProjectIconURLCachedPath || item.EASProjectIconURL || '/_shared/__external/OLSKUIAssets/_OLSKSharedIconPlaceholder.svg' %>" />
+		</a>
 		<section>
 			<a class="EASGlanceListItemName" href="<%= item.EASProjectURL %>" target="_blank"><%= item.EASProjectName %></a>
 			<span class="EASGlanceListItemBlurb"><%= item.EASProjectBlurb %></span>

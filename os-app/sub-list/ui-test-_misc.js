@@ -6,7 +6,7 @@ describe('EASGlanceList_Misc', function  () {
 		EASProjectName: Math.random().toString(),
 		EASProjectBlurb: Math.random().toString(),
 		EASProjectURL: Math.random().toString(),
-		EASProjectIconURL: Math.random().toString(),
+		EASProjectIconURL: uRandomElement(undefined, Math.random().toString()),
 		_EASProjectIconURLCachedPath: uRandomElement(undefined, Math.random().toString()),
 		_EASProjectSupportsYunohost: uRandomElement(true, false),
 	};
@@ -68,7 +68,7 @@ describe('EASGlanceList_Misc', function  () {
 	describe('EASGlanceListItemIconImage', function test_EASGlanceListItemIconImage () {
 
 		it('sets src', function () {
-			browser.assert.attribute(EASGlanceListItemIconImage, 'src', item._EASProjectIconURLCachedPath || item.EASProjectIconURL);
+			browser.assert.attribute(EASGlanceListItemIconImage, 'src', item._EASProjectIconURLCachedPath || item.EASProjectIconURL || '/_shared/__external/OLSKUIAssets/_OLSKSharedIconPlaceholder.svg');
 		});
 
 	});
