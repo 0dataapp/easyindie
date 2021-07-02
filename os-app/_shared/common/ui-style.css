@@ -10,10 +10,14 @@ body {
 }
 
 *:not(h1, .OLSKLandingHeading) {
-	--EASContrast: #7cdc52;
+	--EASContrast: #B0F05D;
 	--OLSKCommonForeground: var(--EASContrast) ;
 	--OLSKCommonEdgeColor: var(--EASContrast) ;
 	border-color: var(--EASContrast)  !important;
+}
+
+a.OLSKDecorPress {
+	color: var(--EASContrast);
 }
 
 h1, .OLSKLandingHeading {

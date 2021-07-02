@@ -22,8 +22,6 @@
 .EASGlanceHeader {
 	display: flex !important;
 
-	background: white;
-
 	align-items: center;
 }
 
