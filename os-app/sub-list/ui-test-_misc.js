@@ -43,7 +43,7 @@ describe('EASGlanceList_Misc', function  () {
 		});
 
 		it('sets data-tags', function () {
-			browser.assert.attribute(EASGlanceListItem, 'data-tags', item.EASProjectTags.join(', '));
+			browser.assert.attribute('.list-container', 'data-tags', item.EASProjectTags.join(', '));
 		});
 
 	});
