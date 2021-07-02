@@ -449,7 +449,7 @@ describe('_DataFillProjects', function test__DataFillProjects() {
 		deepEqual(mod._DataFillProjects([item]), [item]);
 	});
 
-	context('EASPlatformName', function () {
+	context('EASProjectName', function () {
 		
 		it('copies EASPlatformName', function () {
 			const EASPlatformName = Math.random().toString();
@@ -478,7 +478,7 @@ describe('_DataFillProjects', function test__DataFillProjects() {
 	
 	});
 
-	context('EASPlatformBlurb', function () {
+	context('EASProjectBlurb', function () {
 		
 		it('copies EASPlatformBlurb', function () {
 			const EASPlatformBlurb = Math.random().toString();
@@ -507,7 +507,7 @@ describe('_DataFillProjects', function test__DataFillProjects() {
 	
 	});
 
-	context('EASPlatformImageURL', function () {
+	context('EASProjectIconURL', function () {
 		
 		it('copies EASPlatformImageURL', function () {
 			const EASPlatformImageURL = Math.random().toString();
