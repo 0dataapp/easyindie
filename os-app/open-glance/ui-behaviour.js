@@ -16,7 +16,7 @@ const mod = {
 	LifecyclePageWillLoad() {
 		mod._ValueList = new List(document.querySelector('.EASGlance'), {
 			searchClass: 'EASGlanceFilterInput',
-			sortClass: 'EASGlanceListSort',
+			// sortClass: 'EASGlanceListSort',
 			valueNames: [
 				'EASGlanceListItemName',
 			],
