@@ -103,30 +103,36 @@ describe('_DataListingObjects', function test__DataListingObjects() {
 				EASPlatformName: Math.random().toString(),
 				EASPlatformBlurb: Math.random().toString(),
 				EASPlatformImageURL: Math.random().toString(),
-				EASPlatformID: Math.random().toString(),
+				EASPlatformCues: {
+					name: Math.random().toString(),
+					isOfficial: Math.random().toString(),
+				},
 			}, inputData);
 
-			return `{"oneClickApps":[{"baseUrl":"https://oneclickapps.caprover.com","name":"${ item.EASPlatformID }","displayName":"${ item.EASPlatformName }","isOfficial":true,"description":"${ item.EASPlatformBlurb }","logoUrl":"${ item.EASPlatformImageURL }"}]}`;
+			return `{"oneClickApps":[{"baseUrl":"https://oneclickapps.caprover.com","name":"${ item.EASPlatformCues.name }","displayName":"${ item.EASPlatformName }","isOfficial":${ item.EASPlatformCues.isOfficial },"description":"${ item.EASPlatformBlurb }","logoUrl":"${ item.EASPlatformImageURL }"}]}`;
 		};
 		
 		it('parses listing', function () {
 			const EASPlatformName = Math.random().toString();
 			const EASPlatformBlurb = Math.random().toString();
 			const EASPlatformImageURL = Math.random().toString();
-			const EASPlatformID = Math.random().toString();
+			const EASPlatformCues = {
+				name: Math.random().toString(),
+				isOfficial: Math.random().toString(),
+			};
 
 			deepEqual(mod._DataListingObjects(EASPlatform.EASPlatformURLCaprover(), uListing({
 				EASPlatformName,
 				EASPlatformBlurb,
 				EASPlatformImageURL,
-				EASPlatformID,
+				EASPlatformCues,
 			})), [{
 				EASProjectPlatforms: {
 					EASPlatformCaprover: {
 						EASPlatformName,
 						EASPlatformBlurb,
 						EASPlatformImageURL: 'https://oneclickapps.caprover.com/v4/logos/' + EASPlatformImageURL,
-						EASPlatformID,
+						EASPlatformCues,
 					},
 				},
 			}]);

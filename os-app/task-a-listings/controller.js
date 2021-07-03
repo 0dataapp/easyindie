@@ -76,7 +76,10 @@ const mod = {
 										EASPlatformName: e.displayName,
 										EASPlatformBlurb: e.description,
 										EASPlatformImageURL: 'https://oneclickapps.caprover.com/v4/logos/' + e.logoUrl,
-										EASPlatformID: e.name,
+										EASPlatformCues: {
+											name: e.name,
+											isOfficial: e.isOfficial,
+										},
 									},
 								},
 							};
