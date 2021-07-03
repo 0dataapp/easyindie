@@ -560,6 +560,43 @@ describe('_DataFillProjects', function test__DataFillProjects() {
 	
 	});
 
+	context('EASProjectID', function () {
+		
+		it('copies EASProjectName', function () {
+			const EASProjectID = Math.random().toString();
+			deepEqual(mod._DataFillProjects([{
+				EASProjectName: EASProjectID,
+			}])[0].EASProjectID, EASProjectID);
+		});
+
+		it('converts to lower case', function () {
+			const EASProjectID = 'ALFA' + Math.random().toString();
+			deepEqual(mod._DataFillProjects([{
+				EASProjectName: EASProjectID,
+			}])[0].EASProjectID, EASProjectID.toLowerCase());
+		});
+
+		it('replaces spaces', function () {
+			const EASProjectID = 'alfa ' + Math.random().toString();
+			deepEqual(mod._DataFillProjects([{
+				EASProjectName: EASProjectID,
+			}])[0].EASProjectID, EASProjectID.split(' ').join('-'));
+		});
+
+
+		it('throws if duplicate', function () {
+			const EASProjectName = Math.random().toString();
+			throws(function () {
+				mod._DataFillProjects(mod._DataFillProjects([{
+					EASProjectName,
+				}, {
+					EASProjectName,
+				}]));
+			}, /EASErrorInputNotValid/);
+		});
+	
+	});
+
 	context('EASProjectBlurb', function () {
 		
 		it('copies EASPlatformBlurb', function () {

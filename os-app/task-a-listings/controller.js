@@ -255,6 +255,8 @@ const mod = {
 		if (!Array.isArray(inputData)) {
 			throw new Error('EASErrorInputNotValid');
 		}
+
+		const ids = [];
 		
 		return inputData.map(function (e) {
 			return Object.assign(e, Object.entries({
@@ -277,6 +279,18 @@ const mod = {
 				
 				return coll;
 			}, {}));
+		}).map(function (e) {
+			return Object.assign(e, e.EASProjectName ? {
+				EASProjectID: (function(inputData) {
+					if (ids.includes(inputData)) {
+						throw new Error('EASErrorInputNotValid');
+					}
+
+					ids.push(inputData);
+
+					return inputData;
+				})(e.EASProjectName.toLowerCase().split(' ').join('-')),
+			} : {});
 		});
 	},
 
