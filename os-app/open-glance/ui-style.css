@@ -23,11 +23,16 @@
 	display: flex !important;
 
 	align-items: center;
+	background: inherit;
 }
 
 .EASGlanceRootLinkImage {
 	width: 24px;
 	padding: 3px;
+}
+
+.EASGlanceList {
+	background: #009538;
 }
 
 .EASGlanceListSort {
