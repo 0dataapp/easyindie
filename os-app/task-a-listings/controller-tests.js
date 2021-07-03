@@ -2,45 +2,8 @@ const { throws, rejects, deepEqual } = require('assert');
 
 const mod = require('./controller.js');
 
+const EASPlatform = require('../_shared/EASPlatform/main.js');
 import OLSKCache from 'OLSKCache';
-
-describe('DataListingURLs', function test_DataListingURLs() {
-
-	it('returns array', function () {
-		deepEqual(mod.DataListingURLs(), process.env.EAS_VITRINE_LISTING_URLS.split(','));
-	});
-
-});
-
-describe('DataListingURLCloudron', function test_DataListingURLCloudron() {
-
-	it('returns string', function () {
-		deepEqual(mod.DataListingURLCloudron(), mod.DataListingURLs().filter(function (e) {
-			return e.match(/Cloudron/i);
-		}).shift());
-	});
-
-});
-
-describe('DataListingURLCaprover', function test_DataListingURLCaprover() {
-
-	it('returns string', function () {
-		deepEqual(mod.DataListingURLCaprover(), mod.DataListingURLs().filter(function (e) {
-			return e.match(/Caprover/i);
-		}).shift());
-	});
-
-});
-
-describe('DataListingURLYunohost', function test_DataListingURLYunohost() {
-
-	it('returns string', function () {
-		deepEqual(mod.DataListingURLYunohost(), mod.DataListingURLs().filter(function (e) {
-			return e.match(/Yunohost/i);
-		}).shift());
-	});
-
-});
 
 describe('_DataListingObjects', function test__DataListingObjects() {
 
@@ -52,12 +15,12 @@ describe('_DataListingObjects', function test__DataListingObjects() {
 
 	it('throws if param2 not string', function () {
 		throws(function () {
-			mod._DataListingObjects(uRandomElement(mod.DataListingURLs()), null);
+			mod._DataListingObjects(uRandomElement(EASPlatform.EASPlatformURLs()), null);
 		}, /EASErrorInputNotValid/);
 	});
 
 	it('returns array', function () {
-		deepEqual(mod._DataListingObjects(uRandomElement(mod.DataListingURLs()), ''), []);
+		deepEqual(mod._DataListingObjects(uRandomElement(EASPlatform.EASPlatformURLs()), ''), []);
 	});
 
 	context('Cloudron', function test_Cloudron () {
@@ -108,7 +71,7 @@ describe('_DataListingObjects', function test__DataListingObjects() {
 				installCount: Math.random(),
 			};
 
-			deepEqual(mod._DataListingObjects(mod.DataListingURLCloudron(), uListing({
+			deepEqual(mod._DataListingObjects(EASPlatform.EASPlatformURLCloudron(), uListing({
 				EASProjectURL,
 				EASPlatformName,
 				EASPlatformBlurb,
@@ -152,7 +115,7 @@ describe('_DataListingObjects', function test__DataListingObjects() {
 			const EASPlatformImageURL = Math.random().toString();
 			const EASPlatformID = Math.random().toString();
 
-			deepEqual(mod._DataListingObjects(mod.DataListingURLCaprover(), uListing({
+			deepEqual(mod._DataListingObjects(EASPlatform.EASPlatformURLCaprover(), uListing({
 				EASPlatformName,
 				EASPlatformBlurb,
 				EASPlatformImageURL,
@@ -212,7 +175,7 @@ describe('_DataListingObjects', function test__DataListingObjects() {
 				state: Math.random().toString(),
 			};
 
-			deepEqual(mod._DataListingObjects(mod.DataListingURLYunohost(), uListing({
+			deepEqual(mod._DataListingObjects(EASPlatform.EASPlatformURLYunohost(), uListing({
 				EASProjectURL,
 				EASPlatformName,
 				EASPlatformBlurb,
@@ -697,7 +660,7 @@ describe('DataListingProjects', function test_DataListingProjects() {
 	it('calls _DataListingObjects', function () {
 		const item = [];
 
-		const _ValueCacheObject = mod.DataListingURLs().reduce(function (coll, item) {
+		const _ValueCacheObject = EASPlatform.EASPlatformURLs().reduce(function (coll, item) {
 			return Object.assign(coll, {
 				[item]: Math.random().toString(),
 			});
@@ -712,7 +675,7 @@ describe('DataListingProjects', function test_DataListingProjects() {
 			}),
 		});
 
-		deepEqual(item, mod.DataListingURLs().map(function (e) {
+		deepEqual(item, EASPlatform.EASPlatformURLs().map(function (e) {
 			return [e, _ValueCacheObject[e]];
 		}));
 	});
@@ -726,7 +689,7 @@ describe('DataListingProjects', function test_DataListingProjects() {
 					[item]: ' ' + item + ' ',
 				}];
 			}),
-		}), mod.DataListingURLs().reduce(function (coll, EASProjectURL) {
+		}), EASPlatform.EASPlatformURLs().reduce(function (coll, EASProjectURL) {
 			return coll.concat({
 				EASProjectURL,
 				[item]: item,
@@ -752,7 +715,7 @@ describe('DataListingProjects', function test_DataListingProjects() {
 			_DataMergeProjects: (function () {
 				return [...arguments];
 			}),
-		}), [mod.DataListingURLs().reduce(function (coll, EASProjectURL) {
+		}), [EASPlatform.EASPlatformURLs().reduce(function (coll, EASProjectURL) {
 			return coll.concat({
 				EASProjectURL,
 				item,
@@ -826,7 +789,7 @@ describe('SetupListingsCache', function test_SetupListingsCache() {
 			}),
 		});
 
-		deepEqual(items, mod.DataListingURLs().map(OLSKCache.OLSKCacheURLBasename).map(function (e) {
+		deepEqual(items, EASPlatform.EASPlatformURLs().map(OLSKCache.OLSKCacheURLBasename).map(function (e) {
 			return OLSKCache.OLSKCachePath(__dirname, e);
 		}));
 	});
@@ -838,7 +801,7 @@ describe('SetupListingsCache', function test_SetupListingsCache() {
 			OLSKDiskRead: (function () {
 				return OLSKDiskRead;
 			}),
-		})._ValueCacheObject, mod.DataListingURLs().reduce(function (coll, item) {
+		})._ValueCacheObject, EASPlatform.EASPlatformURLs().reduce(function (coll, item) {
 			return Object.assign(coll, {
 				[item]: OLSKDiskRead,
 			});
@@ -941,7 +904,7 @@ describe('SetupListings', function test_SetupListings() {
 			_SetupListing: (function (e) {
 				return e;
 			}),
-		}), mod.DataListingURLs());
+		}), EASPlatform.EASPlatformURLs());
 	});
 
 });

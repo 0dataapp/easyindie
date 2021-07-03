@@ -1,5 +1,6 @@
 const cheerio = require('cheerio');
 const OLSKCache = require('OLSKCache');
+const EASPlatform = require('../_shared/EASPlatform/main.js');
 
 const mod = {
 
@@ -8,7 +9,7 @@ const mod = {
 			EASGlanceProjectsCount () {
 				return mod.DataListingProjects().length;
 			},
-			EASGlanceProjectsSourceURLs: mod.DataListingURLs(),
+			EASGlanceProjectsSourceURLs: EASPlatform.EASPlatformURLs(),
 		}
 	},
 
@@ -25,30 +26,8 @@ const mod = {
 		return (await require('node-fetch')(inputData)).text();
 	},
 
-	DataListingURLs() {
-		return process.env.EAS_VITRINE_LISTING_URLS.split(',');
-	},
-
-	DataListingURLCloudron () {
-		return mod.DataListingURLs().filter(function (e) {
-			return e.match(/Cloudron/i);
-		}).shift();
-	},
-
-	DataListingURLCaprover () {
-		return mod.DataListingURLs().filter(function (e) {
-			return e.match(/Caprover/i);
-		}).shift();
-	},
-
-	DataListingURLYunohost () {
-		return mod.DataListingURLs().filter(function (e) {
-			return e.match(/Yunohost/i);
-		}).shift();
-	},
-
 	_DataListingObjects (param1, param2) {
-		if (!mod.DataListingURLs().includes(param1)) {
+		if (!EASPlatform.EASPlatformURLs().includes(param1)) {
 			throw new Error('EASErrorInputNotValid');
 		}
 
@@ -60,10 +39,10 @@ const mod = {
 			return [];
 		}
 
-		return Array.from(mod.DataListingURLs().reduce(function (coll, item) {
+		return Array.from(EASPlatform.EASPlatformURLs().reduce(function (coll, item) {
 			return Object.assign(coll, {
 				[item]: {
-					[mod.DataListingURLCloudron()]: function () {
+					[EASPlatform.EASPlatformURLCloudron()]: function () {
 						return JSON.parse(param2.split('$scope.allApps = ').pop().split('$scope.apps = null;').shift().trim().slice(0, -1)).map(function (e) {
 							return {
 								EASProjectURL: e.manifest.website,
@@ -89,7 +68,7 @@ const mod = {
 							};
 						});
 					},
-					[mod.DataListingURLCaprover()]: function () {
+					[EASPlatform.EASPlatformURLCaprover()]: function () {
 						return JSON.parse(param2).oneClickApps.map(function (e) {
 							return {
 								EASProjectPlatforms: {
@@ -103,7 +82,7 @@ const mod = {
 							};
 						});
 					},
-					[mod.DataListingURLYunohost()]: function () {
+					[EASPlatform.EASPlatformURLYunohost()]: function () {
 						const json = JSON.parse(param2);
 						const categories = json.categories;
 						return Object.values(json.apps).map(function (e) {
@@ -297,7 +276,7 @@ const mod = {
 	DataListingProjects () {
 		const _mod = process.env.npm_lifecycle_script === 'olsk-spec' ? this : mod;
 
-		return _mod._DataFillProjects(_mod._DataMergeProjects(mod.DataListingURLs().reduce(function (coll, item) {
+		return _mod._DataFillProjects(_mod._DataMergeProjects(EASPlatform.EASPlatformURLs().reduce(function (coll, item) {
 			return coll.concat(_mod._DataListingObjects(item, _mod._ValueCacheObject[item] || '').map(require('OLSKObject').OLSKObjectTrim));
 		}, [])));
 	},
@@ -313,7 +292,7 @@ const mod = {
 	SetupListingsCache () {
 		const _mod = process.env.npm_lifecycle_script === 'olsk-spec' ? this : mod;
 		Object.assign(mod, Object.assign(_mod, {
-			_ValueCacheObject: mod.DataListingURLs().reduce(function (coll, item) {
+			_ValueCacheObject: EASPlatform.EASPlatformURLs().reduce(function (coll, item) {
 				return Object.assign(coll, {
 					[item]: _mod._DataFoilOLSKDisk.OLSKDiskRead(OLSKCache.OLSKCachePath(__dirname, OLSKCache.OLSKCacheURLBasename(item))),
 				});
@@ -339,7 +318,7 @@ const mod = {
 	SetupListings () {
 		const _mod = process.env.npm_lifecycle_script === 'olsk-spec' ? this : mod;
 		
-		return Promise.all(mod.DataListingURLs().map(_mod._SetupListing));
+		return Promise.all(EASPlatform.EASPlatformURLs().map(_mod._SetupListing));
 	},
 
 };
