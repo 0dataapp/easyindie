@@ -74,6 +74,16 @@ const mod = {
 										EASPlatformImageURL: e.iconUrl,
 										EASPlatformTagSources: e.manifest.tags,
 										EASPlatformDocsPath: e.manifest.documentationUrl,
+										EASPlatformCues: {
+											id: e.id,
+											creationDate: e.creationDate,
+											publishState: e.publishState,
+											visibility: e.visibility,
+											releaseState: e.releaseState,
+											featured: e.featured,
+											ranking: e.ranking,
+											installCount: e.installCount,
+										},
 									},
 								},
 							};
@@ -114,6 +124,16 @@ const mod = {
 										}).map(function (e) {
 											return e.title.en;
 										})),
+										EASPlatformCues: {
+											featured: e.featured,
+											high_quality: e.high_quality,
+											id: e.id,
+											lastUpdate: e.lastUpdate,
+											level: e.level,
+											maintained: e.maintained,
+											multi_instance: e.manifest.multi_instance,
+											state: e.state,
+										},
 									} : {}),
 								},
 							};
