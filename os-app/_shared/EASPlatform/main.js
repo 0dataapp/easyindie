@@ -22,6 +22,22 @@ const mod = {
 		}).shift();
 	},
 
+	EASPlatformNames () {
+		return mod.EASPlatformURLs().reduce(function (coll, item) {
+			return Object.assign(coll, {
+				[{
+					[mod.EASPlatformURLCloudron()]: 'EASPlatformCloudron',
+					[mod.EASPlatformURLCaprover()]: 'EASPlatformCaprover',
+					[mod.EASPlatformURLYunohost()]: 'EASPlatformYunohost',
+				}[item]]: {
+					[mod.EASPlatformURLCloudron()]: 'Cloudron',
+					[mod.EASPlatformURLCaprover()]: 'CapRover',
+					[mod.EASPlatformURLYunohost()]: 'Yunohost',
+				}[item],
+			});
+		}, {});
+	},
+
 };
 
 Object.assign(exports, mod);
