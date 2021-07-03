@@ -42,7 +42,7 @@ describe('EASVitrine_Misc', function () {
 	
 	});
 
-	require('../task-a-listings/controller.js').DataListingURLs().forEach(function (e, i) {
+	require('../_shared/EASPlatform/main.js').EASPlatformURLs().forEach(function (e, i) {
 
 		describe('EASVitrineProjectsSourcesList', function test_EASVitrineProjectsSourcesList () {
 			
