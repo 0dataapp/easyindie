@@ -339,6 +339,7 @@ describe('_DataHotfixProject', function test__DataHotfixProject() {
 			'https://gitlab.com': 'https://about.gitlab.com',
 			'https://git.sr.ht/~cadence/bibliogram': 'https://bibliogram.art',
 			'https://meet-app.io': 'https://kopano.com/products/meet/',
+			'https://asciimoo.github.io/searx/': 'https://searx.github.io/searx/',
 		}).forEach(function ([key, value]) {
 			
 			it(`hotfixes ${ key }`, function () {
