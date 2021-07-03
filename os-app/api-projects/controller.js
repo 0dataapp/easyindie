@@ -45,6 +45,34 @@ const mod = {
 			}, 0));
 		}
 
+		const uCue = function (inputData, cue) {
+			return Object.values(inputData.EASProjectPlatforms || {}).map(function (e) {
+				return (e.EASPlatformCues || {})[cue];
+			}).filter(function (e) {
+				return !!e;
+			}).shift();
+		};
+		const uCueCheck = function (param1, param2) {
+			return typeof param2 === 'function' ? param2(param1) : (param1 === param2);
+		};
+		const cues = {
+			featured: true,
+			high_quality: true,
+			ranking: (function (e) {
+				return e > 120;
+			}),
+		};
+		const unmatchCues = Object.entries(cues).reduce(function (coll, [key, value]) {
+			return coll.concat((uCueCheck(uCue(a, key), value)) !== (uCueCheck(uCue(b, key), value)) ? key : []);
+		}, []);
+		if (unmatchCues.length) {
+			return uDescending(Object.entries(cues).reduce(function (coll, [key, value]) {
+				return coll || (uCueCheck(uCue(a, key), value));
+			}, false), Object.entries(cues).reduce(function (coll, [key, value]) {
+				return coll || (uCueCheck(uCue(b, key), value));
+			}, false));
+		}
+
 		const pattern = /git(?!hub.io)(?!ea)/i;
 		const exclude = /(pages.github.com|about.gitlab.com)/i;
 		return uAscending(a.EASProjectURL?.match(pattern) && !a.EASProjectURL?.match(exclude), b.EASProjectURL?.match(pattern) && !b.EASProjectURL?.match(exclude));

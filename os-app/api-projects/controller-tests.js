@@ -88,6 +88,61 @@ describe('DataProjectsSort', function test_DataProjectsSort() {
 		deepEqual([item1, item2].sort(mod.DataProjectsSort), [item2, item1]);
 	});
 
+	context('EASPlatformCues', function () {
+		
+		it('bumps featured', function () {
+			const item1 = {};
+			const item2 = {
+				EASProjectPlatforms: {
+					[Math.random().toString()]: {
+						EASPlatformCues: {
+							featured: true,
+						},
+					},
+				},
+			};
+
+			deepEqual([item1, item2].sort(mod.DataProjectsSort), [item2, item1]);
+		});
+
+		it('bumps high_quality', function () {
+			const item1 = {};
+			const item2 = {
+				EASProjectPlatforms: {
+					[Math.random().toString()]: {
+						EASPlatformCues: {
+							high_quality: true,
+						},
+					},
+				},
+			};
+
+			deepEqual([item1, item2].sort(mod.DataProjectsSort), [item2, item1]);
+		});
+
+		it('bumps ranking', function () {
+			const item1 = {
+				[Math.random().toString()]: {
+					EASPlatformCues: {
+						ranking: 120,
+					},
+				},
+			};
+			const item2 = {
+				EASProjectPlatforms: {
+					[Math.random().toString()]: {
+						EASPlatformCues: {
+							ranking: 121,
+						},
+					},
+				},
+			};
+
+			deepEqual([item1, item2].sort(mod.DataProjectsSort), [item2, item1]);
+		});
+	
+	});
+
 });
 
 describe('_DataProjectImageProperty', function test__DataProjectImageProperty() {
