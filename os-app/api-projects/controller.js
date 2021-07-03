@@ -130,6 +130,7 @@ const mod = {
 		}
 
 		return Object.entries({
+			EASProjectID: 'id',
 			EASProjectName: 'name',
 			EASProjectBlurb: 'description',
 			EASProjectURL: 'url',

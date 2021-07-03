@@ -342,6 +342,15 @@ describe('DataProjectJSONSchema', function test_DataProjectJSONSchema() {
 		deepEqual(mod.DataProjectJSONSchema({}), {});
 	});
 
+	it('maps EASProjectID', function () {
+		const item = Math.random().toString();
+		deepEqual(mod.DataProjectJSONSchema({
+			EASProjectID: item,
+		}), {
+			id: item,
+		});
+	});
+
 	it('maps EASProjectName', function () {
 		const item = Math.random().toString();
 		deepEqual(mod.DataProjectJSONSchema({
