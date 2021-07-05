@@ -50,4 +50,12 @@ describe('EASVitrine_Misc', function () {
 
 	});
 
+	describe('ROCOForum', function test_ROCOForum () {
+
+		it('sets ROCOForumTopic', function () {
+			browser.assert.attribute('.ROCOForumList', 'category', process.env.ROCO_FORUM_TOPIC);
+		});
+	
+	});
+
 });

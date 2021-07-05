@@ -9,6 +9,8 @@ Object.entries({
 	EASVitrineGazetteHeading: '.EASVitrineGazetteHeading',
 
 	EASVitrineJarHeading: '.EASVitrineJarHeading',
+
+	EASVitrineLatestHeading: '.EASVitrineLatestHeading',
 }).map(function (e) {
 	return global[e.shift()]  = e.pop();
 });
@@ -57,6 +59,14 @@ describe('EASVitrine_Access', function () {
 
 	it('shows OLSKJar', function () {
 		browser.assert.elements('.OLSKJar', 1);
+	});
+
+	it('shows EASVitrineLatestHeading', function () {
+		browser.assert.elements(EASVitrineLatestHeading, 1);
+	});
+
+	it('shows ROCOForum', function () {
+		browser.assert.elements('.ROCOForum', 1);
 	});
 
 	it('shows ROCOEphemerataLink', function () {
