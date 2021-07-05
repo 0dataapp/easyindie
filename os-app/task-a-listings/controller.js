@@ -224,6 +224,10 @@ const mod = {
 				id = require('OLSKLink').OLSKLinkCompareURL(item.EASProjectURL = match.EASProjectURL);
 			}
 
+			if (!id) {
+				return coll;
+			}
+
 			const EASProjectPlatforms = Object.assign(match.EASProjectPlatforms || {}, item.EASProjectPlatforms || {});
 			
 			return Object.assign(coll, {
