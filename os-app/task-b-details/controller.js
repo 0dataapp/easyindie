@@ -18,6 +18,10 @@ const mod = {
 	_DataFoilListings: require('../task-a-listings/controller.js'),
 
 	async _DataContentString (inputData) {
+		if (inputData.match('nullboard.io')) {
+			return '';
+		}
+
 		return (await require('node-fetch')(inputData)).text();
 	},
 
