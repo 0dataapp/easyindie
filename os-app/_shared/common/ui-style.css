@@ -11,7 +11,7 @@ body {
 }
 
 *:not(h1, .OLSKLandingHeading, .OLSKDecorModule) {
-	--EASContrast: #B0F05D;
+	--EASContrast: #B0Fe5D;
 	--OLSKCommonForeground: var(--EASContrast) ;
 	--OLSKCommonEdgeColor: var(--EASContrast) ;
 	border-color: var(--EASContrast)  !important;
