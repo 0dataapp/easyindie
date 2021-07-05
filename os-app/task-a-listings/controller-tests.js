@@ -301,7 +301,6 @@ describe('_DataHotfixProject', function test__DataHotfixProject() {
 		Object.entries({
 			'https://element.im': 'https://element.io',
 			'http://grafana.org/': 'https://grafana.com',
-			'https://gitlab.com/mojo42/Jirafeau': 'https://jirafeau.net',
 			'https://lycheeorg.github.io/': 'https://lychee.electerious.com',
 			'https://github.com/tootsuite/mastodon': 'https://joinmastodon.org/',
 			'https://github.com/opf/openproject': 'https://www.openproject.org/',
