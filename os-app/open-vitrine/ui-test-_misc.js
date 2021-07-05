@@ -42,19 +42,6 @@ describe('EASVitrine_Misc', function () {
 	
 	});
 
-	require('../_shared/EASPlatform/main.js').EASPlatformURLs().forEach(function (e, i) {
-
-		describe('EASVitrineProjectsSourcesList', function test_EASVitrineProjectsSourcesList () {
-			
-			it('localizes EASVitrineProjectsSourcesList', function () {
-				browser.assert.attribute(`.EASVitrineProjectsSourcesList li:nth-child(${ i + 1 }) .EASVitrineProjectsSourcesListItem`, 'href', e);
-				browser.assert.text(`.EASVitrineProjectsSourcesList li:nth-child(${ i + 1 }) .EASVitrineProjectsSourcesListItem`, e.replace('https://', ''));
-			});
-		
-		});
-
-	});
-
 	describe('OLSKGazette', function test_OLSKGazette () {
 
 		it('sets src', function () {

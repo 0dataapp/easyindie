@@ -34,14 +34,6 @@ kDefaultRoute.OLSKRouteLanguageCodes.forEach(function (OLSKRoutingLanguage) {
 			browser.assert.text(EASVitrineGazetteHeading, uLocalized('OLSKGazetteHeadingText'));
 		});
 
-		it('localizes EASVitrineProjectsSourcesHeading', function () {
-			browser.assert.text(EASVitrineProjectsSourcesHeading, uLocalized('EASVitrineProjectsSourcesHeadingText'));
-		});
-
-		it('localizes EASVitrineProjectsSourcesBlurb', function () {
-			browser.assert.text(EASVitrineProjectsSourcesBlurb, uLocalized('EASVitrineProjectsSourcesBlurbText'));
-		});
-
 		context('OLSKCrown', function test_OLSKCrown () {
 
 			it('localizes OLSKCrownCardName', function () {

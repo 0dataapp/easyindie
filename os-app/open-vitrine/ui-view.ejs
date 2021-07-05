@@ -36,16 +36,6 @@ locals.OLSKPageAssets = [
 	OLSKGazetteProject: 'RP_005',
 }) %>
 
-<h1 class="EASVitrineProjectsSourcesHeading"><%= OLSKLocalized('EASVitrineProjectsSourcesHeadingText') %></h1>
-
-<p class="EASVitrineProjectsSourcesBlurb"><%= OLSKLocalized('EASVitrineProjectsSourcesBlurbText') %></p>
-
-<ul class="EASVitrineProjectsSourcesList">
-	<% EASGlanceProjectsSourceURLs.forEach(function (e) { -%>
-		<li><a class="EASVitrineProjectsSourcesListItem" href="<%= e %>"><%- e.replace('https://', '') %></a></li>
-	<% }) -%>
-</ul>
-
 <hr role="presentation" />
 
 <%- include('../../node_modules/ROCOEphemerataLink/main.ejs') %>
