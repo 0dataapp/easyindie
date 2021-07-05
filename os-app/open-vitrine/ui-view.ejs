@@ -29,12 +29,14 @@ locals.OLSKPageAssets = [
 	<li><a class="EASVitrineRepoLink" href="<%= process.env.EAS_VITRINE_REPO_URL %>"><%= OLSKLocalized('EASVitrineRepoLinkText') %></a></li>
 </ul>
 
-
 <h1 class="EASVitrineGazetteHeading"><%= OLSKLocalized('OLSKGazetteHeadingText') %></h1>
 <%- include('../../node_modules/OLSKFollow/main.ejs') %>
 <%- include('../../node_modules/OLSKGazette/main.ejs', {
 	OLSKGazetteProject: 'RP_005',
 }) %>
+
+<h1 class="EASVitrineJarHeading"><%= OLSKLocalized('OLSKJarHeadingText') %></h1>
+<%- include('../../node_modules/OLSKJar/main.ejs') %>
 
 <hr role="presentation" />
 

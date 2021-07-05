@@ -7,6 +7,8 @@ Object.entries({
 	EASVitrineRepoLink: '.EASVitrineRepoLink',
 
 	EASVitrineGazetteHeading: '.EASVitrineGazetteHeading',
+
+	EASVitrineJarHeading: '.EASVitrineJarHeading',
 }).map(function (e) {
 	return global[e.shift()]  = e.pop();
 });
@@ -47,6 +49,14 @@ describe('EASVitrine_Access', function () {
 
 	it('shows OLSKGazette', function () {
 		browser.assert.elements('.OLSKGazette', 1);
+	});
+
+	it('shows ZDAVitrineJarHeading', function () {
+		browser.assert.elements(EASVitrineJarHeading, 1);
+	});
+
+	it('shows OLSKJar', function () {
+		browser.assert.elements('.OLSKJar', 1);
 	});
 
 	it('shows ROCOEphemerataLink', function () {
