@@ -181,6 +181,7 @@ const mod = {
 				'www.bludit.com': 'https://www.bludit.com',
 				'www.concrete5.org': 'https://www.concrete5.org',
 				'www.universalmediaserver.com': 'https://www.universalmediaserver.com',
+				'http://leed.idleman.fr/': 'https://github.com/LeedRSS/Leed',
 			},
 		}).forEach(function ([key, changes]) {
 			Object.entries(changes).forEach(function ([source, destination]) {

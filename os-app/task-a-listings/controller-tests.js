@@ -317,6 +317,7 @@ describe('_DataHotfixProject', function test__DataHotfixProject() {
 			'www.bludit.com': 'https://www.bludit.com',
 			'www.concrete5.org': 'https://www.concrete5.org',
 			'www.universalmediaserver.com': 'https://www.universalmediaserver.com',
+			'http://leed.idleman.fr/': 'https://github.com/LeedRSS/Leed',
 		}).forEach(function ([key, value]) {
 			
 			it(`hotfixes ${ key }`, function () {
