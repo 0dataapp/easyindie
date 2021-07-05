@@ -51,7 +51,7 @@ describe('EASVitrine_Access', function () {
 		browser.assert.elements('.OLSKGazette', 1);
 	});
 
-	it('shows ZDAVitrineJarHeading', function () {
+	it('shows EASVitrineJarHeading', function () {
 		browser.assert.elements(EASVitrineJarHeading, 1);
 	});
 
