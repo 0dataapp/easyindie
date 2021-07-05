@@ -139,6 +139,7 @@ const mod = {
 				'WemaWema',
 				'ssh chroot directory',
 				'Riot',
+				'LibreQR',
 			].includes(e.EASPlatformName);
 		}).length) {
 			return false;

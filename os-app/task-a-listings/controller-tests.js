@@ -228,6 +228,7 @@ describe('_DataFilterProject', function test__DataFilterProject() {
 			'WemaWema',
 			'ssh chroot directory',
 			'Riot',
+			'LibreQR',
 		].forEach(function (EASPlatformName) {
 			
 			it(`filters ${ EASPlatformName }`, function () {
