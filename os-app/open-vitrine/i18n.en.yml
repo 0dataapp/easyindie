@@ -4,5 +4,7 @@ OLSKLandingBlurbText: Apps for tinkerers, made simple.
 OLSKLandingActionTextFormat: Browse %@ apps
 EASVitrineInformationHeadingText: More information
 EASVitrineRepoLinkText: Repo
+EASVitrineAlsoHeadingText: See also
+EASVitrineZeroDataCrownBlurbText: Apps that let you control your data
 EASVitrineProjectsHeadingText: Apps
 EASVitrineProjectsCompilationLinkText: JSON compilation of app data

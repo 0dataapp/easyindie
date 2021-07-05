@@ -38,6 +38,14 @@ kDefaultRoute.OLSKRouteLanguageCodes.forEach(function (OLSKRoutingLanguage) {
 			browser.assert.text(EASVitrineJarHeading, uLocalized('OLSKJarHeadingText'));
 		});
 
+		it('localizes EASVitrineAlsoHeading', function () {
+			browser.assert.text(EASVitrineAlsoHeading, uLocalized('EASVitrineAlsoHeadingText'));
+		});
+
+		it('localizes EASVitrineZeroDataCrownBlurb', function () {
+			browser.assert.text(EASVitrineZeroDataCrownBlurb, uLocalized('EASVitrineZeroDataCrownBlurbText'));
+		});
+
 		it('localizes EASVitrineLatestHeading', function () {
 			browser.assert.text(EASVitrineLatestHeading, uLocalized('OLSKWordingLatestHeading'));
 		});

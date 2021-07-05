@@ -1,17 +1,3 @@
-/*
-
-.OLSKCrownCard *, .OLSKLandingHeading, h1, .OLSKDecorPressCall {
-	color: var(--EASContrast) !important;
+.EASVitrineZeroDataCrownName {
+	text-decoration: none;
 }
-
-p {
-	color: var(--EASContrast) !important;
-}
-
-hr {
-	background: var(--EASContrast) !important;
-}
-
-.OLSKDecorPressCall, h1 {
-	border-color: var(--EASContrast) !important;
-}*/

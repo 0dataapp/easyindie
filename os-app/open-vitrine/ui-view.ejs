@@ -38,6 +38,15 @@ locals.OLSKPageAssets = [
 <h1 class="EASVitrineJarHeading"><%= OLSKLocalized('OLSKJarHeadingText') %></h1>
 <%- include('../../node_modules/OLSKJar/main.ejs') %>
 
+<h1 class="EASVitrineAlsoHeading"><%= OLSKLocalized('EASVitrineAlsoHeadingText') %></h1>
+<div class="EASVitrineZeroDataCrown OLSKCommonCard OLSKCommonCrownCard">
+	<img class="EASVitrineZeroDataCrownIcon" src="<%= process.env.EAS_VITRINE_ZERO_DATA_IDENTITY_URL %>" role="presentation" />
+	<section>
+		<a class="EASVitrineZeroDataCrownName" href="<%= process.env.EAS_VITRINE_ZERA_DATA_URL %>">Zero Data App</a>
+		<a class="EASVitrineZeroDataCrownBlurb"><%= OLSKLocalized('EASVitrineZeroDataCrownBlurbText') %></a>
+	</section>
+</div>
+
 <h1 class="EASVitrineLatestHeading"><%= OLSKLocalized('OLSKWordingLatestHeading') %></h1>
 <%- include('../../node_modules/ROCOForum/main.ejs', {
 	ROCOForumTopic: process.env.ROCO_FORUM_TOPIC,

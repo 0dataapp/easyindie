@@ -10,6 +10,12 @@ Object.entries({
 
 	EASVitrineJarHeading: '.EASVitrineJarHeading',
 
+	EASVitrineAlsoHeading: '.EASVitrineAlsoHeading',
+	EASVitrineZeroDataCrown: '.EASVitrineZeroDataCrown',
+	EASVitrineZeroDataCrownIcon: '.EASVitrineZeroDataCrownIcon',
+	EASVitrineZeroDataCrownName: '.EASVitrineZeroDataCrownName',
+	EASVitrineZeroDataCrownBlurb: '.EASVitrineZeroDataCrownBlurb',
+
 	EASVitrineLatestHeading: '.EASVitrineLatestHeading',
 }).map(function (e) {
 	return global[e.shift()]  = e.pop();
@@ -59,6 +65,26 @@ describe('EASVitrine_Access', function () {
 
 	it('shows OLSKJar', function () {
 		browser.assert.elements('.OLSKJar', 1);
+	});
+
+	it('shows EASVitrineAlsoHeading', function () {
+		browser.assert.elements(EASVitrineAlsoHeading, 1);
+	});
+
+	it('shows EASVitrineZeroDataCrown', function () {
+		browser.assert.elements(EASVitrineZeroDataCrown, 1);
+	});
+
+	it('shows EASVitrineZeroDataCrownIcon', function () {
+		browser.assert.elements(EASVitrineZeroDataCrownIcon, 1);
+	});
+
+	it('shows EASVitrineZeroDataCrownName', function () {
+		browser.assert.elements(EASVitrineZeroDataCrownName, 1);
+	});
+
+	it('shows EASVitrineZeroDataCrownBlurb', function () {
+		browser.assert.elements(EASVitrineZeroDataCrownBlurb, 1);
 	});
 
 	it('shows EASVitrineLatestHeading', function () {

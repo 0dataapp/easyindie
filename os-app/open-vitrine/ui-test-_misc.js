@@ -50,6 +50,42 @@ describe('EASVitrine_Misc', function () {
 
 	});
 
+	describe('EASVitrineZeroDataCrown', function test_EASVitrineZeroDataCrown() {
+
+		it('classes OLSKCommonCard', function () {
+			browser.assert.hasClass(EASVitrineZeroDataCrown, 'OLSKCommonCard');
+		});
+
+		it('classes OLSKCommonCrownCard', function () {
+			browser.assert.hasClass(EASVitrineZeroDataCrown, 'OLSKCommonCrownCard');
+		});
+		
+	});
+
+	describe('EASVitrineZeroDataCrownIcon', function () {
+
+		it('sets role', function () {
+			browser.assert.attribute(EASVitrineZeroDataCrownIcon, 'role', 'presentation');
+		});
+
+		it('sets src', function () {
+			browser.assert.attribute(EASVitrineZeroDataCrownIcon, 'src', process.env.EAS_VITRINE_ZERO_DATA_IDENTITY_URL);
+		});
+
+	});
+
+	describe('EASVitrineZeroDataCrownName', function test_EASVitrineZeroDataCrownName () {
+
+		it('sets href', function () {
+			browser.assert.attribute(EASVitrineZeroDataCrownName, 'href', process.env.EAS_VITRINE_ZERA_DATA_URL);
+		});
+		
+		it('sets text', function () {
+			browser.assert.text(EASVitrineZeroDataCrownName, 'Zero Data App');
+		});
+	
+	});
+
 	describe('ROCOForum', function test_ROCOForum () {
 
 		it('sets ROCOForumTopic', function () {
