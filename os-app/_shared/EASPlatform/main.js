@@ -22,7 +22,7 @@ const mod = {
 		}).shift();
 	},
 
-	EASPlatformNames () {
+	EASPlatformSystemProperties () {
 		return mod.EASPlatformURLs().reduce(function (coll, item) {
 			return Object.assign(coll, {
 				[{
@@ -30,9 +30,18 @@ const mod = {
 					[mod.EASPlatformURLCaprover()]: 'EASPlatformCaprover',
 					[mod.EASPlatformURLYunohost()]: 'EASPlatformYunohost',
 				}[item]]: {
-					[mod.EASPlatformURLCloudron()]: 'Cloudron',
-					[mod.EASPlatformURLCaprover()]: 'CapRover',
-					[mod.EASPlatformURLYunohost()]: 'Yunohost',
+					[mod.EASPlatformURLCloudron()]: {
+						EASSystemName: 'Cloudron',
+						EASSystemSetupURL: 'https://www.cloudron.io/get.html',
+					},
+					[mod.EASPlatformURLCaprover()]: {
+						EASSystemName: 'CapRover',
+						EASSystemSetupURL: 'https://caprover.com/docs/get-started.html',
+					},
+					[mod.EASPlatformURLYunohost()]: {
+						EASSystemName: 'Yunohost',
+						EASSystemSetupURL: 'https://yunohost.org/en/install',
+					},
 				}[item],
 			});
 		}, {});

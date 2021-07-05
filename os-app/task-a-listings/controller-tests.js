@@ -89,6 +89,7 @@ describe('_DataListingObjects', function test__DataListingObjects() {
 						EASPlatformTagSources,
 						EASPlatformDocsPath,
 						EASPlatformCues,
+						EASPlatformSystem: EASPlatform.EASPlatformSystemProperties().EASPlatformCloudron,
 					},
 				},
 			}]);
@@ -133,6 +134,7 @@ describe('_DataListingObjects', function test__DataListingObjects() {
 						EASPlatformBlurb,
 						EASPlatformImageURL: 'https://oneclickapps.caprover.com/v4/logos/' + EASPlatformImageURL,
 						EASPlatformCues,
+						EASPlatformSystem: EASPlatform.EASPlatformSystemProperties().EASPlatformCaprover,
 					},
 				},
 			}]);
@@ -197,6 +199,7 @@ describe('_DataListingObjects', function test__DataListingObjects() {
 						EASPlatformCategory,
 						EASPlatformTagSources,
 						EASPlatformCues,
+						EASPlatformSystem: EASPlatform.EASPlatformSystemProperties().EASPlatformYunohost,
 					},
 				},
 			}]);

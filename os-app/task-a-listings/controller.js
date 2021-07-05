@@ -63,6 +63,7 @@ const mod = {
 											ranking: e.ranking,
 											installCount: e.installCount,
 										},
+										EASPlatformSystem: EASPlatform.EASPlatformSystemProperties().EASPlatformCloudron,
 									},
 								},
 							};
@@ -80,6 +81,7 @@ const mod = {
 											name: e.name,
 											isOfficial: e.isOfficial,
 										},
+										EASPlatformSystem: EASPlatform.EASPlatformSystemProperties().EASPlatformCaprover,
 									},
 								},
 							};
@@ -116,6 +118,7 @@ const mod = {
 											multi_instance: e.manifest.multi_instance,
 											state: e.state,
 										},
+										EASPlatformSystem: EASPlatform.EASPlatformSystemProperties().EASPlatformYunohost,
 									} : {}),
 								},
 							};

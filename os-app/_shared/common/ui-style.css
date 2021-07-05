@@ -3,6 +3,7 @@
 	--OLSKCommonBackground: #00be46;
 	--OLSKCommonForeground: var(--EASContrast);
 	--OLSKCommonEdgeColor: var(--EASContrast);
+	--OLSKCommonInteractiveFill: #539300;
 }
 
 body {

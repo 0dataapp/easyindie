@@ -4,7 +4,7 @@ const EASPlatform = require('../_shared/EASPlatform/main.js');
 
 describe('EASInstall_Misc', function () {
 
-	const platform = uRandomElement(Object.values(EASPlatform.EASPlatformNames()));
+	const EASPlatformSystem = uRandomElement(Object.values(EASPlatform.EASPlatformSystemProperties()));
 
 	const item = {
 		EASProjectName: Math.random().toString(),
@@ -12,7 +12,9 @@ describe('EASInstall_Misc', function () {
 		EASProjectURL: Math.random().toString(),
 		_EASProjectIconURLCachedPath: Math.random().toString(),
 		EASProjectPlatforms: {
-			[platform]: {},
+			[Math.random().toString()]: {
+				EASPlatformSystem,
+			},
 		},
 	};
 
@@ -105,8 +107,16 @@ describe('EASInstall_Misc', function () {
 
 	describe('EASInstallPlatformsItem', function test_EASInstallPlatformsItem () {
 
-		it('binds EASPlatformNames', function () {
-			browser.assert.text(EASInstallPlatformsItem, EASPlatform.EASPlatformNames()[platform]);
+		it('classes OLSKDecorPress', function () {
+			browser.assert.hasClass(EASInstallPlatformsItem, 'OLSKDecorPress');
+		});
+
+		it('sets href', function () {
+			browser.assert.attribute(EASInstallPlatformsItem, 'href', EASPlatformSystem.EASSystemSetupURL);
+		});
+
+		it('binds EASPlatformSystem.EASSystemName', function () {
+			browser.assert.text(EASInstallPlatformsItem, EASPlatformSystem.EASSystemName);
 		});
 	
 	});

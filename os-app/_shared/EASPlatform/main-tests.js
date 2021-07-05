@@ -40,13 +40,22 @@ describe('EASPlatformURLYunohost', function test_EASPlatformURLYunohost() {
 
 });
 
-describe('EASPlatformNames', function test_EASPlatformNames() {
+describe('EASPlatformSystemProperties', function test_EASPlatformSystemProperties() {
 
 	it('returns object', function () {
-		deepEqual(mod.EASPlatformNames(), {
-			EASPlatformCloudron: 'Cloudron',
-			EASPlatformCaprover: 'CapRover',
-			EASPlatformYunohost: 'Yunohost',
+		deepEqual(mod.EASPlatformSystemProperties(), {
+			EASPlatformCloudron: {
+				EASSystemName: 'Cloudron',
+				EASSystemSetupURL: 'https://www.cloudron.io/get.html',
+			},
+			EASPlatformCaprover: {
+				EASSystemName: 'CapRover',
+				EASSystemSetupURL: 'https://caprover.com/docs/get-started.html',
+			},
+			EASPlatformYunohost: {
+				EASSystemName: 'Yunohost',
+				EASSystemSetupURL: 'https://yunohost.org/en/install',
+			},
 		});
 	});
 

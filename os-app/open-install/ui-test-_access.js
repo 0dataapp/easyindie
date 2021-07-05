@@ -27,7 +27,9 @@ describe('EASInstall_Access', function () {
 			EASInstallData: JSON.stringify({
 				EASProjectPlatforms: Array.from(Array(count)).reduce(function (coll) {
 					return Object.assign(coll, {
-						[Math.random().toString()]: {},
+						[Math.random().toString()]: {
+							EASPlatformSystem: {},
+						},
 					});
 				}, {}),
 			}),
