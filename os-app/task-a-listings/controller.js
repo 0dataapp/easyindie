@@ -177,6 +177,7 @@ const mod = {
 				'https://meet-app.io': 'https://kopano.com/products/meet/',
 				'https://asciimoo.github.io/searx/': 'https://searx.github.io/searx/',
 				'https://streamaserver.org/': 'https://docs.streama-project.com',
+				'www.bludit.com': 'https://www.bludit.com',
 			},
 		}).forEach(function ([key, changes]) {
 			Object.entries(changes).forEach(function ([source, destination]) {
