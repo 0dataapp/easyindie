@@ -415,6 +415,15 @@ describe('DataProjectJSONSchema', function test_DataProjectJSONSchema() {
 		});
 	});
 
+	it('maps EASProjectFunding', function () {
+		const item = Math.random().toString();
+		deepEqual(mod.DataProjectJSONSchema({
+			EASProjectFunding: item,
+		}), {
+			funding: item,
+		});
+	});
+
 });
 
 describe('DataProjectsJSON', function test_DataProjectsJSON() {

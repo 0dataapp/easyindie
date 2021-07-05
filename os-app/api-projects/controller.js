@@ -155,6 +155,7 @@ const mod = {
 			EASProjectURL: 'url',
 			EASProjectIconURL: 'image',
 			EASProjectTags: 'keywords',
+			EASProjectFunding: 'funding',
 		}).reduce(function (coll, item) {
 			return !inputData[item[0]] ? coll : Object.assign(coll, {
 				[item[1]]: inputData[item[0]],
