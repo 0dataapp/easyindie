@@ -183,6 +183,7 @@ const mod = {
 				'www.universalmediaserver.com': 'https://www.universalmediaserver.com',
 				'http://leed.idleman.fr/': 'https://github.com/LeedRSS/Leed',
 				'https://distbin.com/': 'https://github.com/gobengo/distbin',
+				'https://jirafeau.net': 'https://gitlab.com/mojo42/Jirafeau',
 			},
 		}).forEach(function ([key, changes]) {
 			Object.entries(changes).forEach(function ([source, destination]) {
