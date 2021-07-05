@@ -315,6 +315,7 @@ describe('_DataHotfixProject', function test__DataHotfixProject() {
 			'https://streamaserver.org/': 'https://docs.streama-project.com',
 			'www.bludit.com': 'https://www.bludit.com',
 			'www.concrete5.org': 'https://www.concrete5.org',
+			'www.universalmediaserver.com': 'https://www.universalmediaserver.com',
 		}).forEach(function ([key, value]) {
 			
 			it(`hotfixes ${ key }`, function () {

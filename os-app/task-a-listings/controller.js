@@ -179,6 +179,7 @@ const mod = {
 				'https://streamaserver.org/': 'https://docs.streama-project.com',
 				'www.bludit.com': 'https://www.bludit.com',
 				'www.concrete5.org': 'https://www.concrete5.org',
+				'www.universalmediaserver.com': 'https://www.universalmediaserver.com',
 			},
 		}).forEach(function ([key, changes]) {
 			Object.entries(changes).forEach(function ([source, destination]) {
