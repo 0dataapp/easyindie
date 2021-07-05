@@ -182,6 +182,7 @@ const mod = {
 				'www.concrete5.org': 'https://www.concrete5.org',
 				'www.universalmediaserver.com': 'https://www.universalmediaserver.com',
 				'http://leed.idleman.fr/': 'https://github.com/LeedRSS/Leed',
+				'https://distbin.com/': 'https://github.com/gobengo/distbin',
 			},
 		}).forEach(function ([key, changes]) {
 			Object.entries(changes).forEach(function ([source, destination]) {
