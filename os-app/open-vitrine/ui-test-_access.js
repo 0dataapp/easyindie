@@ -6,8 +6,6 @@ Object.entries({
 	EASVitrineInformationHeading: '.EASVitrineInformationHeading',
 	EASVitrineRepoLink: '.EASVitrineRepoLink',
 
-	EASVitrineGazetteHeading: '.EASVitrineGazetteHeading',
-
 	EASVitrineJarHeading: '.EASVitrineJarHeading',
 
 	EASVitrineAlsoHeading: '.EASVitrineAlsoHeading',
@@ -47,16 +45,8 @@ describe('EASVitrine_Access', function () {
 		browser.assert.elements(EASVitrineRepoLink, 1);
 	});
 
-	it('shows EASVitrineGazetteHeading', function () {
-		browser.assert.elements(EASVitrineGazetteHeading, 1);
-	});
-
-	it('shows OLSKFollow', function () {
-		browser.assert.elements('.OLSKFollow', 1);
-	});
-
-	it('shows ROCOBulletin', function () {
-		browser.assert.elements('.ROCOBulletin', 1);
+	it('shows ROCOGazette', function () {
+		browser.assert.elements('.ROCOGazette', 1);
 	});
 
 	it('shows EASVitrineJarHeading', function () {
