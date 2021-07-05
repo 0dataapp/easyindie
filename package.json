@@ -6,6 +6,7 @@
     "test": "olsk-spec"
   },
   "dependencies": {
+    "OLSKPithToolchain": "olsk/OLSKPithToolchain",
     "OLSKPithVitrine": "olsk/OLSKPithVitrine",
     "OLSKRobots": "olsk/OLSKRobots",
     "OLSKQueue": "olsk/OLSKQueue",
@@ -20,10 +21,6 @@
     "node-fetch": "latest",
     "cheerio": "latest",
     "list.js": "latest",
-    "// I sacrifice myself for the commas of others": null
-  },
-  "devDependencies": {
-    "OLSKPithToolchain": "olsk/OLSKPithToolchain",
     "jsdom": "latest",
     "// I sacrifice myself for the commas of others": null
   }
