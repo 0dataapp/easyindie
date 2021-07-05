@@ -23,9 +23,11 @@ locals.OLSKPageMetaViewport = 'width=device-width, initial-scale=1.0, maximum-sc
 
 <h1 class="EASInstallPlatformsHeading"><%= OLSKLocalized('EASInstallPlatformsHeadingText') %></h1>
 
+<p>
 <% Object.values(EASInstallData.EASProjectPlatforms || {}).forEach(function (e) { -%>
 	<a class="EASInstallPlatformsItem OLSKDecorPress" href="<%= e.EASPlatformSystem.EASSystemSetupURL %>"><%= e.EASPlatformSystem.EASSystemName %></a>
 <% }) -%>
+</p>
 
 <hr role="presentation" />
 
