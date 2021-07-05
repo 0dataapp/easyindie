@@ -38,10 +38,6 @@ kDefaultRoute.OLSKRouteLanguageCodes.forEach(function (OLSKRoutingLanguage) {
 			browser.assert.text(EASVitrineZeroDataCrownBlurb, uLocalized('EASVitrineZeroDataCrownBlurbText'));
 		});
 
-		it('localizes EASVitrineLatestHeading', function () {
-			browser.assert.text(EASVitrineLatestHeading, uLocalized('OLSKWordingLatestHeading'));
-		});
-
 		context('OLSKCrown', function test_OLSKCrown () {
 
 			it('localizes OLSKCrownCardName', function () {

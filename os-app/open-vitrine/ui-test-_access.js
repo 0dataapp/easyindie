@@ -11,8 +11,6 @@ Object.entries({
 	EASVitrineZeroDataCrownIcon: '.EASVitrineZeroDataCrownIcon',
 	EASVitrineZeroDataCrownName: '.EASVitrineZeroDataCrownName',
 	EASVitrineZeroDataCrownBlurb: '.EASVitrineZeroDataCrownBlurb',
-
-	EASVitrineLatestHeading: '.EASVitrineLatestHeading',
 }).map(function (e) {
 	return global[e.shift()]  = e.pop();
 });
@@ -69,10 +67,6 @@ describe('EASVitrine_Access', function () {
 
 	it('shows EASVitrineZeroDataCrownBlurb', function () {
 		browser.assert.elements(EASVitrineZeroDataCrownBlurb, 1);
-	});
-
-	it('shows EASVitrineLatestHeading', function () {
-		browser.assert.elements(EASVitrineLatestHeading, 1);
 	});
 
 	it('shows ROCOForum', function () {
