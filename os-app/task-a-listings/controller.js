@@ -176,6 +176,7 @@ const mod = {
 				'https://git.sr.ht/~cadence/bibliogram': 'https://bibliogram.art',
 				'https://meet-app.io': 'https://kopano.com/products/meet/',
 				'https://asciimoo.github.io/searx/': 'https://searx.github.io/searx/',
+				'https://streamaserver.org/': 'https://docs.streama-project.com',
 			},
 		}).forEach(function ([key, changes]) {
 			Object.entries(changes).forEach(function ([source, destination]) {

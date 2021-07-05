@@ -312,6 +312,7 @@ describe('_DataHotfixProject', function test__DataHotfixProject() {
 			'https://git.sr.ht/~cadence/bibliogram': 'https://bibliogram.art',
 			'https://meet-app.io': 'https://kopano.com/products/meet/',
 			'https://asciimoo.github.io/searx/': 'https://searx.github.io/searx/',
+			'https://streamaserver.org/': 'https://docs.streama-project.com',
 		}).forEach(function ([key, value]) {
 			
 			it(`hotfixes ${ key }`, function () {
