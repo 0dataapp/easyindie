@@ -37,7 +37,9 @@ describe('EASGlanceList_Access', function () {
 		before(function() {
 			return browser.OLSKVisit(kDefaultRoute, {
 				EASGlanceListData: JSON.stringify(Array.from(Array(count)).map(function (e) {
-					return {};
+					return {
+						EASProjectID: Math.random().toString(),
+					};
 				})),
 			});
 		});

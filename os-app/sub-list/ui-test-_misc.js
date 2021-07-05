@@ -3,6 +3,7 @@ const kDefaultRoute = require('./controller.js').OLSKControllerRoutes().shift();
 describe('EASGlanceList_Misc', function  () {
 
 	const item = {
+		EASProjectID: Math.random().toString(),
 		EASProjectName: Math.random().toString(),
 		EASProjectBlurb: Math.random().toString(),
 		EASProjectURL: Math.random().toString(),
@@ -31,11 +32,9 @@ describe('EASGlanceList_Misc', function  () {
 	describe('EASGlanceListItem', function test_EASGlanceListItem () {
 
 		it('sets href', function () {
-			browser.assert.attribute(EASGlanceListItem, 'href', item.EASProjectURL);
-		});
-
-		it('sets target', function () {
-			browser.assert.attribute(EASGlanceListItem, 'target', '_blank');
+			browser.assert.attribute(EASGlanceListItem, 'href', OLSKTestingCanonical(require('../open-install/controller.js').OLSKControllerRoutes().shift(), {
+				EASProjectID: item.EASProjectID,
+			}));
 		});
 
 		it('sets title', function () {
