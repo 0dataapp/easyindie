@@ -357,9 +357,13 @@ describe('_DataMergeProjects', function test__DataMergeProjects() {
 
 	it('returns input', function () {
 		const item = {
-			[Math.random().toString()]: Math.random().toString(),
+			EASProjectURL: Math.random().toString(),
 		};
 		deepEqual(mod._DataMergeProjects([item]), [item]);
+	});
+
+	it('excludes if no EASProjectURL', function () {
+		deepEqual(mod._DataMergeProjects([{}]), []);
 	});
 
 	it('excludes WordPress (Developer)', function () {
