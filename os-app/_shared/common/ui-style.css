@@ -1,9 +1,9 @@
 :root {
 	--EASContrast: #ffff82;
-	--OLSKCommonBackground: #00be46;
+	--OLSKCommonBackground: #00b046;
 	--OLSKCommonForeground: var(--EASContrast);
 	--OLSKCommonEdgeColor: var(--EASContrast);
-	--OLSKCommonInteractiveFill: #539300;
+	--OLSKCommonInteractiveFill: #115533;
 }
 
 body {
