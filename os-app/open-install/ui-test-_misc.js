@@ -11,6 +11,7 @@ describe('EASInstall_Misc', function () {
 		EASProjectBlurb: Math.random().toString(),
 		EASProjectURL: Math.random().toString(),
 		_EASProjectIconURLCachedPath: Math.random().toString(),
+		EASProjectFunding: [Math.random().toString(), Math.random().toString()],
 		EASProjectPlatforms: {
 			[Math.random().toString()]: {
 				EASPlatformSystem,
@@ -85,6 +86,38 @@ describe('EASInstall_Misc', function () {
 		
 		it('binds EASProjectBlurb', function () {
 			browser.assert.text(EASInstallCrownBlurb, item.EASProjectBlurb);
+		});
+	
+	});
+
+	describe('EASInstallSite', function test_EASInstallSite () {
+		
+		it('classes OLSKDecorPress', function () {
+			browser.assert.hasClass(EASInstallSite, 'OLSKDecorPress');
+		});
+		
+		it('classes OLSKDecorPressCall', function () {
+			browser.assert.hasClass(EASInstallSite, 'OLSKDecorPressCall');
+		});
+		
+		it('sets href', function () {
+			browser.assert.attribute(EASInstallSite, 'href', item.EASProjectURL);
+		});
+	
+	});
+
+	describe('EASInstallContribute', function test_EASInstallContribute () {
+		
+		it('classes OLSKDecorPress', function () {
+			browser.assert.hasClass(EASInstallContribute, 'OLSKDecorPress');
+		});
+		
+		it('classes OLSKDecorPressCall', function () {
+			browser.assert.hasClass(EASInstallContribute, 'OLSKDecorPressCall');
+		});
+		
+		it('sets href', function () {
+			browser.assert.attribute(EASInstallContribute, 'href', item.EASProjectFunding[0]);
 		});
 	
 	});

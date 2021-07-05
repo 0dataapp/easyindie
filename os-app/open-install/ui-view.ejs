@@ -5,6 +5,7 @@ locals.OLSKPageAssets = [
 	'/_shared/__external/normalize.css/normalize.css',
 	'/_shared/__external/OLSKDecor/ui-style.css',
 	'/_shared/common/ui-style.css',
+	'ui-style.css',
 ];
 locals.OLSKPageMetaViewport = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0';
 %>
@@ -20,6 +21,10 @@ locals.OLSKPageMetaViewport = 'width=device-width, initial-scale=1.0, maximum-sc
 </div>
 
 <a class="EASInstallSite OLSKDecorPress OLSKDecorPressCall" href="<%= EASInstallData.EASProjectURL %>"><%= OLSKLocalized('EASInstallSiteText') %></a>
+
+<% if (EASInstallData.EASProjectFunding) { -%>
+	<a class="EASInstallContribute OLSKDecorPress OLSKDecorPressCall" href="<%= EASInstallData.EASProjectFunding[0] %>"><%= OLSKLocalized('EASInstallContributeText') %></a>
+<% } -%>
 
 <h1 class="EASInstallPlatformsHeading"><%= OLSKLocalized('EASInstallPlatformsHeadingText') %></h1>
 

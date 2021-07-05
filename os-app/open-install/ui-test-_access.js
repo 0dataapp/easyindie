@@ -11,6 +11,8 @@ Object.entries({
 
 	EASInstallSite: '.EASInstallSite',
 
+	EASInstallContribute: '.EASInstallContribute',
+
 	EASInstallPlatformsHeading: '.EASInstallPlatformsHeading',
 	EASInstallPlatformsItem: '.EASInstallPlatformsItem',
 }).map(function (e) {
@@ -60,6 +62,10 @@ describe('EASInstall_Access', function () {
 		browser.assert.elements(EASInstallSite, 1);
 	});
 
+	it('hide EASInstallContribute', function () {
+		browser.assert.elements(EASInstallContribute, 0);
+	});
+
 	it('shows EASInstallPlatformsHeading', function () {
 		browser.assert.elements(EASInstallPlatformsHeading, 1);
 	});
@@ -70,6 +76,30 @@ describe('EASInstall_Access', function () {
 
 	it('shows EASRootLink', function () {
 		browser.assert.elements('.EASRootLink', 1);
+	});
+
+	context('EASProjectFunding', function () {
+
+		before(function() {
+			return browser.OLSKVisit(kDefaultRoute, {
+				EASProjectID: Math.random().toString(),
+				EASInstallData: JSON.stringify({
+					EASProjectFunding: [Math.random().toString()],
+					EASProjectPlatforms: Array.from(Array(count)).reduce(function (coll) {
+						return Object.assign(coll, {
+							[Math.random().toString()]: {
+								EASPlatformSystem: {},
+							},
+						});
+					}, {}),
+				}),
+			});
+		});
+		
+		it('shows EASInstallContribute', function () {
+			browser.assert.elements(EASInstallContribute, 1);
+		});
+	
 	});
 
 });
