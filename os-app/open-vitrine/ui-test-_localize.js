@@ -31,7 +31,7 @@ kDefaultRoute.OLSKRouteLanguageCodes.forEach(function (OLSKRoutingLanguage) {
 		});
 
 		it('localizes EASVitrineGazetteHeading', function () {
-			browser.assert.text(EASVitrineGazetteHeading, uLocalized('OLSKGazetteHeadingText'));
+			browser.assert.text(EASVitrineGazetteHeading, uLocalized('ROCOBulletinHeadingText'));
 		});
 
 		it('localizes EASVitrineJarHeading', function () {
