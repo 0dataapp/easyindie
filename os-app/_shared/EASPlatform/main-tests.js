@@ -42,7 +42,7 @@ describe('EASPlatformURLYunohost', function test_EASPlatformURLYunohost() {
 
 describe('EASPlatformNames', function test_EASPlatformNames() {
 
-	it('returns string', function () {
+	it('returns object', function () {
 		deepEqual(mod.EASPlatformNames(), {
 			EASPlatformCloudron: 'Cloudron',
 			EASPlatformCaprover: 'CapRover',
