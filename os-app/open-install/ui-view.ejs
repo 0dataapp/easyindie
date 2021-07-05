@@ -1,0 +1,34 @@
+<%
+locals.OLSKPageTitle = EASInstallData.EASProjectName;
+locals.OLSKPageDescription = EASInstallData.EASProjectBlurb;
+locals.OLSKPageAssets = [
+	'/_shared/__external/normalize.css/normalize.css',
+	'/_shared/__external/OLSKDecor/ui-style.css',
+	'/_shared/common/ui-style.css',
+];
+locals.OLSKPageMetaViewport = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0';
+%>
+
+<div class="EASInstall OLSKDecor OLSKDecorCapped">
+
+<div class="EASInstallCrown OLSKCommonCard OLSKCommonCrownCard">
+	<img class="EASInstallCrownIcon" src="<%= EASInstallData._EASProjectIconURLCachedPath %>" role="presentation" />
+	<section>
+		<span class="EASInstallCrownName"><%= EASInstallData.EASProjectName %></span>
+		<span class="EASInstallCrownBlurb"><%= EASInstallData.EASProjectBlurb %></span>
+	</section>
+</div>
+
+<a class="EASInstallSite OLSKDecorPress OLSKDecorPressCall" href="<%= EASInstallData.EASProjectURL %>"><%= OLSKLocalized('EASInstallSiteText') %></a>
+
+<h1 class="EASInstallPlatformsHeading"><%= OLSKLocalized('EASInstallPlatformsHeadingText') %></h1>
+
+<% Object.keys(EASInstallData.EASProjectPlatforms || {}).forEach(function (e) { -%>
+	<h2 class="EASInstallPlatformsItem"><%= EASPlatform.EASPlatformNames()[e] %></h2>
+<% }) -%>
+
+<hr role="presentation" />
+
+<%- include('../_shared/EASRootLink/main.ejs') %>
+	
+</div>

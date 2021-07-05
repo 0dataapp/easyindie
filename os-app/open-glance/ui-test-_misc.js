@@ -5,6 +5,7 @@ describe('EASGlance_Misc', function () {
 	const count = Math.min(2, uRandomInt(10));
 
 	const item = {
+		EASProjectID: Math.random().toString(),
 		EASProjectName: Math.random().toString(),
 	};
 
@@ -12,6 +13,7 @@ describe('EASGlance_Misc', function () {
 		return browser.OLSKVisit(kDefaultRoute, {
 			EASGlanceListData: JSON.stringify(Array.from(Array(count)).map(function (e, i) {
 				return Object.assign(i ? {
+					EASProjectID: Math.random().toString(),
 					EASProjectName: Math.random().toString(),
 				} : item, {
 					EASProjectBlurb: i.toString(),
