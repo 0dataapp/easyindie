@@ -4,7 +4,7 @@ const EASPlatform = require('../_shared/EASPlatform/main.js');
 
 describe('EASInstall_Misc', function () {
 
-	const platform = uRandomElement('EASPlatformCloudron', 'EASPlatformCaprover', 'EASPlatformYunohost');
+	const platform = uRandomElement(Object.values(EASPlatform.EASPlatformNames()));
 
 	const item = {
 		EASProjectName: Math.random().toString(),
