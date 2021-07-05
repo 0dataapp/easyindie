@@ -270,6 +270,25 @@ describe('_DataProjectProperties', function test__DataProjectProperties() {
 
 });
 
+describe('_TidyFunding', function test__TidyFunding() {
+
+	it('returns inputData', function () {
+		const item = Math.random().toString();
+		deepEqual(mod._TidyFunding(item), item);
+	});
+
+	it('excludes if exact duplicate', function () {
+		const item = Math.random().toString();
+		deepEqual(mod._TidyFunding([item, item]), [item]);
+	});
+
+	it('excludes if relative duplicate', function () {
+		const item = uLink();
+		deepEqual(mod._TidyFunding([item, item.replace('https', 'http')]), [item]);
+	});
+
+});
+
 describe('DataProjects', function test_DataProjects() {
 	
 	const _DataProjects = function (inputData = {}) {

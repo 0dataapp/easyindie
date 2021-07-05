@@ -122,6 +122,17 @@ describe('_DataDOMPropertyCandidates', function test__DataDOMPropertyCandidates(
 				_EASProjectBlurb,
 			}));
 		});
+
+		it('extracts _OLSKDOMMetadataFunding', function () {
+			const _OLSKDOMMetadataFunding = [Math.random().toString()];
+			deepEqual(__DataDOMPropertyCandidates({
+				ParamMetadata: {
+					_OLSKDOMMetadataFunding,
+				},
+			}), Object.entries({
+				EASProjectFunding: _OLSKDOMMetadataFunding,
+			}));
+		});
 	
 	});
 

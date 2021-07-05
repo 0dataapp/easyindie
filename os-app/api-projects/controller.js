@@ -104,16 +104,35 @@ const mod = {
 				key = key.slice(1);
 			}
 
+			if (key === 'EASProjectFunding') {
+				value = mod._TidyFunding(value);
+			}
+
 			return Object.assign(coll, {
 				[key]: value,
 			});
 		}, inputData);
 	},
 
+	_TidyFunding (inputData) {
+		const comparable = [];
+		return !Array.isArray(inputData) ? inputData : inputData.filter(function (e) {
+			const id = require('OLSKLink').OLSKLinkCompareURL(e);
+			if (comparable.includes(id)) {
+				return false;
+			}
+
+			comparable.push(id);
+
+			return true;
+		});
+	},
+
 	DataProjects () {
 		const _mod = process.env.npm_lifecycle_script === 'olsk-spec' ? this : mod;
 
 		// require('OLSKDisk').OLSKDiskWrite(require('OLSKDisk').OLSKDiskOpen(require('OLSKCache').OLSKCachePath(__dirname, '1-listings.json')), JSON.stringify(_mod._DataFoilListings.DataListingProjects(), null, ' '));
+		// require('OLSKDisk').OLSKDiskWrite(require('OLSKDisk').OLSKDiskOpen(require('OLSKCache').OLSKCachePath(__dirname, '2-details.json')), JSON.stringify(_mod._DataFoilListings.DataListingProjects().map(function (e) { return _mod._DataProjectProperties(e) }), null, ' '));
 
 		return _mod._DataFoilListings.DataListingProjects().map(function (e) {
 			return _mod._DataProjectProperties(e);

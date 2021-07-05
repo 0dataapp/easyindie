@@ -80,6 +80,7 @@ const mod = {
 			['_EASProjectBlurb', params.ParamMetadata.description],
 			['_EASProjectBlurb', params.ParamMetadata.title],
 			['EASProjectHasManifest', !!params.ParamManifest],
+			['EASProjectFunding', params.ParamMetadata._OLSKDOMMetadataFunding],
 		].filter(function ([key, value]) {
 			return !!value;
 		});
