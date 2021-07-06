@@ -88,7 +88,7 @@ describe('DataProjectsSort', function test_DataProjectsSort() {
 		deepEqual([item1, item2].sort(mod.DataProjectsSort), [item2, item1]);
 	});
 
-	context('EASPlatformCues', function () {
+	context.skip('EASPlatformCues', function () {
 		
 		it('bumps featured', function () {
 			const item1 = {};

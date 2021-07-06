@@ -55,7 +55,7 @@ const mod = {
 		const uCueCheck = function (param1, param2) {
 			return typeof param2 === 'function' ? param2(param1) : (param1 === param2);
 		};
-		const cues = {
+		const cues = {} || {
 			featured: true,
 			high_quality: true,
 			ranking: (function (e) {
