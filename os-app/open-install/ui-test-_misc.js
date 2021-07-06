@@ -10,7 +10,8 @@ describe('EASInstall_Misc', function () {
 		EASProjectName: Math.random().toString(),
 		EASProjectBlurb: Math.random().toString(),
 		EASProjectURL: Math.random().toString(),
-		_EASProjectIconURLCachedPath: Math.random().toString(),
+		EASProjectIconURL: uRandomElement(undefined, Math.random().toString()),
+		_EASProjectIconURLCachedPath: uRandomElement(undefined, Math.random().toString()),
 		EASProjectFunding: [Math.random().toString(), Math.random().toString()],
 		EASProjectPlatforms: {
 			[Math.random().toString()]: {
@@ -69,7 +70,7 @@ describe('EASInstall_Misc', function () {
 		});
 
 		it('sets src', function () {
-			browser.assert.attribute(EASInstallCrownIcon, 'src', item._EASProjectIconURLCachedPath);
+			browser.assert.attribute(EASInstallCrownIcon, 'src', item._EASProjectIconURLCachedPath || item.EASProjectIconURL || '/_shared/__external/OLSKUIAssets/_OLSKSharedIconPlaceholder.svg');
 		});
 
 	});

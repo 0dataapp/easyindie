@@ -13,7 +13,7 @@ locals.OLSKPageMetaViewport = 'width=device-width, initial-scale=1.0, maximum-sc
 <div class="EASInstall OLSKDecor OLSKDecorCapped">
 
 <div class="EASInstallCrown OLSKCommonCard OLSKCommonCrownCard">
-	<img class="EASInstallCrownIcon" src="<%= EASInstallData._EASProjectIconURLCachedPath %>" role="presentation" />
+	<img class="EASInstallCrownIcon" src="<%= EASInstallData._EASProjectIconURLCachedPath || EASInstallData.EASProjectIconURL || '/_shared/__external/OLSKUIAssets/_OLSKSharedIconPlaceholder.svg' %>" role="presentation" />
 	<section>
 		<span class="EASInstallCrownName"><%= EASInstallData.EASProjectName %></span>
 		<span class="EASInstallCrownBlurb"><%= EASInstallData.EASProjectBlurb %></span>
