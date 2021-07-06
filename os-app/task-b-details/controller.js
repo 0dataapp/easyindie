@@ -4,6 +4,20 @@ const OLSKCache = require('OLSKCache');
 
 const mod = {
 
+	OLSKControllerTasks () {
+		return [{
+			OLSKTaskName: 'EASDetailsTask',
+			OLSKTaskFireTimeInterval: 5,
+			OLSKTaskShouldBePerformed () {
+				return true;
+			},
+			OLSKTaskCallback: (function () {
+				require('OLSKModule').OLSKModuleLifecycleSetup(mod);
+			}),
+			OLSKTaskFireLimit: 1,
+		}];
+	},
+
 	// VALUE
 
 	_ValueCandidatesCache: {},
@@ -161,9 +175,5 @@ const mod = {
 	},
 
 };
-
-if (process.env.NODE_ENV === 'production' || process.env.npm_lifecycle_script === 'olsk-express') {
-	require('OLSKModule').OLSKModuleLifecycleSetup(mod);
-}
 
 Object.assign(exports, mod);
