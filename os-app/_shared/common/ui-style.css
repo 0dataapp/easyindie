@@ -6,8 +6,12 @@
 	--OLSKCommonInteractiveFill: #115533;
 }
 
+html, body, .OLSKDecorCapped {
+	min-height: 100vh;
+}
+
 body {
-	background: var(--OLSKCommonBackground);
+	background: #0b5823;
 }
 
 *:not(h1, .OLSKLandingHeading, .OLSKDecorModule, .OLSKBanner, .OLSKBanner *) {
@@ -25,4 +29,10 @@ h1, .OLSKLandingHeading {
 	--EASContrast: #ffff82 !important;
 	--OLSKCommonForeground: var(--EASContrast) !important;
 	--OLSKCommonEdgeColor: var(--EASContrast) !important;
+}
+
+.OLSKDecorCapped {
+	--OLSKDecorCappedBorder: 1px solid #00cc00 !important;
+	border-right: var(--OLSKDecorCappedBorder) !important;
+	border-left: var(--OLSKDecorCappedBorder) !important;
 }
