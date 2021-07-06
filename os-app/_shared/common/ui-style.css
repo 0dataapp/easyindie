@@ -10,7 +10,7 @@ body {
 	background: var(--OLSKCommonBackground);
 }
 
-*:not(h1, .OLSKLandingHeading, .OLSKDecorModule) {
+*:not(h1, .OLSKLandingHeading, .OLSKDecorModule, .OLSKBanner, .OLSKBanner *) {
 	--EASContrast: #B0Fe5D;
 	--OLSKCommonForeground: var(--EASContrast) ;
 	--OLSKCommonEdgeColor: var(--EASContrast) ;
