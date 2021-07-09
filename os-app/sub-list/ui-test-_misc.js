@@ -1,7 +1,11 @@
 const kDefaultRoute = require('./controller.js').OLSKControllerRoutes().shift();
 
+const EASPlatform = require('../_shared/EASPlatform/main.js');
+
 describe('EASGlanceList_Misc', function  () {
 
+	const keys = Object.keys(EASPlatform.EASPlatformSystemProperties());
+	
 	const item = {
 		EASProjectID: Math.random().toString(),
 		EASProjectName: Math.random().toString(),
@@ -12,6 +16,11 @@ describe('EASGlanceList_Misc', function  () {
 		EASProjectTags: Array.from(Array(uRandomInt(10))).map(function (e) {
 			return Math.random().toString();
 		}),
+		EASProjectPlatforms: keys.slice(0, Math.max(0, uRandomInt(keys.length))).reduce(function (coll, item) {
+			return Object.assign(coll, {
+				[item]: {},
+			});
+		}, {}),
 	};
 
 	before(function() {
@@ -42,6 +51,12 @@ describe('EASGlanceList_Misc', function  () {
 
 		it('sets data-tags', function () {
 			browser.assert.attribute('.list-container', 'data-tags', item.EASProjectTags.join(', '));
+		});
+
+		it('sets data-platforms', function () {
+			browser.assert.attribute('.list-container', 'data-platforms', Object.keys(item.EASProjectPlatforms).map(function (e) {
+				return EASPlatform.EASPlatformSystemProperties()[e].EASSystemName;
+			}).join(', '));
 		});
 
 	});

@@ -1,3 +1,5 @@
+const EASPlatform = require('../_shared/EASPlatform/main.js');
+
 const mod = {
 
 	OLSKControllerRoutes () {
@@ -7,6 +9,7 @@ const mod = {
 			OLSKRouteFunction: (function EASGlanceListStubRoute (req, res, next) {
 				return res.OLSKExpressLayoutRender(require('path').join(__dirname, 'ui-view'), Object.assign({
 					EASGlanceListData: [],
+					EASPlatform,
 				}, Object.fromEntries(Array.from((new URLSearchParams(req.query)).entries()).map(function (e) {
 					if (e[0] === 'EASGlanceListData') {
 						e[1] = JSON.parse(e[1]);

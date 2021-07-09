@@ -20,7 +20,7 @@ const mod = {
 			valueNames: [
 				'EASGlanceListItemName',
 				{ attr: 'title', name: 'EASGlanceListItem' },
-				{ data: ['tags'] },
+				{ data: ['tags', 'platforms'] },
 			],
 		});
 

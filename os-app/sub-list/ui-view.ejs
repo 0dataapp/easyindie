@@ -6,7 +6,9 @@
 
 <div class="list">
 <% locals.EASGlanceListData.forEach(function (item) { -%>
-	<div class="list-container" data-tags="<%= (item.EASProjectTags || []).join(', ') %>">
+	<div class="list-container" data-tags="<%= (item.EASProjectTags || []).join(', ') %>" data-platforms="<%= Object.keys(item.EASProjectPlatforms || {}).map(function (e) {
+		return EASPlatform.EASPlatformSystemProperties()[e].EASSystemName;
+	}).join(', ') %>">
 		<a class="EASGlanceListItem" href="<%= OLSKCanonical('EASInstallRoute', {
 			EASProjectID: item.EASProjectID,
 		}) %>" title="<%= item.EASProjectBlurb %>">

@@ -1,4 +1,5 @@
 const projects = require('../api-projects/controller.js');
+const EASPlatform = require('../_shared/EASPlatform/main.js');
 
 const mod = {
 
@@ -8,7 +9,9 @@ const mod = {
 			OLSKRouteMethod: 'get',
 			OLSKRouteSignature: 'EASGlanceRoute',
 			OLSKRouteFunction: (function EASGlanceRoute (req, res, next) {
-				return res.OLSKExpressLayoutRender(require('path').join(__dirname, 'ui-view'), res.locals.OLSK_SPEC_UI() ? Object.assign({
+				return res.OLSKExpressLayoutRender(require('path').join(__dirname, 'ui-view'), Object.assign({
+					EASPlatform,
+				}, res.locals.OLSK_SPEC_UI() ? Object.assign({
 					EASGlanceListData: [{
 						EASProjectID: Math.random().toString(),
 					}],
@@ -20,7 +23,7 @@ const mod = {
 					return e;
 				}))) : {
 					EASGlanceListData: projects.DataProjects(),
-				});
+				}));
 			}),
 			OLSKRouteLanguageCodes: ['en'],
 		}];
