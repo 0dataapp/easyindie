@@ -9,7 +9,6 @@ describe('EASGlanceList_Misc', function  () {
 		EASProjectURL: Math.random().toString(),
 		EASProjectIconURL: uRandomElement(undefined, Math.random().toString()),
 		_EASProjectIconURLCachedPath: uRandomElement(undefined, Math.random().toString()),
-		_EASProjectSupportsYunohost: uRandomElement(true, false),
 		EASProjectTags: Array.from(Array(uRandomInt(10))).map(function (e) {
 			return Math.random().toString();
 		}),
