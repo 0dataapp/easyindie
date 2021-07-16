@@ -1,6 +1,6 @@
 <a href="https://easyindie.app"><img alt="Project logo" src="https://static.rosano.ca/eas/identity.svg" width="64" /></a>
 
-# Easy Indie App
+# [Easy Indie App](https://easyindie.app)
 
 _Run your own X, in a few clicks._
 
