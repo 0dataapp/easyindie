@@ -15,6 +15,13 @@ const mod = {
 				require('OLSKModule').OLSKModuleLifecycleSetup(mod);
 			}),
 			OLSKTaskFireLimit: 1,
+		}, {
+			OLSKTaskName: 'EASDetailsCheckNewBankListings',
+			OLSKTaskFireTimeInterval: 60 * 60 * 24,
+			OLSKTaskShouldBePerformed () {
+				return true;
+			},
+			OLSKTaskCallback: mod.SetupDetails,
 		}];
 	},
 
