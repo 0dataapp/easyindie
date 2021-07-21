@@ -173,6 +173,16 @@ const mod = {
 		});
 	},
 
+	_SetupDetailsIncoming () {
+		const _mod = process.env.npm_lifecycle_script === 'olsk-spec' ? this : mod;
+
+		return _mod._DataFoilBanks.DataBankProjects().filter(function (e) {
+			return !_mod._ValueCandidatesCache[e.EASProjectURL];
+		}).map(function (e) {
+			return _mod._SetupDetail(e.EASProjectURL);
+		})
+	},
+
 	SetupDetails () {
 		const _mod = process.env.npm_lifecycle_script === 'olsk-spec' ? this : mod;
 

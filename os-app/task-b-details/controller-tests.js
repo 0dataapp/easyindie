@@ -461,6 +461,54 @@ describe('_SetupDetail', function test__SetupDetail() {
 
 });
 
+describe('_SetupDetailsIncoming', function test__SetupDetailsIncoming() {
+
+	const __SetupDetailsIncoming = function (inputData = {}) {
+		return Object.assign(Object.assign({}, mod), {
+			DataBankProjects: (function () {
+				return [];
+			}),
+			_SetupDetail: (function () {}),
+		}, inputData)._SetupDetailsIncoming();
+	};
+
+	it('calls _SetupDetail', async function () {
+		const item = {
+			EASProjectURL: Math.random().toString(),
+		};
+		deepEqual(await __SetupDetailsIncoming({
+			_DataFoilBanks: {
+				DataBankProjects: (function () {
+					return [item];
+				}),
+			},
+			_SetupDetail: (function () {
+				return [...arguments].slice(0, 1);
+			}),
+		}), [[item.EASProjectURL]]);
+	});
+
+	it('skips if _ValueCandidatesCache', async function () {
+		const item = {
+			EASProjectURL: Math.random().toString(),
+		};
+		deepEqual(await __SetupDetailsIncoming({
+			_ValueCandidatesCache: {
+				[item.EASProjectURL]: {},
+			},
+			_DataFoilBanks: {
+				DataBankProjects: (function () {
+					return [item];
+				}),
+			},
+			_SetupDetail: (function () {
+				return [...arguments].slice(0, 1);
+			}),
+		}), []);
+	});
+
+});
+
 describe('SetupDetails', function test_SetupDetails() {
 
 	const _SetupDetails = function (inputData = {}) {
