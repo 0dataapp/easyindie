@@ -6,7 +6,7 @@ const mod = {
 
 	OLSKControllerTasks () {
 		return [{
-			OLSKTaskName: 'EASDetailsTask',
+			OLSKTaskName: 'EASDetailsStartFetch',
 			OLSKTaskFireTimeInterval: 5,
 			OLSKTaskShouldBePerformed () {
 				return true;
