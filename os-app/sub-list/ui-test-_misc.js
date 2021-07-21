@@ -61,10 +61,10 @@ describe('EASGlanceList_Misc', function  () {
 
 	});
 
-	describe('EASGlanceListItemIcon', function test_EASGlanceListItemIconImage () {
+	describe('EASGlanceListItemIconImage', function test_EASGlanceListItemIconImageImage () {
 
 		it('sets src', function () {
-			browser.assert.attribute(EASGlanceListItemIcon, 'src', item._EASProjectIconURLCachedPath || item.EASProjectIconURL || '/_shared/__external/OLSKUIAssets/_OLSKSharedIconPlaceholder.svg');
+			browser.assert.attribute(EASGlanceListItemIconImage, 'src', item._EASProjectIconURLCachedPath || item.EASProjectIconURL || '/_shared/__external/OLSKUIAssets/_OLSKSharedIconPlaceholder.svg');
 		});
 
 	});
