@@ -6,15 +6,18 @@
 
 <div class="list">
 <% locals.EASGlanceListData.forEach(function (item) { -%>
-	<div class="list-container" data-tags="<%= (item.EASProjectTags || []).join(', ') %>" data-platforms="<%= Object.keys(item.EASProjectPlatforms || {}).map(function (e) {
+	<div class="EASGlanceListItem OLSKCommonCard" data-tags="<%= (item.EASProjectTags || []).join(', ') %>" data-platforms="<%= Object.keys(item.EASProjectPlatforms || {}).map(function (e) {
 		return EASPlatform.EASPlatformSystemProperties()[e].EASSystemName;
 	}).join(', ') %>">
-		<a class="EASGlanceListItem" href="<%= OLSKCanonical('EASInstallRoute', {
+		<a class="EASGlanceListItemIcon" href="<%= OLSKCanonical('EASInstallRoute', {
 			EASProjectID: item.EASProjectID,
-		}) %>" title="<%= item.EASProjectBlurb %>">
+		}) %>">
 			<img class="EASGlanceListItemIconImage" src="<%= item._EASProjectIconURLCachedPath || item.EASProjectIconURL || '/_shared/__external/OLSKUIAssets/_OLSKSharedIconPlaceholder.svg' %>" />
-			<span class="EASGlanceListItemName"><%= item.EASProjectName %></span>
 		</a>
+		<section>
+			<span class="EASGlanceListItemName"><%= item.EASProjectName %></span>
+			<span class="EASGlanceListItemBlurb"><%= item.EASProjectBlurb %></span>
+		</section>
 	</div>
 <% }) -%>
 </div>
