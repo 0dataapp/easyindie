@@ -11,6 +11,13 @@ const mod = {
 			},
 			OLSKTaskCallback: mod.SetupImages,
 			OLSKTaskFireLimit: 1,
+		}, {
+			OLSKTaskName: 'EASImagesFetchIncoming',
+			OLSKTaskFireTimeInterval: 60 * 60,
+			OLSKTaskShouldBePerformed () {
+				return true;
+			},
+			OLSKTaskCallback: mod.SetupImages,
 		}];
 	},
 
