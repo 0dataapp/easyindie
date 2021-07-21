@@ -31,7 +31,7 @@ const mod = {
 	_DataFoilOLSKCache: require('OLSKCache'),
 	_DataFoilOLSKQueue: require('OLSKQueue'),
 	_DataFoilOLSKDisk: require('OLSKDisk'),
-	_DataFoilListings: require('../task-a-listings/controller.js'),
+	_DataFoilBanks: require('../task-a-banks/controller.js'),
 
 	async _DataContentString (inputData) {
 		if (inputData.match('nullboard.io')) {
@@ -169,7 +169,7 @@ const mod = {
 	SetupDetails () {
 		const _mod = process.env.npm_lifecycle_script === 'olsk-spec' ? this : mod;
 
-		return _mod._DataFoilListings.DataListingProjects().map(function (e) {
+		return _mod._DataFoilBanks.DataBankProjects().map(function (e) {
 			return _mod._SetupDetail(e.EASProjectURL);
 		})
 	},

@@ -7,7 +7,7 @@ const mod = {
 	OLSKControllerSharedLocals () {
 		return {
 			EASGlanceProjectsCount () {
-				return mod.DataListingProjects().length;
+				return mod.DataBankProjects().length;
 			},
 			EASGlanceProjectsSourceURLs: EASPlatform.EASPlatformURLs(),
 		}
@@ -26,7 +26,7 @@ const mod = {
 		return (await require('node-fetch')(inputData)).text();
 	},
 
-	_DataListingObjects (param1, param2) {
+	_DataBankObjects (param1, param2) {
 		if (!EASPlatform.EASPlatformURLs().includes(param1)) {
 			throw new Error('EASErrorInputNotValid');
 		}
@@ -290,11 +290,11 @@ const mod = {
 		});
 	},
 
-	DataListingProjects () {
+	DataBankProjects () {
 		const _mod = process.env.npm_lifecycle_script === 'olsk-spec' ? this : mod;
 
 		return _mod._DataFillProjects(_mod._DataMergeProjects(EASPlatform.EASPlatformURLs().reduce(function (coll, item) {
-			return coll.concat(_mod._DataListingObjects(item, _mod._ValueCacheObject[item] || '').map(require('OLSKObject').OLSKObjectTrim));
+			return coll.concat(_mod._DataBankObjects(item, _mod._ValueCacheObject[item] || '').map(require('OLSKObject').OLSKObjectTrim));
 		}, [])));
 	},
 
@@ -306,7 +306,7 @@ const mod = {
 		_mod._ValueFetchQueue = _mod._DataFoilOLSKQueue.OLSKQueueAPI();
 	},
 
-	SetupListingsCache () {
+	SetupBanksCache () {
 		const _mod = process.env.npm_lifecycle_script === 'olsk-spec' ? this : mod;
 		Object.assign(mod, Object.assign(_mod, {
 			_ValueCacheObject: EASPlatform.EASPlatformURLs().reduce(function (coll, item) {
@@ -317,7 +317,7 @@ const mod = {
 		}));
 	},
 
-	_SetupListing (inputData) {
+	_SetupBank (inputData) {
 		const _mod = process.env.npm_lifecycle_script === 'olsk-spec' ? this : mod;
 		return _mod._DataFoilOLSKCache.OLSKCacheResultFetchRenew({
 			ParamMap: _mod._ValueCacheObject,
@@ -332,10 +332,10 @@ const mod = {
 		});
 	},
 
-	SetupListings () {
+	SetupBanks () {
 		const _mod = process.env.npm_lifecycle_script === 'olsk-spec' ? this : mod;
 		
-		return Promise.all(EASPlatform.EASPlatformURLs().map(_mod._SetupListing));
+		return Promise.all(EASPlatform.EASPlatformURLs().map(_mod._SetupBank));
 	},
 
 };

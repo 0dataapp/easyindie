@@ -25,7 +25,7 @@ const mod = {
 
 	// DATA
 
-	_DataFoilListings: require('../task-a-listings/controller.js'),
+	_DataFoilBanks: require('../task-a-banks/controller.js'),
 	_DataFoilDetails: require('../task-b-details/controller.js'),
 	_DataFoilImages: require('../task-c-images/controller.js'),
 
@@ -131,10 +131,10 @@ const mod = {
 	DataProjects () {
 		const _mod = process.env.npm_lifecycle_script === 'olsk-spec' ? this : mod;
 
-		// require('OLSKDisk').OLSKDiskWrite(require('OLSKDisk').OLSKDiskOpen(require('OLSKCache').OLSKCachePath(__dirname, '1-listings.json')), JSON.stringify(_mod._DataFoilListings.DataListingProjects(), null, ' '));
-		// require('OLSKDisk').OLSKDiskWrite(require('OLSKDisk').OLSKDiskOpen(require('OLSKCache').OLSKCachePath(__dirname, '2-details.json')), JSON.stringify(_mod._DataFoilListings.DataListingProjects().map(function (e) { return _mod._DataProjectProperties(e) }), null, ' '));
+		// require('OLSKDisk').OLSKDiskWrite(require('OLSKDisk').OLSKDiskOpen(require('OLSKCache').OLSKCachePath(__dirname, '1-banks.json')), JSON.stringify(_mod._DataFoilBanks.DataBankProjects(), null, ' '));
+		// require('OLSKDisk').OLSKDiskWrite(require('OLSKDisk').OLSKDiskOpen(require('OLSKCache').OLSKCachePath(__dirname, '2-details.json')), JSON.stringify(_mod._DataFoilBanks.DataBankProjects().map(function (e) { return _mod._DataProjectProperties(e) }), null, ' '));
 
-		return _mod._DataFoilListings.DataListingProjects().map(function (e) {
+		return _mod._DataFoilBanks.DataBankProjects().map(function (e) {
 			return _mod._DataProjectProperties(e);
 		}).map(function (e) {
 			return _mod._DataProjectImageProperty(e);

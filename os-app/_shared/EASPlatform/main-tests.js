@@ -5,7 +5,7 @@ const mod = require('./main.js');
 describe('EASPlatformURLs', function test_EASPlatformURLs() {
 
 	it('returns array', function () {
-		deepEqual(mod.EASPlatformURLs(), process.env.EAS_VITRINE_LISTING_URLS.split(','));
+		deepEqual(mod.EASPlatformURLs(), process.env.EAS_TASK_BANKS_URLS.split(','));
 	});
 
 });

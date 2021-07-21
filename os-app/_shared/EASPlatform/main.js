@@ -1,7 +1,7 @@
 const mod = {
 
 	EASPlatformURLs() {
-		return process.env.EAS_VITRINE_LISTING_URLS.split(',');
+		return process.env.EAS_TASK_BANKS_URLS.split(',');
 	},
 
 	EASPlatformURLCloudron () {

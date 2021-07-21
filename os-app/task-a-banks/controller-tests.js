@@ -5,27 +5,27 @@ const mod = require('./controller.js');
 const EASPlatform = require('../_shared/EASPlatform/main.js');
 import OLSKCache from 'OLSKCache';
 
-describe('_DataListingObjects', function test__DataListingObjects() {
+describe('_DataBankObjects', function test__DataBankObjects() {
 
-	it('throws if param1 not in DataListingURLs', function () {
+	it('throws if param1 not in DataBankURLs', function () {
 		throws(function () {
-			mod._DataListingObjects(Math.random().toString(), Math.random().toString());
+			mod._DataBankObjects(Math.random().toString(), Math.random().toString());
 		}, /EASErrorInputNotValid/);
 	});
 
 	it('throws if param2 not string', function () {
 		throws(function () {
-			mod._DataListingObjects(uRandomElement(EASPlatform.EASPlatformURLs()), null);
+			mod._DataBankObjects(uRandomElement(EASPlatform.EASPlatformURLs()), null);
 		}, /EASErrorInputNotValid/);
 	});
 
 	it('returns array', function () {
-		deepEqual(mod._DataListingObjects(uRandomElement(EASPlatform.EASPlatformURLs()), ''), []);
+		deepEqual(mod._DataBankObjects(uRandomElement(EASPlatform.EASPlatformURLs()), ''), []);
 	});
 
 	context('Cloudron', function test_Cloudron () {
 
-		const uListing = function (inputData = {}) {
+		const uBank = function (inputData = {}) {
 			const item = Object.assign({
 				EASProjectURL: Math.random().toString(),
 				EASPlatformName: Math.random().toString(),
@@ -51,7 +51,7 @@ describe('_DataListingObjects', function test__DataListingObjects() {
     $scope.apps = null;`;
 		};
 		
-		it('parses listing', function () {
+		it('parses data', function () {
 			const EASProjectURL = Math.random().toString();
 			const EASPlatformName = Math.random().toString();
 			const EASPlatformBlurb = Math.random().toString();
@@ -71,7 +71,7 @@ describe('_DataListingObjects', function test__DataListingObjects() {
 				installCount: Math.random(),
 			};
 
-			deepEqual(mod._DataListingObjects(EASPlatform.EASPlatformURLCloudron(), uListing({
+			deepEqual(mod._DataBankObjects(EASPlatform.EASPlatformURLCloudron(), uBank({
 				EASProjectURL,
 				EASPlatformName,
 				EASPlatformBlurb,
@@ -99,7 +99,7 @@ describe('_DataListingObjects', function test__DataListingObjects() {
 	
 	context('Caprover', function test_Caprover () {
 
-		const uListing = function (inputData = {}) {
+		const uBank = function (inputData = {}) {
 			const item = Object.assign({
 				EASPlatformName: Math.random().toString(),
 				EASPlatformBlurb: Math.random().toString(),
@@ -113,7 +113,7 @@ describe('_DataListingObjects', function test__DataListingObjects() {
 			return `{"oneClickApps":[{"baseUrl":"https://oneclickapps.caprover.com","name":"${ item.EASPlatformCues.name }","displayName":"${ item.EASPlatformName }","isOfficial":${ item.EASPlatformCues.isOfficial },"description":"${ item.EASPlatformBlurb }","logoUrl":"${ item.EASPlatformImageURL }"}]}`;
 		};
 		
-		it('parses listing', function () {
+		it('parses data', function () {
 			const EASPlatformName = Math.random().toString();
 			const EASPlatformBlurb = Math.random().toString();
 			const EASPlatformImageURL = Math.random().toString();
@@ -122,7 +122,7 @@ describe('_DataListingObjects', function test__DataListingObjects() {
 				isOfficial: Math.random().toString(),
 			};
 
-			deepEqual(mod._DataListingObjects(EASPlatform.EASPlatformURLCaprover(), uListing({
+			deepEqual(mod._DataBankObjects(EASPlatform.EASPlatformURLCaprover(), uBank({
 				EASPlatformName,
 				EASPlatformBlurb,
 				EASPlatformImageURL,
@@ -144,7 +144,7 @@ describe('_DataListingObjects', function test__DataListingObjects() {
 
 	context('Yunohost', function test_Yunohost () {
 
-		const uListing = function (inputData = {}) {
+		const uBank = function (inputData = {}) {
 			const item = Object.assign({
 				EASProjectURL: Math.random().toString(),
 				EASPlatformName: Math.random().toString(),
@@ -166,7 +166,7 @@ describe('_DataListingObjects', function test__DataListingObjects() {
 			return `{"apps": {"20euros": {"category": "synchronization", "featured": ${ item.EASPlatformCues.featured }, "git": {"branch": "master", "revision": "ed560b9fdcd2f0096bdc709913ddba79059f60f0", "url": "https://github.com/YunoHost-Apps/20euros_ynh"}, "high_quality": ${ item.EASPlatformCues.high_quality }, "id": "${ item.EASPlatformCues.id }", "lastUpdate": ${ item.EASPlatformCues.lastUpdate }, "level": ${ item.EASPlatformCues.level }, "maintained": ${ item.EASPlatformCues.maintained }, "manifest": {"arguments": {"install": [{"example": "domain.org", "name": "domain", "type": "domain"}, {"default": "/20euros", "example": "/20euros", "name": "path", "type": "path"}, {"default": true, "help": {"en": "If enabled, 20 euros will be accessible by people who doesn\u2019t have an account. This can be changed later via the webadmin.", "fr": "Si cette case est coch\u00e9e, 20 euros sera accessible aux personnes n\u2019ayant pas de compte. Vous pourrez changer ceci plus tard via la webadmin."}, "name": "is_public", "type": "boolean"}]}, "description": {"ar": "2048 - 20euros", "en": "${ item.EASPlatformBlurb }", "es": "2048 - 20euros", "fr": "2048 - 20euros", "nl": "2048 - 20euros", "oc": "2048 - 20euros"}, "id": "20euros", "license": "MIT", "maintainer": {"email": "", "name": "eric_G"}, "multi_instance": ${ item.EASPlatformCues.multi_instance }, "name": "${ item.EASPlatformName }", "packaging_format": 1, "requirements": {"yunohost": ">= 4.1.7"}, "services": ["nginx"], "url": "${ item.EASProjectURL }", "version": "1.0~ynh4"}, "state": "${ item.EASPlatformCues.state }", "subtags": ["files"]}}, "categories": [{"description": {"en": "${ item.EASPlatformTagSources[0] }", "es": "Sincronizaci\u00f3n, contactos, calendario, gestor de contrase\u00f1as...", "fr": "Fichiers, contacts, calendrier, mots de passe..."}, "icon": "cloud", "id": "synchronization", "subtags": [{"id": "files", "title": {"en": "${ item.EASPlatformTagSources[1] }", "es": "Archivos", "fr": "Fichiers"}}], "title": {"en": "${ item.EASPlatformCategory }", "es": "Sincronizaci\u00f3n", "fr": "Synchronisation"}}, {"description": {"en": "Websites, blog, wiki, CMS...", "es": "Paginas Web, blog, wiki, CMS...", "fr": "Site web, blog, wiki, CMS..."}, "icon": "globe", "id": "publishing", "subtags": [{"id": "websites", "title": {"en": "Websites", "es": "Paginas web", "fr": "Sites web"}}, {"id": "blog", "title": {"en": "Blog", "es": "blog", "fr": "Blog"}}, {"id": "wiki", "title": {"en": "Wiki", "es": "Wiki", "fr": "Wiki"}}, {"id": "ecommerce", "title": {"en": "E-commerce", "es": "Comercio eletronico", "fr": "Vente en ligne"}}, {"id": "analytics", "title": {"en": "Analytics", "es": "Estadisticas", "fr": "Statistiques"}}], "title": {"en": "Publishing", "es": "Publicaciones", "fr": "Publication"}}, {"description": {"en": "Chat, email, forum, meetings...", "es": "Chat, email, foro, reuniones en grupo...", "fr": "Chat, email, forum, meetings..."}, "icon": "comments-o", "id": "communication", "subtags": [{"id": "chat", "title": {"en": "Instant messaging", "es": "Mensajeria Instantanea", "fr": "Messagerie instantann\u00e9e"}}, {"id": "forum", "title": {"en": "Forum", "es": "Foro", "fr": "Forum"}}, {"id": "email", "title": {"en": "Email", "es": "Email", "fr": "Email"}}, {"id": "meeting", "title": {"en": "Meetings", "es": "Reuniones", "fr": "Meetings"}}], "title": {"en": "Communication", "es": "Comunicacion", "fr": "Communication"}}, {"description": {"en": "Collaborative text edition, spreadsheets...", "es": "Edici\u00f3n de texto colaborativo, hojas de c\u00e1lculo...", "fr": "\u00c9dition de texte collaborative, tableurs..."}, "icon": "file-text-o", "id": "office", "subtags": [{"id": "text", "title": {"en": "Text", "es": "Texto", "fr": "Texte"}}, {"id": "spreadsheet", "title": {"en": "Speadsheet", "es": "Hoja de c\u00e1lculo", "fr": "Tableur"}}, {"id": "impress", "title": {"en": "Slide show", "es": "Diapositivas", "fr": "Diaporama"}}, {"id": "draw", "title": {"en": "Graphism", "es": "Graficos", "fr": "Graphisme"}}, {"id": "mindmap", "title": {"en": "Mindmap", "fr": "Cartes mentale"}}], "title": {"en": "Office", "es": "Ofimatica", "fr": "Bureautique"}}, {"description": {"en": "Tasks, polls, accounting, ERP...", "fr": "T\u00e2ches, sondages, comptabilit\u00e9, ERP..."}, "icon": "area-chart", "id": "productivity_and_management", "subtags": [{"id": "task", "title": {"en": "Task", "fr": "T\u00e2ches"}}, {"id": "poll", "title": {"en": "Poll", "fr": "Sondage"}}, {"id": "accounting", "title": {"en": "Accounting", "fr": "Comptabilit\u00e9"}}, {"id": "business_and_ngos", "title": {"en": "Business and NGOs", "fr": "Entreprises et associations"}}], "title": {"en": "Productivity & management", "fr": "Productivit\u00e9 & gestion"}}, {"description": {"en": "Pastebins, URL shortener, proxies...", "fr": "Pastebins, raccourcisseurs d'URL, proxys..."}, "icon": "umbrella", "id": "small_utilities", "subtags": [{"id": "pastebin", "title": {"en": "Pastebin", "fr": "Pastebin"}}, {"id": "url_shortener", "title": {"en": "URL shortener", "fr": "Raccourcisseurs d'URL"}}], "title": {"en": "Small utilities", "fr": "Petits utilitaires"}}, {"description": {"en": "Newsfeed readers, books library...", "fr": "Fils d'actualit\u00e9, livres..."}, "icon": "newspaper-o", "id": "reading", "subtags": [{"id": "rssreader", "title": {"en": "RSS readers", "fr": "Lecteurs RSS"}}, {"id": "books", "title": {"en": "Books", "fr": "Livres"}}], "title": {"en": "Reading", "fr": "Lecture"}}, {"description": {"en": "Music library, pictures gallery, P2P, TV shows...", "fr": "Biblioth\u00e8que de musique, d'images, P2P, s\u00e9ries..."}, "icon": "music", "id": "multimedia", "subtags": [{"id": "mediacenter", "title": {"en": "Media center", "fr": "Centre multim\u00e9dia"}}, {"id": "download", "title": {"en": "Download", "fr": "T\u00e9l\u00e9chargement"}}, {"id": "music", "title": {"en": "Music", "fr": "Musique"}}, {"id": "pictures", "title": {"en": "Pictures", "fr": "Images"}}], "title": {"en": "Multimedia", "fr": "Multim\u00e9dia"}}, {"description": {"en": "Microblogging, federated media", "fr": "Microblogging, m\u00e9dias f\u00e9d\u00e9r\u00e9s"}, "icon": "users", "id": "social_media", "subtags": [{"id": "microblogging", "title": {"en": "Microblogging", "fr": "Microblogging"}}, {"id": "blogging", "title": {"en": "Blogging", "fr": "Blogging"}}, {"id": "events", "title": {"en": "Events", "fr": "\u00c9v\u00e9nements"}}, {"id": "videos", "title": {"en": "Videos", "fr": "Vid\u00e9os"}}, {"id": "pictures", "title": {"en": "Pictures", "fr": "Images"}}, {"id": "music", "title": {"en": "Music", "fr": "Musique"}}], "title": {"en": "Social media", "fr": "M\u00e9dias sociaux"}}, {"description": {"en": "Wanna have some fun? :)", "fr": "Envie de s'amuser ? ;)"}, "icon": "gamepad", "id": "games", "title": {"en": "Games", "fr": "Jeux"}}, {"description": {"en": "Git forges, apps skeleton, CI, translation...", "fr": "Forges Git, squelette d'apps, CI, traduction..."}, "icon": "flask", "id": "dev", "subtags": [{"id": "forge", "title": {"en": "Forge", "fr": "Forge"}}, {"id": "skeleton", "title": {"en": "Skeleton", "fr": "Squelettes"}}, {"id": "programming", "title": {"en": "Programming", "fr": "Programmation"}}], "title": {"en": "Development", "fr": "D\u00e9veloppement"}}, {"description": {"en": "Monitoring, backup, network, DB tools...", "fr": "Monitoring, sauvegardes, outils r\u00e9seau, bases de donn\u00e9es..."}, "icon": "wrench", "id": "system_tools", "subtags": [{"id": "backup", "title": {"en": "Backup", "fr": "Sauvegardes"}}, {"id": "monitoring", "title": {"en": "Monitoring", "fr": "Monitoring"}}, {"id": "network", "title": {"en": "Network", "fr": "R\u00e9seau"}}, {"id": "db", "title": {"en": "Databases", "fr": "Bases de donn\u00e9es"}}], "title": {"en": "System tools", "fr": "Outils syst\u00e8me"}}, {"description": {"en": "Home automation, energy dashboard...", "fr": "Domotique, \u00e9nergie..."}, "icon": "home", "id": "iot", "title": {"en": "Internet of Things (IoT)", "fr": "Internet des objets (IoT)"}}, {"description": {"en": "Weird experimental or very-custom stuff", "fr": "Trucs exp\u00e9rimentaux et autres projets sp\u00e9cifiques"}, "icon": "tree", "id": "wat", "title": {"en": "Wat", "fr": "Wat"}}]}`;
 		};
 		
-		it('parses listing', function () {
+		it('parses data', function () {
 			const EASProjectURL = Math.random().toString();
 			const EASPlatformName = Math.random().toString();
 			const EASPlatformBlurb = Math.random().toString();
@@ -183,7 +183,7 @@ describe('_DataListingObjects', function test__DataListingObjects() {
 				state: Math.random().toString(),
 			};
 
-			deepEqual(mod._DataListingObjects(EASPlatform.EASPlatformURLYunohost(), uListing({
+			deepEqual(mod._DataBankObjects(EASPlatform.EASPlatformURLYunohost(), uBank({
 				EASProjectURL,
 				EASPlatformName,
 				EASPlatformBlurb,
@@ -664,18 +664,18 @@ describe('_DataFillProjects', function test__DataFillProjects() {
 
 });
 
-describe('DataListingProjects', function test_DataListingProjects() {
+describe('DataBankProjects', function test_DataBankProjects() {
 	
-	const _DataListingProjects = function (inputData = {}) {
+	const _DataBankProjects = function (inputData = {}) {
 		return Object.assign(Object.assign({}, mod), {
 			_ValueCacheObject: {},
-			_DataListingObjects: (function () {
+			_DataBankObjects: (function () {
 				return [];
 			}),
-		}, inputData).DataListingProjects();
+		}, inputData).DataBankProjects();
 	};
 
-	it('calls _DataListingObjects', function () {
+	it('calls _DataBankObjects', function () {
 		const item = [];
 
 		const _ValueCacheObject = EASPlatform.EASPlatformURLs().reduce(function (coll, item) {
@@ -684,9 +684,9 @@ describe('DataListingProjects', function test_DataListingProjects() {
 			});
 		}, {});
 		
-		_DataListingProjects({
+		_DataBankProjects({
 			_ValueCacheObject,
-			_DataListingObjects: (function () {
+			_DataBankObjects: (function () {
 				item.push([...arguments]);
 
 				return [];
@@ -700,8 +700,8 @@ describe('DataListingProjects', function test_DataListingProjects() {
 
 	it('trims properties', function () {
 		const item = Math.random().toString();
-		deepEqual(_DataListingProjects({
-			_DataListingObjects: (function () {
+		deepEqual(_DataBankProjects({
+			_DataBankObjects: (function () {
 				return [{
 					EASProjectURL: arguments[0],
 					[item]: ' ' + item + ' ',
@@ -716,15 +716,15 @@ describe('DataListingProjects', function test_DataListingProjects() {
 	});
 
 	it('passes default value if cache empty', function () {
-		deepEqual(_DataListingProjects({
-			_DataListingObjects: mod._DataListingObjects,
+		deepEqual(_DataBankProjects({
+			_DataBankObjects: mod._DataBankObjects,
 		}), []);
 	});
 
 	it('calls _DataMergeProjects', function () {
 		const item = Math.random().toString();
-		deepEqual(_DataListingProjects({
-			_DataListingObjects: (function () {
+		deepEqual(_DataBankProjects({
+			_DataBankObjects: (function () {
 				return [{
 					EASProjectURL: arguments[0],
 					item,
@@ -745,7 +745,7 @@ describe('DataListingProjects', function test_DataListingProjects() {
 		const item = {
 			[Math.random().toString()]: Math.random().toString(),
 		};
-		deepEqual(_DataListingProjects({
+		deepEqual(_DataBankProjects({
 			_DataMergeProjects: (function () {
 				return [item];
 			}),
@@ -787,21 +787,21 @@ describe('SetupFetchQueue', function test_SetupFetchQueue() {
 
 });
 
-describe('SetupListingsCache', function test_SetupListingsCache() {
+describe('SetupBanksCache', function test_SetupBanksCache() {
 
-	const _SetupListingsCache = function (inputData) {
+	const _SetupBanksCache = function (inputData) {
 		const _mod = Object.assign(Object.assign({}, mod), {
 			_DataFoilOLSKDisk: Object.assign({
 				OLSKDiskRead: (function () {}),
 			}, inputData),
 		});
-		return _mod.SetupListingsCache() || _mod;
+		return _mod.SetupBanksCache() || _mod;
 	};
 
 	it('calls OLSKDiskRead', function () {
 		const items = [];
 
-		_SetupListingsCache({
+		_SetupBanksCache({
 			OLSKDiskRead: (function () {
 				items.push(...arguments);
 			}),
@@ -815,7 +815,7 @@ describe('SetupListingsCache', function test_SetupListingsCache() {
 	it('sets _ValueCacheObject', function () {
 		const OLSKDiskRead = uRandomElement(Math.random().toString(), null);
 
-		deepEqual(_SetupListingsCache({
+		deepEqual(_SetupBanksCache({
 			OLSKDiskRead: (function () {
 				return OLSKDiskRead;
 			}),
@@ -828,9 +828,9 @@ describe('SetupListingsCache', function test_SetupListingsCache() {
 
 });
 
-describe('_SetupListing', function test__SetupListing() {
+describe('_SetupBank', function test__SetupBank() {
 
-	const __SetupListing = function (inputData) {
+	const __SetupBank = function (inputData) {
 		return Object.assign(Object.assign({}, mod), {
 			_DataContentString: (function () {}),
 
@@ -841,7 +841,7 @@ describe('_SetupListing', function test__SetupListing() {
 			_DataFoilOLSKDisk: Object.assign({
 				OLSKDiskWrite: (function () {}),
 			}, inputData),
-		}, inputData)._SetupListing(inputData.url || Math.random().toString());
+		}, inputData)._SetupBank(inputData.url || Math.random().toString());
 	};
 
 	it('calls OLSKCacheResultFetchRenew', function () {
@@ -850,7 +850,7 @@ describe('_SetupListing', function test__SetupListing() {
 			[Math.random().toString()]: Math.random().toString(),
 		};
 
-		const item = __SetupListing({
+		const item = __SetupBank({
 			url,
 			_ValueCacheObject,
 			OLSKCacheResultFetchRenew: (function () {
@@ -872,7 +872,7 @@ describe('_SetupListing', function test__SetupListing() {
 		it('calls _DataContentString', async function () {
 			const url = Math.random().toString();
 
-			deepEqual(await __SetupListing({
+			deepEqual(await __SetupBank({
 				url,
 				OLSKCacheResultFetchRenew: (function (inputData) {
 					return inputData.ParamCallback();
@@ -891,7 +891,7 @@ describe('_SetupListing', function test__SetupListing() {
 			const url = uLink();
 			const data = Math.random().toString();
 			
-			deepEqual(await __SetupListing({
+			deepEqual(await __SetupBank({
 				url,
 				_ValueCacheObject: {
 					[url]: data,
@@ -909,17 +909,17 @@ describe('_SetupListing', function test__SetupListing() {
 
 });
 
-describe('SetupListings', function test_SetupListings() {
+describe('SetupBanks', function test_SetupBanks() {
 
-	const _SetupListings = function (inputData = {}) {
+	const _SetupBanks = function (inputData = {}) {
 		return Object.assign(Object.assign({}, mod), {
-			_SetupListing: (function () {}),
-		}, inputData).SetupListings();
+			_SetupBank: (function () {}),
+		}, inputData).SetupBanks();
 	};
 
-	it('calls _SetupListing', async function () {
-		deepEqual(await _SetupListings({
-			_SetupListing: (function (e) {
+	it('calls _SetupBank', async function () {
+		deepEqual(await _SetupBanks({
+			_SetupBank: (function (e) {
 				return e;
 			}),
 		}), EASPlatform.EASPlatformURLs());
