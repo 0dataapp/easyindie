@@ -9,7 +9,9 @@ const mod = {
 			OLSKTaskShouldBePerformed () {
 				return true;
 			},
-			OLSKTaskCallback: mod.SetupImages,
+			OLSKTaskCallback: (function () {
+				require('OLSKModule').OLSKModuleLifecycleSetup(mod);
+			}),
 			OLSKTaskFireLimit: 1,
 		}, {
 			OLSKTaskName: 'EASImagesFetchIncoming',
@@ -88,9 +90,5 @@ const mod = {
 	},
 
 };
-
-if (process.env.NODE_ENV === 'production' || process.env.npm_lifecycle_script === 'olsk-express') {
-	require('OLSKModule').OLSKModuleLifecycleSetup(mod);
-}
 
 Object.assign(exports, mod);
