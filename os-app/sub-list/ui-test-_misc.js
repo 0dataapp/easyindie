@@ -85,6 +85,12 @@ describe('EASGlanceList_Misc', function  () {
 
 	describe('EASGlanceListItemName', function test_EASGlanceListItemName () {
 
+		it('sets href', function () {
+			browser.assert.attribute(EASGlanceListItemName, 'href', OLSKTestingCanonical(require('../open-install/controller.js').OLSKControllerRoutes().shift(), {
+				EASProjectID: item.EASProjectID,
+			}));
+		});
+
 		it('binds EASProjectName', function () {
 			browser.assert.text(EASGlanceListItemName, item.EASProjectName);
 		});

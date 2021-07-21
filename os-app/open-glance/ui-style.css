@@ -104,6 +104,7 @@
 
 .EASGlanceListItemName {
 	font-size: 140%;
+	text-decoration: none;
 }
 
 .EASGlanceListItemBlurb {

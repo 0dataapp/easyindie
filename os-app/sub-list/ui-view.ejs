@@ -15,7 +15,9 @@
 			<img class="EASGlanceListItemIconImage" src="<%= item._EASProjectIconURLCachedPath || item.EASProjectIconURL || '/_shared/__external/OLSKUIAssets/_OLSKSharedIconPlaceholder.svg' %>" />
 		</a>
 		<section>
-			<span class="EASGlanceListItemName"><%= item.EASProjectName %></span>
+			<a class="EASGlanceListItemName" href="<%= OLSKCanonical('EASInstallRoute', {
+			EASProjectID: item.EASProjectID,
+		}) %>"><%= item.EASProjectName %></a>
 			<span class="EASGlanceListItemBlurb"><%= item.EASProjectBlurb %></span>
 		</section>
 	</div>
