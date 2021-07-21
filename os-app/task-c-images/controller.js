@@ -4,7 +4,7 @@ const mod = {
 
 	OLSKControllerTasks () {
 		return [{
-			OLSKTaskName: 'EASImagesTask',
+			OLSKTaskName: 'EASImagesStartFetch',
 			OLSKTaskFireTimeInterval: 1,
 			OLSKTaskShouldBePerformed () {
 				return true;
