@@ -461,7 +461,7 @@ describe('_SetupDetail', function test__SetupDetail() {
 
 });
 
-describe('SetupDetails', function test_SetupDetail() {
+describe('SetupDetails', function test_SetupDetails() {
 
 	const _SetupDetails = function (inputData = {}) {
 		return Object.assign(Object.assign({}, mod), {
