@@ -79,29 +79,34 @@
 	justify-content: center;
 }
 
-.list-container {
-	display: flex;
-}
-
 .EASGlanceListItem {
-	--size: 64px;
-	
-	width: var(--size);
+	padding: 10px;
+	width: 220px;
 
-	margin: 10px;
-
-	text-decoration: none;
-	color: black;
-	font-weight: bold;
-
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: flex-end;
+	font-size: 120%;
 }
 
-.EASGlanceListItemIcon {
+@media screen and (max-width: 760px) {
+
+	.EASGlanceListItem {
+		width: 100%;
+	}
+
+}
+
+.EASGlanceListItemIconImage {
 	width: 100%;
 	padding: 10px;
 	border-radius: 15px;
+
+	margin: 0 !important;
+}
+
+.EASGlanceListItemName {
+	font-size: 140%;
+	text-decoration: none;
+}
+
+.EASGlanceListItemBlurb {
+	opacity: 0.5;
 }

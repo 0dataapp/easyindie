@@ -39,40 +39,68 @@ describe('EASGlanceList_Misc', function  () {
 
 	describe('EASGlanceListItem', function test_EASGlanceListItem () {
 
-		it('sets href', function () {
-			browser.assert.attribute(EASGlanceListItem, 'href', OLSKTestingCanonical(require('../open-install/controller.js').OLSKControllerRoutes().shift(), {
-				EASProjectID: item.EASProjectID,
-			}));
-		});
-
-		it('sets title', function () {
-			browser.assert.attribute(EASGlanceListItem, 'title', item.EASProjectBlurb);
+		it('classes OLSKCommonCard', function () {
+			browser.assert.hasClass(EASGlanceListItem, 'OLSKCommonCard');
 		});
 
 		it('sets data-tags', function () {
-			browser.assert.attribute('.list-container', 'data-tags', item.EASProjectTags.join(', '));
+			browser.assert.attribute('.EASGlanceListItem', 'data-tags', item.EASProjectTags.join(', '));
 		});
 
 		it('sets data-platforms', function () {
-			browser.assert.attribute('.list-container', 'data-platforms', Object.keys(item.EASProjectPlatforms).map(function (e) {
+			browser.assert.attribute('.EASGlanceListItem', 'data-platforms', Object.keys(item.EASProjectPlatforms).map(function (e) {
 				return EASPlatform.EASPlatformSystemProperties()[e].EASSystemName;
 			}).join(', '));
 		});
 
 	});
 
-	describe('EASGlanceListItemIcon', function test_EASGlanceListItemIconImage () {
+	describe('EASGlanceListItemIcon', function test_EASGlanceListItemIcon () {
+
+		it('sets href', function () {
+			browser.assert.attribute(EASGlanceListItemIcon, 'href', OLSKTestingCanonical(require('../open-install/controller.js').OLSKControllerRoutes().shift(), {
+				EASProjectID: item.EASProjectID,
+			}));
+		});
+
+		it('sets data-tags', function () {
+			browser.assert.attribute('.EASGlanceListItem', 'data-tags', item.EASProjectTags.join(', '));
+		});
+
+		it('sets data-platforms', function () {
+			browser.assert.attribute('.EASGlanceListItem', 'data-platforms', Object.keys(item.EASProjectPlatforms).map(function (e) {
+				return EASPlatform.EASPlatformSystemProperties()[e].EASSystemName;
+			}).join(', '));
+		});
+
+	});
+
+	describe('EASGlanceListItemIconImage', function test_EASGlanceListItemIconImageImage () {
 
 		it('sets src', function () {
-			browser.assert.attribute(EASGlanceListItemIcon, 'src', item._EASProjectIconURLCachedPath || item.EASProjectIconURL || '/_shared/__external/OLSKUIAssets/_OLSKSharedIconPlaceholder.svg');
+			browser.assert.attribute(EASGlanceListItemIconImage, 'src', item._EASProjectIconURLCachedPath || item.EASProjectIconURL || '/_shared/__external/OLSKUIAssets/_OLSKSharedIconPlaceholder.svg');
 		});
 
 	});
 
 	describe('EASGlanceListItemName', function test_EASGlanceListItemName () {
 
+		it('sets href', function () {
+			browser.assert.attribute(EASGlanceListItemName, 'href', OLSKTestingCanonical(require('../open-install/controller.js').OLSKControllerRoutes().shift(), {
+				EASProjectID: item.EASProjectID,
+			}));
+		});
+
 		it('binds EASProjectName', function () {
 			browser.assert.text(EASGlanceListItemName, item.EASProjectName);
+		});
+
+	});
+
+	describe('EASGlanceListItemBlurb', function test_EASGlanceListItemBlurb () {
+
+		it('binds EASProjectBlurb', function () {
+			browser.assert.text(EASGlanceListItemBlurb, item.EASProjectBlurb);
 		});
 
 	});
