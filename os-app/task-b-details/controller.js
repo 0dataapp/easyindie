@@ -21,7 +21,7 @@ const mod = {
 			OLSKTaskShouldBePerformed () {
 				return true;
 			},
-			OLSKTaskCallback: mod.SetupDetails,
+			OLSKTaskCallback: mod._SetupDetailsIncoming,
 		}];
 	},
 
