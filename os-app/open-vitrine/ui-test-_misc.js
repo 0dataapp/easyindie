@@ -34,14 +34,6 @@ describe('EASVitrine_Misc', function () {
 	
 	});
 
-	describe('EASVitrineRepoLink', function test_EASVitrineRepoLink () {
-		
-		it('sets href', function () {
-			browser.assert.attribute(EASVitrineRepoLink, 'href', process.env.EAS_VITRINE_REPO_URL);
-		});
-	
-	});
-
 	describe('OLSKEdit', function test_OLSKEdit () {
 
 		it('sets OLSKEditURL', function () {

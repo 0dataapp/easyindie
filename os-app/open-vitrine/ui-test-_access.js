@@ -3,9 +3,6 @@ const kDefaultRoutePath = require('./controller.js').OLSKControllerRoutes().shif
 Object.entries({
 	EASVitrine: '.EASVitrine',
 	
-	EASVitrineInformationHeading: '.EASVitrineInformationHeading',
-	EASVitrineRepoLink: '.EASVitrineRepoLink',
-
 	EASVitrineAlsoHeading: '.EASVitrineAlsoHeading',
 	EASVitrineZeroDataCrown: '.EASVitrineZeroDataCrown',
 	EASVitrineZeroDataCrownIcon: '.EASVitrineZeroDataCrownIcon',
@@ -31,14 +28,6 @@ describe('EASVitrine_Access', function () {
 	
 	it('shows OLSKLanding', function() {
 		browser.assert.elements('.OLSKLanding', 1);
-	});
-
-	it('shows EASVitrineInformationHeading', function () {
-		browser.assert.elements(EASVitrineInformationHeading, 1);
-	});
-
-	it('shows EASVitrineRepoLink', function () {
-		browser.assert.elements(EASVitrineRepoLink, 1);
 	});
 
 	it('shows OLSKEdit', function () {

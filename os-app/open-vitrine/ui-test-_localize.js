@@ -22,14 +22,6 @@ kDefaultRoute.OLSKRouteLanguageCodes.forEach(function (OLSKRoutingLanguage) {
 			browser.assert.attribute('meta[name=description]', 'content', uLocalized('EASVitrineDescription'));
 		});
 
-		it('localizes EASVitrineInformationHeading', function () {
-			browser.assert.text(EASVitrineInformationHeading, uLocalized('EASVitrineInformationHeadingText'));
-		});
-
-		it('localizes EASVitrineRepoLink', function () {
-			browser.assert.text(EASVitrineRepoLink, uLocalized('EASVitrineRepoLinkText'));
-		});
-
 		it('localizes EASVitrineAlsoHeading', function () {
 			browser.assert.text(EASVitrineAlsoHeading, uLocalized('EASVitrineAlsoHeadingText'));
 		});

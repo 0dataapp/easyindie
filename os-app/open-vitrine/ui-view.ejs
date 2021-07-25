@@ -23,12 +23,6 @@ locals.OLSKPageAssets = [
 	OLSKLandingActionHref: OLSKCanonical('EASGlanceRoute'),
 }) %>
 
-<h1 class="EASVitrineInformationHeading"><%= OLSKLocalized('EASVitrineInformationHeadingText') %></h1>
-
-<ul>
-	<li><a class="EASVitrineRepoLink" href="<%= process.env.EAS_VITRINE_REPO_URL %>"><%= OLSKLocalized('EASVitrineRepoLinkText') %></a></li>
-</ul>
-
 <%- include('../../node_modules/OLSKEdit/main.ejs', {
 	OLSKEditURL: process.env.OLSK_REPO_URL,
 }) %>
