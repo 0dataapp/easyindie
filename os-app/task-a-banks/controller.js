@@ -140,6 +140,7 @@ const mod = {
 				'ssh chroot directory',
 				'Riot',
 				'LibreQR',
+				'my_capsule',
 			].includes(e.EASPlatformName);
 		}).length) {
 			return false;
