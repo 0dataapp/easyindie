@@ -146,6 +146,11 @@ describe('SetupImages', function test_SetupImages() {
 					return [];
 				}),
 			}, inputData),
+			_DataFoilBanks: Object.assign({
+				DataBankPlatforms: (function () {
+					return [];
+				}),
+			}, inputData),
 			_SetupImage: (function () {}),
 		}, inputData).SetupImages();
 	};
@@ -160,9 +165,9 @@ describe('SetupImages', function test_SetupImages() {
 				}];
 			}),
 			_SetupImage: (function () {
-				return [...arguments];
+				return [...arguments][0];
 			}),
-		}), [[EASProjectIconURL]]);
+		}), [EASProjectIconURL]);
 	});
 
 	it('ignores if no EASProjectIconURL', async function () {
@@ -186,6 +191,48 @@ describe('SetupImages', function test_SetupImages() {
 				return [...arguments];
 			}),
 		}), []);
+	});
+
+	context('DataBankPlatforms', function () {
+		
+		it('calls _SetupImage', async function () {
+			const EASPlatformIconURL = Math.random().toString();
+
+			deepEqual(await _SetupImages({
+				DataBankPlatforms: (function () {
+					return [{
+						EASPlatformIconURL,
+					}];
+				}),
+				_SetupImage: (function () {
+					return [...arguments][0];
+				}),
+			}), [EASPlatformIconURL]);
+		});
+
+		it('ignores if no EASPlatformIconURL', async function () {
+			deepEqual(await _SetupImages({
+				DataBankPlatforms: (function () {
+					return [{}];
+				}),
+			}), []);
+		});
+
+		it('ignores if already local', async function () {
+			const EASPlatformIconURL = Math.random().toString();
+			deepEqual(await _SetupImages({
+				DataBankPlatforms: (function () {
+					return [{
+						EASPlatformIconURL: Math.random().toString(),
+						_EASPlatformIconURLCachedPath: Math.random().toString(),
+					}];
+				}),
+				_DataImagePipe: (function () {
+					return [...arguments];
+				}),
+			}), []);
+		});
+	
 	});
 
 });

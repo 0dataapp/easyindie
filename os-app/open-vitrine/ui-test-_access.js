@@ -3,6 +3,11 @@ const kDefaultRoutePath = require('./controller.js').OLSKControllerRoutes().shif
 Object.entries({
 	EASVitrine: '.EASVitrine',
 	
+	EASVitrinePlatformsHeading: '.EASVitrinePlatformsHeading',
+	EASVitrinePlatformsLink: '.EASVitrinePlatformsLink',
+	EASVitrinePlatformsLinkImage: '.EASVitrinePlatformsLinkImage',
+	EASVitrinePlatformsLinkText: '.EASVitrinePlatformsLinkText',
+
 	EASVitrineAlsoHeading: '.EASVitrineAlsoHeading',
 	EASVitrineZeroDataCrown: '.EASVitrineZeroDataCrown',
 	EASVitrineZeroDataCrownIcon: '.EASVitrineZeroDataCrownIcon',
@@ -14,6 +19,8 @@ Object.entries({
 
 describe('EASVitrine_Access', function () {
 
+	const platforms = require('../task-a-banks/controller.js').DataBankPlatforms().length;
+	
 	before(function() {
 		return browser.visit(kDefaultRoutePath);
 	});
@@ -28,6 +35,22 @@ describe('EASVitrine_Access', function () {
 	
 	it('shows OLSKLanding', function() {
 		browser.assert.elements('.OLSKLanding', 1);
+	});
+
+	it('shows EASVitrinePlatformsHeading', function () {
+		browser.assert.elements(EASVitrinePlatformsHeading, 1);
+	});
+
+	it('shows EASVitrinePlatformsLink', function () {
+		browser.assert.elements(EASVitrinePlatformsLink, platforms);
+	});
+
+	it('shows EASVitrinePlatformsLinkImage', function () {
+		browser.assert.elements(EASVitrinePlatformsLinkImage, platforms);
+	});
+
+	it('shows EASVitrinePlatformsLinkText', function () {
+		browser.assert.elements(EASVitrinePlatformsLinkText, platforms);
 	});
 
 	it('shows ROCOGazette', function () {

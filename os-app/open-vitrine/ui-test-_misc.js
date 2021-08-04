@@ -2,6 +2,8 @@ const kDefaultRoute = require('./controller.js').OLSKControllerRoutes().shift();
 
 describe('EASVitrine_Misc', function () {
 
+	const platforms = require('../task-a-banks/controller.js').DataBankPlatforms();
+	
 	before(function () {
 		return browser.visit(kDefaultRoute.OLSKRoutePath);
 	});
@@ -32,6 +34,34 @@ describe('EASVitrine_Misc', function () {
 			browser.assert.attribute('.OLSKLandingAction', 'href', OLSKTestingCanonical(require('../open-glance/controller.js').OLSKControllerRoutes().shift()));
 		});
 	
+	});
+
+	platforms.forEach(function (e, i) {
+		
+		describe('EASVitrinePlatformsLink', function test_EASVitrinePlatformsLink() {
+			
+			it('sets href', function () {
+				browser.assert.attribute(`${ EASVitrinePlatformsLink }:nth-of-type(${ i + 1 })`, 'href', e.EASPlatformURL);
+			});
+		
+		});
+
+		describe('EASVitrinePlatformsLinkImage', function test_EASVitrinePlatformsLinkImage() {
+			
+			it('sets src', function () {
+				browser.assert.attribute(`${ EASVitrinePlatformsLink }:nth-of-type(${ i + 1 }) ${ EASVitrinePlatformsLinkImage }`, 'src', e._EASPlatformIconURLCachedPath || e.EASPlatformIconURL);
+			});
+		
+		});
+
+		describe('EASVitrinePlatformsLinkText', function test_EASVitrinePlatformsLinkText() {
+			
+			it('sets text', function () {
+				browser.assert.text(`${ EASVitrinePlatformsLink }:nth-of-type(${ i + 1 }) ${ EASVitrinePlatformsLinkText }`, e.EASPlatformName);
+			});
+		
+		});
+
 	});
 
 	describe('ROCOGazette', function test_ROCOGazette () {

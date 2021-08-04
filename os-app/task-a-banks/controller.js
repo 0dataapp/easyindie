@@ -9,7 +9,9 @@ const mod = {
 			EASGlanceProjectsCount () {
 				return mod.DataBankProjects().length;
 			},
-			EASGlanceProjectsSourceURLs: EASPlatform.EASPlatformURLs(),
+			EASPlatforms () {
+				return mod.DataBankPlatforms();
+			},
 		}
 	},
 
@@ -19,6 +21,7 @@ const mod = {
 	_DataFoilOLSKQueue: require('OLSKQueue'),
 	_DataFoilOLSKDisk: require('OLSKDisk'),
 	_DataFoilFS: require('fs'),
+	_DataFoilImages: require('../task-c-images/controller.js'),
 
 	async _DataContentString (inputData) {
 		return (await require('node-fetch')(inputData)).text();

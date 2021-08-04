@@ -28,6 +28,7 @@ const mod = {
 	_DataFoilOLSKQueue: require('OLSKQueue'),
 	_DataFoilFS: require('fs'),
 	_DataFoilProjects: require('../api-projects/controller.js'),
+	_DataFoilBanks: require('../task-a-banks/controller.js'),
 
 	async _DataImagePipe (url, file) {
 		const {createWriteStream} = require('fs');
@@ -85,8 +86,10 @@ const mod = {
 		return _mod._DataFoilProjects.DataProjects().filter(function (e) {
 			return e.EASProjectIconURL && !e._EASProjectIconURLCachedPath;
 		}).map(function (e) {
-			return _mod._SetupImage(e.EASProjectIconURL);
-		});
+			return e.EASProjectIconURL;
+		}).concat(_mod._DataFoilBanks.DataBankPlatforms().reduce(function (coll, item) {
+			return coll.concat(item.EASPlatformIconURL && !item._EASPlatformIconURLCachedPath ? item.EASPlatformIconURL : []);
+		}, [])).map(_mod._SetupImage);
 	},
 
 };
