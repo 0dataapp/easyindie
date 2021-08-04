@@ -825,9 +825,9 @@ describe('DataBankPlatforms', function test_DataBankPlatforms() {
 				_DataBankPlatformObjects: (function () {
 					capture(...arguments);
 					
-					return []
+					return [];
 				}),
-			})
+			});
 		}), [item]);
 	});
 
