@@ -4,6 +4,13 @@
 
 _Run your own X, in a few clicks._
 
+## Data compiled automatically from the following locations:
+
+### Apps
+- https://www.cloudron.io/store/index.js
+- https://oneclickapps.caprover.com/v4/list
+- https://app.yunohost.org/default/v2/apps.json
+
 ## Architecture
 
 The project is a large collection of mostly small modules and functions. With the exception of a few 'global' or 'magic' things such as the localization function `OLSKLocalized`, most resources used by a module should be in the same folder or referenced by path name.
