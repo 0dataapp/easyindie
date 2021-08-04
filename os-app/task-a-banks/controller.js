@@ -122,6 +122,9 @@ const mod = {
 							};
 						});
 					},
+					[EASPlatform.EASPlatformURLAwesome()]: function () {
+						return [];
+					},
 				}[item],
 			});
 		}, {})[param1]());

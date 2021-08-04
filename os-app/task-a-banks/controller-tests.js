@@ -207,6 +207,14 @@ describe('_DataBankObjects', function test__DataBankObjects() {
 	
 	});
 
+	context('Awesome', function test_Awesome () {
+		
+		it('parses data', function () {
+			deepEqual(mod._DataBankObjects(EASPlatform.EASPlatformURLAwesome(), Math.random().toString()), []);
+		});
+	
+	});
+
 });
 
 describe('_DataFilterProject', function test__DataFilterProject() {

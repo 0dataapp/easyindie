@@ -22,6 +22,12 @@ const mod = {
 		}).shift();
 	},
 
+	EASPlatformURLAwesome () {
+		return mod.EASPlatformURLs().filter(function (e) {
+			return e.match(/Awesome/i);
+		}).shift();
+	},
+
 	EASPlatformSystemProperties () {
 		return mod.EASPlatformURLs().reduce(function (coll, item) {
 			return Object.assign(coll, {
@@ -29,6 +35,7 @@ const mod = {
 					[mod.EASPlatformURLCloudron()]: 'EASPlatformCloudron',
 					[mod.EASPlatformURLCaprover()]: 'EASPlatformCaprover',
 					[mod.EASPlatformURLYunohost()]: 'EASPlatformYunohost',
+					[mod.EASPlatformURLAwesome()]: 'EASPlatformAwesome',
 				}[item]]: {
 					[mod.EASPlatformURLCloudron()]: {
 						EASSystemName: 'Cloudron',
@@ -42,6 +49,7 @@ const mod = {
 						EASSystemName: 'Yunohost',
 						EASSystemSetupURL: 'https://yunohost.org/en/install',
 					},
+					[mod.EASPlatformURLAwesome()]: {},
 				}[item],
 			});
 		}, {});

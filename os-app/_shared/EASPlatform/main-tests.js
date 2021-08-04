@@ -40,6 +40,16 @@ describe('EASPlatformURLYunohost', function test_EASPlatformURLYunohost() {
 
 });
 
+describe('EASPlatformURLAwesome', function test_EASPlatformURLAwesome() {
+
+	it('returns string', function () {
+		deepEqual(mod.EASPlatformURLAwesome(), mod.EASPlatformURLs().filter(function (e) {
+			return e.match(/Awesome/i);
+		}).shift());
+	});
+
+});
+
 describe('EASPlatformSystemProperties', function test_EASPlatformSystemProperties() {
 
 	it('returns object', function () {
@@ -56,6 +66,7 @@ describe('EASPlatformSystemProperties', function test_EASPlatformSystemPropertie
 				EASSystemName: 'Yunohost',
 				EASSystemSetupURL: 'https://yunohost.org/en/install',
 			},
+			EASPlatformAwesome: {},
 		});
 	});
 
