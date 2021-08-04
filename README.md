@@ -11,6 +11,9 @@ _Run your own X, in a few clicks._
 - https://oneclickapps.caprover.com/v4/list
 - https://app.yunohost.org/default/v2/apps.json
 
+### Platforms
+- https://github.com/0dataapp/awesome-0data
+
 ## Architecture
 
 The project is a large collection of mostly small modules and functions. With the exception of a few 'global' or 'magic' things such as the localization function `OLSKLocalized`, most resources used by a module should be in the same folder or referenced by path name.
