@@ -766,6 +766,73 @@ describe('DataBankProjects', function test_DataBankProjects() {
 
 });
 
+describe('_DataBankPlatformObjects', function test__DataBankPlatformObjects() {
+
+	const uBank = function (inputData = {}) {
+		const item = Object.assign({
+			EASPlatformURL: Math.random().toString(),
+			EASPlatformName: Math.random().toString(),
+			EASPlatformIconURL: Math.random().toString(),
+		}, inputData);
+
+		return `# Easy Indie Platforms\n<table><tr><td><img src="${ item.EASPlatformIconURL }" /></td><td><a href="${ item.EASPlatformURL }">${ item.EASPlatformName }</a></td></tr></table>\n#`;
+	};
+
+	it('throws if not string', function () {
+		throws(function () {
+			mod._DataBankPlatformObjects(null);
+		}, /EASErrorInputNotValid/);
+	});
+
+	it('returns array', function () {
+		deepEqual(mod._DataBankPlatformObjects(''), []);
+	});
+
+	it('parses data', function () {
+		const EASPlatformURL = Math.random().toString();
+		const EASPlatformName = Math.random().toString();
+		const EASPlatformIconURL = Math.random().toString();
+
+		deepEqual(mod._DataBankPlatformObjects(uBank({
+			EASPlatformURL,
+			EASPlatformName,
+			EASPlatformIconURL,
+		})), [{
+			EASPlatformURL,
+			EASPlatformName,
+			EASPlatformIconURL,
+		}]);
+	});
+
+});
+
+describe('DataBankPlatforms', function test_DataBankPlatforms() {
+
+	const _DataBankPlatforms = function (inputData) {
+		const _mod = Object.assign(Object.assign({}, mod), {
+			_DataBankPlatformObjects: (function () {}),
+		}, inputData);
+		return _mod.DataBankPlatforms() || _mod;
+	};
+
+	it('calls _DataBankPlatformObjects', function () {
+		const item = Math.random().toString();
+		deepEqual(uCapture(function (capture) {
+			_DataBankPlatforms({
+				_OLSKCacheResultMap: {
+					[EASPlatform.EASPlatformURLAwesome()]: item,
+				},
+				_DataBankPlatformObjects: (function () {
+					capture(...arguments);
+					
+					return []
+				}),
+			})
+		}), [item]);
+	});
+
+});
+
 describe('_SetupBank', function test__SetupBank() {
 
 	const __SetupBank = function (inputData) {

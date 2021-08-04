@@ -300,6 +300,34 @@ const mod = {
 		}, [])));
 	},
 
+	_DataBankPlatformObjects (inputData) {
+		if (typeof inputData !== 'string') {
+			throw new Error('EASErrorInputNotValid');
+		}
+
+		return Array.from(cheerio('table', inputData.split('# Easy Indie Platforms').pop().split('#').shift().trim()).first().find('tr').map(function () {
+			return {
+				EASPlatformURL: cheerio('a', this).attr('href'),
+				EASPlatformName: cheerio('a', this).text().trim(),
+				EASPlatformIconURL: cheerio('img', this).attr('src'),
+			};
+		}));
+	},
+
+	DataBankPlatforms () {
+		const _mod = process.env.npm_lifecycle_script === 'olsk-spec' ? this : mod;
+
+		if (process.env.OLSK_SPEC_MOCHA_INTERFACE) {
+			mod.SetupBanks();
+		}
+
+		return _mod._DataBankPlatformObjects(_mod._OLSKCacheResultMap[EASPlatform.EASPlatformURLAwesome()]).map(function (e) {
+			return Object.assign(e, {
+				_EASPlatformIconURLCachedPath: _mod._DataFoilImages.DataCacheLocalPath(e.EASPlatformIconURL),
+			});
+		});
+	},
+
 	// SETUP
 
 	_SetupBank (inputData) {
