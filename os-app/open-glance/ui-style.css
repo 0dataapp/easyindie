@@ -1,14 +1,6 @@
 :root {
-	--EASGlanceToolbarHeight: 35px;
+	--EASGlanceToolbarHeight: 44px;
 	--OLSKStickyHeaderTop: var(--EASGlanceToolbarHeight);
-}
-
-@media screen and (max-width: 760px) {
-
-	:root {
-		--EASGlanceToolbarHeight: 45px;
-	}
-
 }
 
 .EASGlance {
@@ -26,9 +18,21 @@
 	background: inherit;
 }
 
+.EASGlanceRootLink {
+	line-height: 0;
+}
+
 .EASGlanceRootLinkImage {
-	width: 24px;
-	padding: 3px;
+	width: 40px;
+	padding: 4px;
+}
+
+@media screen and (max-width: 760px) {
+
+	.EASGlanceRootLinkImage {
+		width: 42px;
+	}
+
 }
 
 .EASGlanceList {
@@ -61,12 +65,13 @@
 }
 
 .EASGlanceFilterInput {
-	padding: 0 5px !important;
-	height: var(--EASGlanceToolbarHeight);
+	padding: 5px !important;
+	height: 100%;
 	border-radius: 0 !important;
 	border: none !important;
 
 	flex-grow: 1;
+	font-size: 150%;
 }
 
 .EASGlanceProjectsCompilationLink {
