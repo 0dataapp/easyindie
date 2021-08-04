@@ -88,8 +88,12 @@ describe('EASVitrine_Misc', function () {
 
 	describe('ROCOForum', function test_ROCOForum () {
 
+		it('sets ROCOForumDomain', function () {
+			browser.assert.attribute('.ROCOForumList', 'discourse-url', 'https://' + process.env.ROCO_FORUM_DOMAIN);
+		});
+
 		it('sets ROCOForumTopic', function () {
-			browser.assert.attribute('.ROCOForumList', 'category', process.env.ROCO_FORUM_TOPIC);
+			browser.assert.attribute('.ROCOForumList', 'category', null);
 		});
 	
 	});
