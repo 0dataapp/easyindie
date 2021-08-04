@@ -1,16 +1,5 @@
 const mod = {
 
-	// MESSAGE
-
-	WindowDispatchKeyup (event) {
-		if (event.key !== 'Escape') {
-			return;
-		}
-
-		mod._ValueList.search('');
-		document.querySelector('.EASGlanceFilterInput').value = '';
-	},
-
 	// LIFECYCLE
 
 	LifecyclePageWillLoad() {
@@ -23,8 +12,6 @@ const mod = {
 				{ data: ['tags', 'platforms'] },
 			],
 		});
-
-		window.addEventListener('keyup', mod.WindowDispatchKeyup);
 	},
 
 };
