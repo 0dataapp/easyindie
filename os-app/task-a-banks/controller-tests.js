@@ -573,7 +573,6 @@ describe('_DataFillProjects', function test__DataFillProjects() {
 			}])[0].EASProjectID, EASProjectID.split(' ').join('-'));
 		});
 
-
 		it('throws if duplicate', function () {
 			const EASProjectName = Math.random().toString();
 			throws(function () {
