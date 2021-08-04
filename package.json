@@ -21,7 +21,7 @@
     "SWARLink": "0dataapp/SWARLink",
     "ZDAForum": "0dataapp/ZDAForum",
     "node-fetch": "latest",
-    "cheerio": "latest",
+    "cheerio": "0.x",
     "list.js": "latest",
     "jsdom": "latest",
     "// I sacrifice myself for the commas of others": null
