@@ -26,6 +26,10 @@ kDefaultRoute.OLSKRouteLanguageCodes.forEach(function (OLSKRoutingLanguage) {
 			browser.assert.text(EASVitrinePlatformsHeading, uLocalized('EASVitrinePlatformsHeadingText'));
 		});
 
+		it('localizes EASVitrinePlatformsBlurb', function () {
+			browser.assert.text(EASVitrinePlatformsBlurb, uLocalized('EASVitrinePlatformsBlurbText'));
+		});
+
 		it('localizes EASVitrineAlsoHeading', function () {
 			browser.assert.text(EASVitrineAlsoHeading, uLocalized('EASVitrineAlsoHeadingText'));
 		});

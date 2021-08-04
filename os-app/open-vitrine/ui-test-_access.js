@@ -4,6 +4,7 @@ Object.entries({
 	EASVitrine: '.EASVitrine',
 	
 	EASVitrinePlatformsHeading: '.EASVitrinePlatformsHeading',
+	EASVitrinePlatformsBlurb: '.EASVitrinePlatformsBlurb',
 	EASVitrinePlatformsLink: '.EASVitrinePlatformsLink',
 	EASVitrinePlatformsLinkImage: '.EASVitrinePlatformsLinkImage',
 	EASVitrinePlatformsLinkText: '.EASVitrinePlatformsLinkText',
@@ -39,6 +40,10 @@ describe('EASVitrine_Access', function () {
 
 	it('shows EASVitrinePlatformsHeading', function () {
 		browser.assert.elements(EASVitrinePlatformsHeading, 1);
+	});
+
+	it('shows EASVitrinePlatformsBlurb', function () {
+		browser.assert.elements(EASVitrinePlatformsBlurb, 1);
 	});
 
 	it('shows EASVitrinePlatformsLink', function () {
