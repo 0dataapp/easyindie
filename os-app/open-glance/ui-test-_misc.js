@@ -64,6 +64,10 @@ describe('EASGlance_Misc', function () {
 
 	describe('EASGlanceFilterInput', function test_EASGlanceFilterInput () {
 
+		it('sets type', function () {
+			browser.assert.attribute(EASGlanceFilterInput, 'type', 'search');
+		});
+
 		it('sets accesskey', function () {
 			browser.assert.attribute(EASGlanceFilterInput, 'accesskey', 'f');
 		});
