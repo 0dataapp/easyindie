@@ -155,10 +155,15 @@ const mod = {
 			EASProjectURL: 'url',
 			EASProjectIconURL: 'image',
 			EASProjectTags: 'keywords',
+			EASProjectPlatforms: 'platforms',
 			EASProjectFunding: 'funding',
 		}).reduce(function (coll, item) {
-			return !inputData[item[0]] ? coll : Object.assign(coll, {
-				[item[1]]: inputData[item[0]],
+			return Object.assign(coll, !inputData[item[0]] ? {} : {
+				[item[1]]: item[0] === 'EASProjectPlatforms' ? Object.values(inputData[item[0]]).filter(function (e) {
+					return (e.EASPlatformSystem || {}).EASSystemName;
+				}).map(function (e) {
+					return e.EASPlatformSystem.EASSystemName.toLowerCase();
+				}) : inputData[item[0]],
 			});
 		}, {});
 	},

@@ -424,6 +424,43 @@ describe('DataProjectJSONSchema', function test_DataProjectJSONSchema() {
 		});
 	});
 
+	context('EASProjectPlatforms', function () {
+		
+		it('maps EASSystemName', function () {
+			deepEqual(mod.DataProjectJSONSchema({
+				EASProjectPlatforms: {
+					[Math.random().toString()]: {
+						EASPlatformSystem: {},
+					},
+				},
+			}), {
+				platforms: [],
+			});
+		});
+
+		it('lowercases name', function () {
+			const items = Array.from(Array(Math.max(1, uRandomInt(10)))).map(function () {
+				return 'ALFA' + Math.random().toString();
+			});
+			deepEqual(mod.DataProjectJSONSchema({
+				EASProjectPlatforms: items.reduce(function (coll, EASSystemName) {
+					return Object.assign(coll, {
+						[Math.random().toString()]: {
+							EASPlatformSystem: {
+								EASSystemName,
+							},
+						},
+					});
+				}, {}),
+			}), {
+				platforms: items.map(function (e) {
+					return e.toLowerCase();
+				}),
+			});
+		});
+	
+	});
+
 });
 
 describe('DataProjectsJSON', function test_DataProjectsJSON() {
