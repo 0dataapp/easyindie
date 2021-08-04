@@ -43,6 +43,10 @@ describe('EASVitrine_Misc', function () {
 			it('sets href', function () {
 				browser.assert.attribute(`${ EASVitrinePlatformsLink }:nth-of-type(${ i + 1 })`, 'href', e.EASPlatformURL);
 			});
+
+			it('sets target', function () {
+				browser.assert.attribute(`${ EASVitrinePlatformsLink }:nth-of-type(${ i + 1 })`, 'target', '_blank');
+			});
 		
 		});
 

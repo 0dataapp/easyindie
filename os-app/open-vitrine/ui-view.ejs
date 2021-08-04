@@ -27,7 +27,7 @@ locals.OLSKPageAssets = [
 <h1 class="EASVitrinePlatformsHeading"><%= OLSKLocalized('EASVitrinePlatformsHeadingText') %></h1>
 
 <% EASPlatforms().forEach(function (item) { -%>
-	<a class="EASVitrinePlatformsLink" href="<%= item.EASPlatformURL %>">
+	<a class="EASVitrinePlatformsLink" href="<%= item.EASPlatformURL %>" target="_blank">
 		<img class="EASVitrinePlatformsLinkImage" src="<%= item._EASPlatformIconURLCachedPath || item.EASPlatformIconURL %>" />
 		<span class="EASVitrinePlatformsLinkText"><%= item.EASPlatformName %></span>
 	</a>
