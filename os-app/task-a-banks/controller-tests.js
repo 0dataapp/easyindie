@@ -345,7 +345,7 @@ describe('_DataMergeProjects', function test__DataMergeProjects() {
 		}, param2)]).map(function (e) {
 			delete e.EASProjectURL;
 
-			return e
+			return e;
 		});
 	};
 

@@ -180,7 +180,7 @@ const mod = {
 			return !_mod._ValueCandidatesCache[e.EASProjectURL];
 		}).map(function (e) {
 			return _mod._SetupDetail(e.EASProjectURL);
-		})
+		});
 	},
 
 	SetupDetails () {
@@ -188,7 +188,7 @@ const mod = {
 
 		return _mod._DataFoilBanks.DataBankProjects().map(function (e) {
 			return _mod._SetupDetail(e.EASProjectURL);
-		})
+		});
 	},
 
 };

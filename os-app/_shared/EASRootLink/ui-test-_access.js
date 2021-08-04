@@ -18,6 +18,6 @@ describe('EASRootLink_Access', function () {
 	
 	it('shows OLSKRootLink', function() {
 		browser.assert.elements('.OLSKRootLink', 1);
-	})
+	});
 	
 });
