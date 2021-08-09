@@ -73,13 +73,14 @@
 }
 
 .EASGlanceFilterInput {
-	padding: 5px !important;
+	padding: 5px 8px !important;
 	height: 100%;
-	border-radius: 0 !important;
 	border: none !important;
-
+	border-radius: 5px !important;
 	flex-grow: 1;
-	font-size: 150%;
+
+	background: #115533 !important;
+	font-size: 125%;
 }
 
 @media screen and (max-width: 760px) {
