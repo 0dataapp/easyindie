@@ -17,6 +17,10 @@ describe('EASVitrine_Misc', function () {
 		it('classes OLSKDecorCapped', function () {
 			browser.assert.hasClass(EASVitrine, 'OLSKDecorCapped');
 		});
+
+		it('classes OLSKDecorNoTopPad', function () {
+			browser.assert.hasClass(EASVitrine, 'OLSKDecorNoTopPad');
+		});
 	
 	});
 
