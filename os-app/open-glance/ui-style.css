@@ -81,6 +81,7 @@
 
 	background: #115533 !important;
 	font-size: 125%;
+	color:  var(--OLSKCommonForeground);
 }
 
 @media screen and (max-width: 760px) {

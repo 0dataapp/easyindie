@@ -1,38 +1,12 @@
 :root {
-	--EASContrast: #ffff82;
 	--OLSKCommonBackground: #00b046;
-	--OLSKCommonForeground: var(--EASContrast);
-	--OLSKCommonEdgeColor: var(--EASContrast);
-	--OLSKCommonInteractiveFill: #115533;
+	--OLSKDecorBackgroundDeep: #0b5823;
+	--OLSKDecorBackgroundDeepEdge: #00cc00;
+	--OLSKCommonForeground: #B0Fe5D;
+	--OLSKDecorBackgroundDark: #008833;
+	--OLSKDecorForegroundLight: #8ed04a;
 }
 
 html, body, .OLSKDecorCapped {
 	min-height: 100vh;
-}
-
-body {
-	background: #0b5823;
-}
-
-*:not(h1, .OLSKLandingHeading, .OLSKDecorModule, .OLSKBanner, .OLSKBanner *) {
-	--EASContrast: #B0Fe5D;
-	--OLSKCommonForeground: var(--EASContrast) ;
-	--OLSKCommonEdgeColor: var(--EASContrast) ;
-	border-color: var(--EASContrast)  !important;
-}
-
-a.OLSKDecorPress {
-	color: var(--EASContrast);
-}
-
-h1, .OLSKLandingHeading {
-	--EASContrast: #ffff82 !important;
-	--OLSKCommonForeground: var(--EASContrast) !important;
-	--OLSKCommonEdgeColor: var(--EASContrast) !important;
-}
-
-.OLSKDecorCapped {
-	--OLSKDecorCappedBorder: 1px solid #00cc00 !important;
-	border-right: var(--OLSKDecorCappedBorder) !important;
-	border-left: var(--OLSKDecorCappedBorder) !important;
 }

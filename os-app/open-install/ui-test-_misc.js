@@ -48,6 +48,14 @@ describe('EASInstall_Misc', function () {
 		it('classes OLSKDecorCapped', function () {
 			browser.assert.hasClass(EASInstall, 'OLSKDecorCapped');
 		});
+
+		it('classes OLSKDecorOutline', function () {
+			browser.assert.hasClass(EASInstall, 'OLSKDecorOutline');
+		});
+
+		it('classes OLSKDecorFormBlend', function () {
+			browser.assert.hasClass(EASInstall, 'OLSKDecorFormBlend');
+		});
 	
 	});
 

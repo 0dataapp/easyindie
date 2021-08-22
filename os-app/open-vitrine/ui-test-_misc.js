@@ -18,6 +18,10 @@ describe('EASVitrine_Misc', function () {
 			browser.assert.hasClass(EASVitrine, 'OLSKDecorCapped');
 		});
 
+		it('classes OLSKDecorOutline', function () {
+			browser.assert.hasClass(EASVitrine, 'OLSKDecorOutline');
+		});
+
 		it('classes OLSKDecorNoTopPad', function () {
 			browser.assert.hasClass(EASVitrine, 'OLSKDecorNoTopPad');
 		});
