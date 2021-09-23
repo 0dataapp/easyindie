@@ -326,6 +326,7 @@ describe('_DataHotfixProject', function test__DataHotfixProject() {
 			'www.concrete5.org': 'https://www.concrete5.org',
 			'www.universalmediaserver.com': 'https://www.universalmediaserver.com',
 			'http://leed.idleman.fr/': 'https://github.com/LeedRSS/Leed',
+			'https://adguard.com/adguard-home.html': 'https://adguard.com/en/adguard-home/overview.html',
 		}).forEach(function ([key, value]) {
 			
 			it(`hotfixes ${ key }`, function () {

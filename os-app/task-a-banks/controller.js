@@ -202,6 +202,7 @@ const mod = {
 				'http://leed.idleman.fr/': 'https://github.com/LeedRSS/Leed',
 				'https://distbin.com/': 'https://github.com/gobengo/distbin',
 				'https://jirafeau.net': 'https://gitlab.com/mojo42/Jirafeau',
+				'https://adguard.com/adguard-home.html': 'https://adguard.com/en/adguard-home/overview.html',
 			},
 		}).forEach(function ([key, changes]) {
 			Object.entries(changes).forEach(function ([source, destination]) {
@@ -295,6 +296,9 @@ const mod = {
 				return coll;
 			}, {}));
 		}).map(function (e) {
+			if (e.EASProjectName.match(/adguard/i)) {
+				console.log(e);
+			};
 			return Object.assign(e, e.EASProjectName ? {
 				EASProjectID: (function(inputData) {
 					if (ids.includes(inputData)) {
