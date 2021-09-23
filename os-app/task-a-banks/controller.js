@@ -297,16 +297,20 @@ const mod = {
 			}, {}));
 		}).map(function (e) {
 			return Object.assign(e, e.EASProjectName ? {
-				EASProjectID: (function(inputData) {
-					if (ids.includes(inputData)) {
-						throw new Error('EASErrorInputNotValid');
-					}
-
-					ids.push(inputData);
-
-					return inputData;
-				})(e.EASProjectName.toLowerCase().split(' ').join('-')),
+				EASProjectID: e.EASProjectName.toLowerCase().split(' ').join('-'),
 			} : {});
+		}).filter(function (e) {
+			if (!e.EASProjectID) {
+				return true;
+			}
+
+			if (ids.includes(e.EASProjectID) && process.env.NODE_ENV !== 'production') {
+				throw new Error('EASErrorInputNotValid');
+			}
+
+			ids.push(e.EASProjectID);
+
+			return true;
 		});
 	},
 
