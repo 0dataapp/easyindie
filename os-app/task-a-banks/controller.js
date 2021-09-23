@@ -296,9 +296,6 @@ const mod = {
 				return coll;
 			}, {}));
 		}).map(function (e) {
-			if (e.EASProjectName.match(/adguard/i)) {
-				console.log(e);
-			};
 			return Object.assign(e, e.EASProjectName ? {
 				EASProjectID: (function(inputData) {
 					if (ids.includes(inputData)) {
