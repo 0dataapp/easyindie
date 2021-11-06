@@ -203,6 +203,7 @@ const mod = {
 				'https://distbin.com/': 'https://github.com/gobengo/distbin',
 				'https://jirafeau.net': 'https://gitlab.com/mojo42/Jirafeau',
 				'https://adguard.com/adguard-home.html': 'https://adguard.com/en/adguard-home/overview.html',
+				'https://github.com/PrivateBin/PrivateBin': 'https://privatebin.info',
 			},
 		}).forEach(function ([key, changes]) {
 			Object.entries(changes).forEach(function ([source, destination]) {
