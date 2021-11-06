@@ -305,7 +305,7 @@ const mod = {
 				return true;
 			}
 
-			if (ids.includes(e.EASProjectID) && process.env.NODE_ENV !== 'production') {
+			if (ids.includes(e.EASProjectID) && (process.env.NODE_ENV !== 'production')) {
 				throw new Error('EASErrorInputNotValid');
 			}
 
