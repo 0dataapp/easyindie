@@ -11,7 +11,7 @@ Object.entries({
 	EASGlanceListItemName: '.EASGlanceListItemName',
 	EASGlanceListItemBlurb: '.EASGlanceListItemBlurb',
 }).map(function (e) {
-	return global[e.shift()]  = e.pop();
+	return global[e.shift()] = e.pop();
 });
 
 describe('EASGlanceList_Access', function () {

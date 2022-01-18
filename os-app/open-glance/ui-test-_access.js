@@ -12,7 +12,7 @@ Object.entries({
 	
 	EASGlanceProjectsCompilationLink: '.EASGlanceProjectsCompilationLink',
 }).map(function (e) {
-	return global[e.shift()]  = e.pop();
+	return global[e.shift()] = e.pop();
 });
 
 describe('EASGlance_Access', function () {

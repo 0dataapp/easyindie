@@ -16,7 +16,7 @@ Object.entries({
 	EASInstallPlatformsHeading: '.EASInstallPlatformsHeading',
 	EASInstallPlatformsItem: '.EASInstallPlatformsItem',
 }).map(function (e) {
-	return global[e.shift()]  = e.pop();
+	return global[e.shift()] = e.pop();
 });
 
 describe('EASInstall_Access', function () {

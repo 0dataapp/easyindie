@@ -15,7 +15,7 @@ Object.entries({
 	EASVitrineZeroDataCrownName: '.EASVitrineZeroDataCrownName',
 	EASVitrineZeroDataCrownBlurb: '.EASVitrineZeroDataCrownBlurb',
 }).map(function (e) {
-	return global[e.shift()]  = e.pop();
+	return global[e.shift()] = e.pop();
 });
 
 describe('EASVitrine_Access', function () {
