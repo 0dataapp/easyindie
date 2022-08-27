@@ -1,6 +1,5 @@
 {
   "scripts": {
-    "preinstall": "[ $(npm list OLSKBundle --parseable true) != $PWD ] && olsk-bundle cleanse || exit 0",
     "postinstall": "olsk-bundle tidy && node ./package-postinstall.js",
     "setup": "npm install --no-save && olsk-bundle",
     "start": "olsk-express",
