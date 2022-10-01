@@ -330,6 +330,7 @@ describe('_DataHotfixProject', function test__DataHotfixProject() {
 			'https://github.com/PrivateBin/PrivateBin': 'https://privatebin.info',
 			'http://kanboard.net/': 'https://kanboard.org',
 			'https://kanboard.net': 'https://kanboard.org',
+			'https://mailtrain.org/': 'https://github.com/Mailtrain-org/mailtrain',
 		}).forEach(function ([key, value]) {
 			
 			it(`hotfixes ${ key }`, function () {

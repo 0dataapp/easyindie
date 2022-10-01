@@ -206,6 +206,7 @@ const mod = {
 				'https://github.com/PrivateBin/PrivateBin': 'https://privatebin.info',
 				'http://kanboard.net/': 'https://kanboard.org',
 				'https://kanboard.net': 'https://kanboard.org',
+				'https://mailtrain.org/': 'https://github.com/Mailtrain-org/mailtrain',
 			},
 		}).forEach(function ([key, changes]) {
 			Object.entries(changes).forEach(function ([source, destination]) {
