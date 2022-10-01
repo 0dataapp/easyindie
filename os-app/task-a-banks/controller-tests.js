@@ -328,6 +328,8 @@ describe('_DataHotfixProject', function test__DataHotfixProject() {
 			'http://leed.idleman.fr/': 'https://github.com/LeedRSS/Leed',
 			'https://adguard.com/adguard-home.html': 'https://adguard.com/en/adguard-home/overview.html',
 			'https://github.com/PrivateBin/PrivateBin': 'https://privatebin.info',
+			'http://kanboard.net/': 'https://kanboard.org',
+			'https://kanboard.net': 'https://kanboard.org',
 		}).forEach(function ([key, value]) {
 			
 			it(`hotfixes ${ key }`, function () {
