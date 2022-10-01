@@ -41,11 +41,15 @@ const mod = {
 	_DataFoilBanks: require('../task-a-banks/controller.js'),
 
 	async _DataContentString (inputData) {
-		if (inputData.match('nullboard.io')) {
+		const response = await require('node-fetch')(inputData);
+
+		if (!response.ok) {
+			console.error(new Error(`unexpected response ${response.statusText}`));
+
 			return '';
 		}
 
-		return (await require('node-fetch')(inputData)).text();
+		return response.text();
 	},
 
 	DataCacheAggregateBasename() {
