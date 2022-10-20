@@ -209,6 +209,7 @@ const mod = {
 				'https://mailtrain.org/': 'https://github.com/Mailtrain-org/mailtrain',
 				'https://www.cheky.net/': 'https://github.com/Blount/Cheky',
 				'https://github.com/mastodon/mastodon': 'https://joinmastodon.org',
+				'https://paperless-ngx.com': 'https://paperless-ng.readthedocs.io',
 			},
 		}).forEach(function ([key, changes]) {
 			Object.entries(changes).forEach(function ([source, destination]) {
