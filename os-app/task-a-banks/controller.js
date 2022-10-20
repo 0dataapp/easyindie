@@ -312,10 +312,12 @@ const mod = {
 			}
 
 			if (ids.includes(e.EASProjectID) && (process.env.NODE_ENV !== 'production')) {
-				throw new Error('EASErrorInputNotValid');
+				// throw new Error('EASErrorInputNotValid');
 			}
 
-			ids.push(e.EASProjectID);
+			if (!ids.includes(e.EASProjectID)) {
+				ids.push(e.EASProjectID);
+			}
 
 			return true;
 		});
