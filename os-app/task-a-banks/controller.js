@@ -208,6 +208,7 @@ const mod = {
 				'https://kanboard.net': 'https://kanboard.org',
 				'https://mailtrain.org/': 'https://github.com/Mailtrain-org/mailtrain',
 				'https://www.cheky.net/': 'https://github.com/Blount/Cheky',
+				'https://github.com/mastodon/mastodon': 'https://joinmastodon.org',
 			},
 		}).forEach(function ([key, changes]) {
 			Object.entries(changes).forEach(function ([source, destination]) {
