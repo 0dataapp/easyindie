@@ -1,4 +1,5 @@
 {
+  "version": "0.0.2",
   "scripts": {
     "postinstall": "olsk-bundle tidy && node ./package-postinstall.js",
     "setup": "npm install --no-save && olsk-bundle",
