@@ -58,7 +58,7 @@ const mod = {
 			return Object.assign(coll, {
 				[item]: {
 					[EASPlatform.EASPlatformURLCloudron()]: function () {
-						return JSON.parse(param2.split('$scope.allApps = ').pop().split('$scope.apps = null;').shift().trim().slice(0, -1)).map(function (e) {
+						return JSON.parse(param2).apps.map(function (e) {
 							return {
 								EASProjectURL: e.manifest.website,
 								EASProjectPlatforms: {
