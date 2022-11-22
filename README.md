@@ -7,7 +7,7 @@ _Run your own X, in a few clicks._
 ## Data compiled automatically from the following locations:
 
 ### Apps
-- https://www.cloudron.io/store/index.js
+- https://api.cloudron.io/api/v1/apps
 - https://oneclickapps.caprover.com/v4/list
 - https://app.yunohost.org/default/v2/apps.json
 
