@@ -18,7 +18,7 @@ const mod = {
 			OLSKRouteMethod: 'get',
 			OLSKRouteSignature: 'EASProjectsJSONRoute',
 			OLSKRouteFunction: (function EASProjectsJSONRoute (req, res, next) {
-				return res.send(mod.DataProjectsJSON());
+				return res.json(mod.DataProjectsJSON());
 			}),
 		}];
 	},
@@ -171,7 +171,7 @@ const mod = {
 	DataProjectsJSON () {
 		const _mod = process.env.npm_lifecycle_script === 'olsk-spec' ? this : mod;
 
-		return JSON.stringify(_mod.DataProjects().map(mod.DataProjectJSONSchema));
+		return _mod.DataProjects().map(mod.DataProjectJSONSchema);
 	},
 
 };

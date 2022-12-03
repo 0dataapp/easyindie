@@ -475,7 +475,7 @@ describe('DataProjectsJSON', function test_DataProjectsJSON() {
 			DataProjects: (function () {
 				return [item];
 			}),
-		}).DataProjectsJSON(), JSON.stringify([mod.DataProjectJSONSchema(item)]));
+		}).DataProjectsJSON(), [mod.DataProjectJSONSchema(item)]);
 	});
 
 });
