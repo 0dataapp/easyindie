@@ -465,7 +465,7 @@ describe('DataProjectJSONSchema', function test_DataProjectJSONSchema() {
 
 describe('DataProjectsJSON', function test_DataProjectsJSON() {
 
-	it('returns string', function () {
+	it('returns array', function () {
 		const EASProjectName = Math.random().toString();
 		const item = {
 			EASProjectName,
