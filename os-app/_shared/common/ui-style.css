@@ -1,10 +1,10 @@
 :root {
-	--OLSKCommonBackground: #00b046;
-	--OLSKDecorBackgroundDeep: #0b5823;
-	--OLSKDecorBackgroundDeepEdge: #00cc00;
-	--OLSKCommonForeground: #B0Fe5D;
-	--OLSKDecorBackgroundDark: #008833;
-	--OLSKDecorForegroundLight: #8ed04a;
+	--OLSKCommonBackground: #007d32;
+	--OLSKDecorBackgroundDeep: #0e401d;
+	--OLSKDecorBackgroundDeepEdge: #309d30;
+	--OLSKCommonForeground: #d0fba2;
+	--OLSKDecorBackgroundDark: #006426;
+	--OLSKDecorForegroundLight: #478c00;
 }
 
 html, body, .OLSKDecorCapped {
