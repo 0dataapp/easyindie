@@ -1,4 +1,4 @@
-<a href="https://easyindie.app"><img alt="Project logo" src="https://static.rosano.ca/eas/identity.svg" width="64" /></a>
+<a href="https://easyindie.app"><img alt="Project logo" src="https://static.rosano.ca/easyindieapp/identity.svg" width="64" /></a>
 
 # [Easy Indie App](https://easyindie.app)
 
