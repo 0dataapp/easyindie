@@ -336,7 +336,7 @@ const mod = {
 			throw new Error('EASErrorInputNotValid');
 		}
 
-		return Array.from(cheerio('table', inputData.split('# Easy Indie Platforms').pop().split('#').shift().trim()).first().find('tr').map(function () {
+		return Array.from(cheerio('table', inputData.split('# [Easy Indie').pop().split('#').shift().trim()).first().find('tr').map(function () {
 			return {
 				EASPlatformURL: cheerio('a', this).attr('href'),
 				EASPlatformName: cheerio('a', this).text().trim(),

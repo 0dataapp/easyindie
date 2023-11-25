@@ -781,7 +781,7 @@ describe('_DataBankPlatformObjects', function test__DataBankPlatformObjects() {
 			EASPlatformIconURL: Math.random().toString(),
 		}, inputData);
 
-		return `# Easy Indie Platforms\n<table><tr><td><img src="${ item.EASPlatformIconURL }" /></td><td><a href="${ item.EASPlatformURL }">${ item.EASPlatformName }</a></td></tr></table>\n#`;
+		return `# [Easy Indie](https://easyindie.app) Platforms\n<table><tr><td><img src="${ item.EASPlatformIconURL }" /></td><td><a href="${ item.EASPlatformURL }">${ item.EASPlatformName }</a></td></tr></table>\n#`;
 	};
 
 	it('throws if not string', function () {
