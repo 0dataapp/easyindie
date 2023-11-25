@@ -25,6 +25,6 @@
     "node-fetch": "2.x",
     "cheerio": "0.x",
     "list.js": "latest",
-    "jsdom": "latest"
+    "jsdom": "16.x"
   }
 }
