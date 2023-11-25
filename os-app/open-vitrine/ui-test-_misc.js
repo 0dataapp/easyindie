@@ -76,6 +76,18 @@ describe('EASVitrine_Misc', function () {
 
 	});
 
+	describe('EASVitrineDiscussingVideo', function test_EASVitrineDiscussingVideo () {
+
+		it('sets src', function () {
+			browser.assert.attribute(EASVitrineDiscussingVideo, 'src', process.env.EAS_VITRINE_DISCUSSING_VIDEO_URL);
+		});
+
+		it('sets allowfullscreen', function () {
+			browser.assert.attribute(EASVitrineDiscussingVideo, 'allowfullscreen', '');
+		});
+
+	});
+
 	describe('EASVitrineAlternativesContainer', function test_EASVitrineAlternativesContainer() {
 		
 		it('classes OLSKDecorGlossary', function () {
