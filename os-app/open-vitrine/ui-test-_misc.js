@@ -76,6 +76,50 @@ describe('EASVitrine_Misc', function () {
 
 	});
 
+	describe('EASVitrineAlternativesContainer', function test_EASVitrineAlternativesContainer() {
+		
+		it('classes OLSKDecorGlossary', function () {
+			browser.assert.hasClass(EASVitrineAlternativesContainer, 'OLSKDecorGlossary');
+		});
+
+		it('sets lang', function () {
+			browser.assert.attribute(EASVitrineAlternativesContainer, 'lang', 'en');
+		});
+	
+	});
+
+	alternatives.forEach(function (e, i) {
+		
+		context(e.EASAlternativeURL, function () {
+			
+			describe('EASVitrineAlternativesLink', function test_EASVitrineAlternativesLink() {
+				
+				it('sets href', function () {
+					browser.assert.attribute(`dt:nth-of-type(${ i + 1 }) ${ EASVitrineAlternativesLink }`, 'href', e.EASAlternativeURL);
+				});
+
+				it('sets target', function () {
+					browser.assert.attribute(`dt:nth-of-type(${ i + 1 }) ${ EASVitrineAlternativesLink }`, 'target', '_blank');
+				});
+
+				it('sets text', function () {
+					browser.assert.text(`dt:nth-of-type(${ i + 1 }) ${ EASVitrineAlternativesLink }`, e.EASAlternativeName);
+				});
+			
+			});
+
+			describe('EASVitrineAlternativesBlurb', function test_EASVitrineAlternativesBlurb() {
+				
+				it('sets text', function () {
+					browser.assert.text(`${ EASVitrineAlternativesBlurb }:nth-of-type(${ i + 1 })`, e.EASAlternativeBlurb);
+				});
+			
+			});
+		
+		});
+
+	});
+
 	describe('ROCOGazette', function test_ROCOGazette () {
 
 		it('sets ROCOBulletinProject', function () {

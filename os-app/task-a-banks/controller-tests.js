@@ -839,6 +839,69 @@ describe('DataBankPlatforms', function test_DataBankPlatforms() {
 
 });
 
+describe('_DataBankAlternativeObjects', function test__DataBankAlternativeObjects() {
+
+	const uBank = function (inputData = {}) {
+		const item = Object.assign({
+			EASAlternativeURL: Math.random().toString(),
+			EASAlternativeName: Math.random().toString(),
+			EASAlternativeBlurb: Math.random().toString(),
+		}, inputData);
+
+		return `# More self-hosting projects\n- [${ item.EASAlternativeName }](${ item.EASAlternativeURL }): ${ item.EASAlternativeBlurb }\n#`;
+	};
+
+	it('throws if not string', function () {
+		throws(function () {
+			mod._DataBankAlternativeObjects(null);
+		}, /EASErrorInputNotValid/);
+	});
+
+	it('returns array', function () {
+		deepEqual(mod._DataBankAlternativeObjects(''), []);
+	});
+
+	it('parses data', function () {
+		const EASAlternativeURL = Math.random().toString();
+		const EASAlternativeName = Math.random().toString();
+		const EASAlternativeBlurb = Math.random().toString();
+
+		deepEqual(mod._DataBankAlternativeObjects(uBank({
+			EASAlternativeURL,
+			EASAlternativeName,
+			EASAlternativeBlurb,
+		})), [{
+			EASAlternativeURL,
+			EASAlternativeName,
+			EASAlternativeBlurb,
+		}]);
+	});
+
+});
+
+describe('DataBankAlternatives', function test_DataBankAlternatives() {
+
+	const _DataBankAlternatives = function (inputData) {
+		const _mod = Object.assign(Object.assign({}, mod), {
+			_DataBankAlternativeObjects: (function () {}),
+		}, inputData);
+		return _mod.DataBankAlternatives() || _mod;
+	};
+
+	it('calls _DataBankAlternativeObjects', function () {
+		const item = Math.random().toString();
+		deepEqual(uCapture(function (_DataBankAlternativeObjects) {
+			_DataBankAlternatives({
+				_OLSKCacheResultMap: {
+					[EASPlatform.EASPlatformURLAwesome]: item,
+				},
+				_DataBankAlternativeObjects,
+			});
+		}), [item]);
+	});
+
+});
+
 describe('_SetupBank', function test__SetupBank() {
 
 	const __SetupBank = function (inputData) {

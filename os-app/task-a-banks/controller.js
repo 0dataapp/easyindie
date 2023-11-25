@@ -26,6 +26,9 @@ const mod = {
 			EASPlatforms () {
 				return mod.DataBankPlatforms();
 			},
+			EASAlternatives () {
+				return mod.DataBankAlternatives();
+			},
 		}
 	},
 
@@ -357,6 +360,36 @@ const mod = {
 				_EASPlatformIconURLCachedPath: _mod._DataFoilImages.DataCacheLocalPath(e.EASPlatformIconURL),
 			});
 		});
+	},
+
+	_DataBankAlternativeObjects (inputData) {
+		if (typeof inputData !== 'string') {
+			throw new Error('EASErrorInputNotValid');
+		}
+
+		return inputData.split('# More self-hosting projects').pop().split('#').shift().trim().split('\n-').filter(function (e) {
+			return !!e;
+		}).map(function (e) {
+			return {
+				EASAlternativeURL: e.match(/\(.*\)/)[0].slice(1, -1),
+				EASAlternativeName: e.match(/\[.*\]/)[0].slice(1, -1),
+				EASAlternativeBlurb: e.split(': ').pop(),
+			};
+		});
+	},
+
+	DataBankAlternatives () {
+		if (process.env.OLSK_FLAG_CI) {
+			return [];
+		}
+		
+		const _mod = process.env.npm_lifecycle_script === 'olsk-spec' ? this : mod;
+
+		if (process.env.OLSK_SPEC_MOCHA_INTERFACE) {
+			mod.SetupBanks();
+		}
+
+		return _mod._DataBankAlternativeObjects(_mod._OLSKCacheResultMap[EASPlatform.EASPlatformURLAwesome()]);
 	},
 
 	// SETUP

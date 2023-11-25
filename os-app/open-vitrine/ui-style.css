@@ -19,6 +19,16 @@
 	font-family: var(--OLSKCommonHeadingFontFamily);
 }
 
+.OLSKDecorGlossary {
+	margin: unset;
+	color: inherit;
+	background: #0e7226;
+}
+
+.OLSKDecorGlossary dd {
+	margin: 4px 0 10px 0;
+}
+
 .EASVitrineZeroDataCrownName {
 	text-decoration: none;
 }

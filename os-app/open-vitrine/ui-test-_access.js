@@ -9,6 +9,11 @@ Object.entries({
 	EASVitrinePlatformsLinkImage: '.EASVitrinePlatformsLinkImage',
 	EASVitrinePlatformsLinkText: '.EASVitrinePlatformsLinkText',
 
+	EASVitrineAlternativesHeading: '.EASVitrineAlternativesHeading',
+	EASVitrineAlternativesContainer: '.EASVitrineAlternativesContainer',
+	EASVitrineAlternativesLink: '.EASVitrineAlternativesLink',
+	EASVitrineAlternativesBlurb: '.EASVitrineAlternativesBlurb',
+
 	EASVitrineAlsoHeading: '.EASVitrineAlsoHeading',
 	EASVitrineZeroDataCrown: '.EASVitrineZeroDataCrown',
 	EASVitrineZeroDataCrownIcon: '.EASVitrineZeroDataCrownIcon',
@@ -21,7 +26,8 @@ Object.entries({
 describe('EASVitrine_Access', function () {
 
 	const platforms = require('../task-a-banks/controller.js').DataBankPlatforms().length;
-	
+	const Alternatives = require('../task-a-banks/controller.js').DataBankAlternatives().length;
+
 	before(function() {
 		return browser.visit(kDefaultRoutePath);
 	});
@@ -56,6 +62,22 @@ describe('EASVitrine_Access', function () {
 
 	it('shows EASVitrinePlatformsLinkText', function () {
 		browser.assert.elements(EASVitrinePlatformsLinkText, platforms);
+	});
+
+	it('shows EASVitrineAlternativesHeading', function () {
+		browser.assert.elements(EASVitrineAlternativesHeading, 1);
+	});
+
+	it('shows EASVitrineAlternativesContainer', function () {
+		browser.assert.elements(EASVitrineAlternativesContainer, 1);
+	});
+
+	it('shows EASVitrineAlternativesLink', function () {
+		browser.assert.elements(EASVitrineAlternativesLink, Alternatives);
+	});
+
+	it('shows EASVitrineAlternativesBlurb', function () {
+		browser.assert.elements(EASVitrineAlternativesBlurb, Alternatives);
 	});
 
 	it('shows ROCOGazette', function () {

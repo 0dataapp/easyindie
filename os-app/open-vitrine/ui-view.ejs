@@ -34,6 +34,14 @@ locals.OLSKPageAssets = [
 	</a>
 <% }) -%>
 
+<h1 class="EASVitrineAlternativesHeading"><%= OLSKLocalized('EASVitrineAlternativesHeadingText') %></h1>
+<dl class="EASVitrineAlternativesContainer OLSKDecorGlossary" lang="en">
+	<% EASAlternatives().forEach(function (item) { -%>
+	<dt><a class="EASVitrineAlternativesLink" href="<%= item.EASAlternativeURL %>" target="_blank"><%= item.EASAlternativeName %></a></dt>
+	<dd class="EASVitrineAlternativesBlurb"><%= item.EASAlternativeBlurb %></dd>
+	<% }) -%>
+</dl>
+
 <%- include('../../node_modules/ROCOGazette/main.ejs', {
 	_OLSKModulesDirPrefix: '../.',
 	ROCOBulletinProject: 'Easy Indie App',
