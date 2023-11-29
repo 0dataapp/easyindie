@@ -1,5 +1,5 @@
 :root {
-	--EASGlanceToolbarHeight: 44px;
+	--EASGlanceToolbarHeight: 0;
 	--OLSKStickyHeaderTop: var(--EASGlanceToolbarHeight);
 }
 
