@@ -333,6 +333,7 @@ describe('_DataHotfixProject', function test__DataHotfixProject() {
 			'https://www.cheky.net/': 'https://github.com/Blount/Cheky',
 			'https://github.com/mastodon/mastodon': 'https://joinmastodon.org',
 			'https://paperless-ngx.com': 'https://paperless-ng.readthedocs.io',
+			'www.getoutline.com': 'https://www.getoutline.com',
 		}).forEach(function ([key, value]) {
 			
 			it(`hotfixes ${ key }`, function () {
