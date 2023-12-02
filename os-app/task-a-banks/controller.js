@@ -214,6 +214,7 @@ const mod = {
 				'https://github.com/mastodon/mastodon': 'https://joinmastodon.org',
 				'https://paperless-ngx.com': 'https://paperless-ng.readthedocs.io',
 				'www.getoutline.com': 'https://www.getoutline.com',
+				'photoprism.app': 'https://www.photoprism.app',
 			},
 		}).forEach(function ([key, changes]) {
 			Object.entries(changes).forEach(function ([source, destination]) {

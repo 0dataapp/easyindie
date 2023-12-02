@@ -334,6 +334,7 @@ describe('_DataHotfixProject', function test__DataHotfixProject() {
 			'https://github.com/mastodon/mastodon': 'https://joinmastodon.org',
 			'https://paperless-ngx.com': 'https://paperless-ng.readthedocs.io',
 			'www.getoutline.com': 'https://www.getoutline.com',
+			'photoprism.app': 'https://www.photoprism.app',
 		}).forEach(function ([key, value]) {
 			
 			it(`hotfixes ${ key }`, function () {
