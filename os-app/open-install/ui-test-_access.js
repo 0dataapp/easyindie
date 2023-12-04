@@ -39,43 +39,43 @@ describe('EASInstall_Access', function () {
 	});
 	
 	it('shows EASInstall', function() {
-		browser.assert.elements(EASInstall, 1);
+		return browser.assert.elements(EASInstall, 1);
 	});
 
 	it('shows EASInstallCrown', function () {
-		browser.assert.elements(EASInstallCrown, 1);
+		return browser.assert.elements(EASInstallCrown, 1);
 	});
 
 	it('shows EASInstallCrownIcon', function () {
-		browser.assert.elements(EASInstallCrownIcon, 1);
+		return browser.assert.elements(EASInstallCrownIcon, 1);
 	});
 
 	it('shows EASInstallCrownName', function () {
-		browser.assert.elements(EASInstallCrownName, 1);
+		return browser.assert.elements(EASInstallCrownName, 1);
 	});
 
 	it('shows EASInstallCrownBlurb', function () {
-		browser.assert.elements(EASInstallCrownBlurb, 1);
+		return browser.assert.elements(EASInstallCrownBlurb, 1);
 	});
 
 	it('shows EASInstallSite', function () {
-		browser.assert.elements(EASInstallSite, 1);
+		return browser.assert.elements(EASInstallSite, 1);
 	});
 
 	it('hide EASInstallContribute', function () {
-		browser.assert.elements(EASInstallContribute, 0);
+		return browser.assert.elements(EASInstallContribute, 0);
 	});
 
 	it('shows EASInstallPlatformsHeading', function () {
-		browser.assert.elements(EASInstallPlatformsHeading, 1);
+		return browser.assert.elements(EASInstallPlatformsHeading, 1);
 	});
 
 	it('shows EASInstallPlatformsItem', function () {
-		browser.assert.elements(EASInstallPlatformsItem, count);
+		return browser.assert.elements(EASInstallPlatformsItem, count);
 	});
 
 	it('shows EASRootLink', function () {
-		browser.assert.elements('.EASRootLink', 1);
+		return browser.assert.elements('.EASRootLink', 1);
 	});
 
 	context('EASProjectFunding', function () {
@@ -97,7 +97,7 @@ describe('EASInstall_Access', function () {
 		});
 		
 		it('shows EASInstallContribute', function () {
-			browser.assert.elements(EASInstallContribute, 1);
+			return browser.assert.elements(EASInstallContribute, 1);
 		});
 	
 	});

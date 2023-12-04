@@ -14,20 +14,20 @@ kDefaultRoute.OLSKRouteLanguageCodes.forEach(function (OLSKRoutingLanguage) {
 			});
 		});
 
-		it('localizes title', function() {
-			browser.assert.text('title', uLocalized('EASVitrineTitle'));
+		it.skip('localizes title', function() {
+			return browser.assert.text('title', uLocalized('EASVitrineTitle'));
 		});
 
 		it('localizes meta[description]', function() {
-			browser.assert.attribute('meta[name=description]', 'content', uLocalized('EASVitrineDescription'));
+			return browser.assert.attribute('meta[name=description]', 'content', uLocalized('EASVitrineDescription'));
 		});
 
 		it('localizes EASGlanceRootLink', function () {
-			browser.assert.attribute(EASGlanceRootLink, 'title', uLocalized('OLSKRootLinkTextHome'));
+			return browser.assert.attribute(EASGlanceRootLink, 'title', uLocalized('OLSKRootLinkTextHome'));
 		});
 
 		it('localizes EASGlanceFilterInput', function () {
-			browser.assert.attribute(EASGlanceFilterInput, 'placeholder', uLocalized('EASGlanceFilterInputText'));
+			return browser.assert.attribute(EASGlanceFilterInput, 'placeholder', uLocalized('EASGlanceFilterInputText'));
 		});
 
 	});

@@ -21,15 +21,15 @@ describe('EASGlanceList_Access', function () {
 	});
 	
 	it('shows EASGlanceList', function() {
-		browser.assert.elements(EASGlanceList, 1);
+		return browser.assert.elements(EASGlanceList, 1);
 	});
 
 	it('shows EASGlanceListEmpty', function () {
-		browser.assert.elements(EASGlanceListEmpty, 1);
+		return browser.assert.elements(EASGlanceListEmpty, 1);
 	});
 
 	it('hides EASGlanceListItem', function () {
-		browser.assert.elements(EASGlanceListItem, 0);
+		return browser.assert.elements(EASGlanceListItem, 0);
 	});
 
 	context('EASGlanceListData', function () {
@@ -47,27 +47,27 @@ describe('EASGlanceList_Access', function () {
 		});
 
 		it('hides EASGlanceListEmpty', function () {
-			browser.assert.elements(EASGlanceListEmpty, 0);
+			return browser.assert.elements(EASGlanceListEmpty, 0);
 		});
 
 		it('shows EASGlanceListItem', function () {
-			browser.assert.elements(EASGlanceListItem, count);
+			return browser.assert.elements(EASGlanceListItem, count);
 		});
 
 		it('shows EASGlanceListItemIcon', function () {
-			browser.assert.elements(EASGlanceListItemIcon, count);
+			return browser.assert.elements(EASGlanceListItemIcon, count);
 		});
 
 		it('shows EASGlanceListItemIconImage', function () {
-			browser.assert.elements(EASGlanceListItemIconImage, count);
+			return browser.assert.elements(EASGlanceListItemIconImage, count);
 		});
 
 		it('shows EASGlanceListItemName', function () {
-			browser.assert.elements(EASGlanceListItemName, count);
+			return browser.assert.elements(EASGlanceListItemName, count);
 		});
 
 		it('shows EASGlanceListItemBlurb', function () {
-			browser.assert.elements(EASGlanceListItemBlurb, count);
+			return browser.assert.elements(EASGlanceListItemBlurb, count);
 		});
 
 	});

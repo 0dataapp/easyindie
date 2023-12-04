@@ -13,11 +13,11 @@ describe('EASRootLink_Access', function () {
 	});
 	
 	it('shows EASRootLink', function() {
-		browser.assert.elements(EASRootLink, 1);
+		return browser.assert.elements(EASRootLink, 1);
 	});
 	
 	it('shows OLSKRootLink', function() {
-		browser.assert.elements('.OLSKRootLink', 1);
+		return browser.assert.elements('.OLSKRootLink', 1);
 	});
 	
 });

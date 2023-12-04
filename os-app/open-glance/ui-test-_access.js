@@ -17,32 +17,38 @@ Object.entries({
 
 describe('EASGlance_Access', function () {
 
-	before(function() {
-		return browser.OLSKVisit(kDefaultRoute);
+	before(function () {
+		return browser.OLSKVisit(kDefaultRoute, {
+			EASGlanceListData: JSON.stringify([{
+				EASProjectID: Math.random().toString(),
+				EASProjectName: Math.random().toString(),
+				EASProjectBlurb: Math.random().toString(),
+			}]),
+		});
 	});
-	
+
 	it('shows EASGlance', function() {
-		browser.assert.elements(EASGlance, 1);
+		return browser.assert.elements(EASGlance, 1);
 	});
 
 	it('shows EASGlanceHeader', function () {
-		browser.assert.elements(EASGlanceHeader, 1);
+		return browser.assert.elements(EASGlanceHeader, 1);
 	});
 
 	it('shows EASGlanceRootLink', function () {
-		browser.assert.elements(EASGlanceRootLink, 1);
+		return browser.assert.elements(EASGlanceRootLink, 1);
 	});
 
 	it('shows EASGlanceRootLinkImage', function () {
-		browser.assert.elements(EASGlanceRootLinkImage, 1);
+		return browser.assert.elements(EASGlanceRootLinkImage, 1);
 	});
 
 	it('shows EASGlanceFilterInput', function () {
-		browser.assert.elements(EASGlanceFilterInput, 1);
+		return browser.assert.elements(EASGlanceFilterInput, 1);
 	});
 
 	it('shows EASGlanceProjectsCompilationLink', function () {
-		browser.assert.elements(EASGlanceProjectsCompilationLink, 1);
+		return browser.assert.elements(EASGlanceProjectsCompilationLink, 1);
 	});
 
 });

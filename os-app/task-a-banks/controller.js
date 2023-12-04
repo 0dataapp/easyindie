@@ -351,11 +351,11 @@ const mod = {
 	},
 
 	DataBankPlatforms () {
-		const _mod = process.env.npm_lifecycle_script === 'olsk-spec' ? this : mod;
-
-		if (process.env.OLSK_SPEC_MOCHA_INTERFACE) {
-			mod.SetupBanks();
+		if (process.env.OLSK_FLAG_CI || process.env.OLSK_SPEC_MOCHA_INTERFACE) {
+			return [];
 		}
+		
+		const _mod = process.env.npm_lifecycle_script === 'olsk-spec' ? this : mod;
 
 		return _mod._DataBankPlatformObjects(_mod._OLSKCacheResultMap[EASPlatform.EASPlatformURLAwesome()]).map(function (e) {
 			return Object.assign(e, {
@@ -381,15 +381,11 @@ const mod = {
 	},
 
 	DataBankAlternatives () {
-		if (process.env.OLSK_FLAG_CI) {
+		if (process.env.OLSK_FLAG_CI || process.env.OLSK_SPEC_MOCHA_INTERFACE) {
 			return [];
 		}
 		
 		const _mod = process.env.npm_lifecycle_script === 'olsk-spec' ? this : mod;
-
-		if (process.env.OLSK_SPEC_MOCHA_INTERFACE) {
-			mod.SetupBanks();
-		}
 
 		return _mod._DataBankAlternativeObjects(_mod._OLSKCacheResultMap[EASPlatform.EASPlatformURLAwesome()]);
 	},

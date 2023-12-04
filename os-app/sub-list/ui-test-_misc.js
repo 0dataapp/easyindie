@@ -32,7 +32,7 @@ describe('EASGlanceList_Misc', function  () {
 	describe('EASGlanceList', function test_EASGlanceList () {
 
 		it('sets lang', function () {
-			browser.assert.attribute(EASGlanceList, 'lang', 'en');
+			return browser.assert.attribute(EASGlanceList, 'lang', 'en');
 		});
 
 	});
@@ -40,15 +40,15 @@ describe('EASGlanceList_Misc', function  () {
 	describe('EASGlanceListItem', function test_EASGlanceListItem () {
 
 		it('classes OLSKCommonCard', function () {
-			browser.assert.hasClass(EASGlanceListItem, 'OLSKCommonCard');
+			return browser.assert.hasClass(EASGlanceListItem, 'OLSKCommonCard');
 		});
 
 		it('sets data-tags', function () {
-			browser.assert.attribute('.EASGlanceListItem', 'data-tags', item.EASProjectTags.join(', '));
+			return browser.assert.attribute('.EASGlanceListItem', 'data-tags', item.EASProjectTags.join(', '));
 		});
 
 		it('sets data-platforms', function () {
-			browser.assert.attribute('.EASGlanceListItem', 'data-platforms', Object.keys(item.EASProjectPlatforms).map(function (e) {
+			return browser.assert.attribute('.EASGlanceListItem', 'data-platforms', Object.keys(item.EASProjectPlatforms).map(function (e) {
 				return EASPlatform.EASPlatformSystemProperties()[e].EASSystemName;
 			}).join(', '));
 		});
@@ -58,17 +58,17 @@ describe('EASGlanceList_Misc', function  () {
 	describe('EASGlanceListItemIcon', function test_EASGlanceListItemIcon () {
 
 		it('sets href', function () {
-			browser.assert.attribute(EASGlanceListItemIcon, 'href', OLSKTestingCanonical(require('../open-install/controller.js').OLSKControllerRoutes().shift(), {
+			return browser.assert.attribute(EASGlanceListItemIcon, 'href', OLSKTestingCanonical(require('../open-install/controller.js').OLSKControllerRoutes().shift(), {
 				EASProjectID: item.EASProjectID,
 			}));
 		});
 
 		it('sets data-tags', function () {
-			browser.assert.attribute('.EASGlanceListItem', 'data-tags', item.EASProjectTags.join(', '));
+			return browser.assert.attribute('.EASGlanceListItem', 'data-tags', item.EASProjectTags.join(', '));
 		});
 
 		it('sets data-platforms', function () {
-			browser.assert.attribute('.EASGlanceListItem', 'data-platforms', Object.keys(item.EASProjectPlatforms).map(function (e) {
+			return browser.assert.attribute('.EASGlanceListItem', 'data-platforms', Object.keys(item.EASProjectPlatforms).map(function (e) {
 				return EASPlatform.EASPlatformSystemProperties()[e].EASSystemName;
 			}).join(', '));
 		});
@@ -78,7 +78,7 @@ describe('EASGlanceList_Misc', function  () {
 	describe('EASGlanceListItemIconImage', function test_EASGlanceListItemIconImageImage () {
 
 		it('sets src', function () {
-			browser.assert.attribute(EASGlanceListItemIconImage, 'src', item._EASProjectIconURLCachedPath || item.EASProjectIconURL || '/_shared/__external/OLSKUIAssets/_OLSKSharedIconPlaceholder.svg');
+			return browser.assert.attribute(EASGlanceListItemIconImage, 'src', item._EASProjectIconURLCachedPath || item.EASProjectIconURL || '/_shared/__external/OLSKUIAssets/_OLSKSharedIconPlaceholder.svg');
 		});
 
 	});
@@ -86,13 +86,13 @@ describe('EASGlanceList_Misc', function  () {
 	describe('EASGlanceListItemName', function test_EASGlanceListItemName () {
 
 		it('sets href', function () {
-			browser.assert.attribute(EASGlanceListItemName, 'href', OLSKTestingCanonical(require('../open-install/controller.js').OLSKControllerRoutes().shift(), {
+			return browser.assert.attribute(EASGlanceListItemName, 'href', OLSKTestingCanonical(require('../open-install/controller.js').OLSKControllerRoutes().shift(), {
 				EASProjectID: item.EASProjectID,
 			}));
 		});
 
 		it('binds EASProjectName', function () {
-			browser.assert.text(EASGlanceListItemName, item.EASProjectName);
+			return browser.assert.text(EASGlanceListItemName, item.EASProjectName);
 		});
 
 	});
@@ -100,7 +100,7 @@ describe('EASGlanceList_Misc', function  () {
 	describe('EASGlanceListItemBlurb', function test_EASGlanceListItemBlurb () {
 
 		it('binds EASProjectBlurb', function () {
-			browser.assert.text(EASGlanceListItemBlurb, item.EASProjectBlurb);
+			return browser.assert.text(EASGlanceListItemBlurb, item.EASProjectBlurb);
 		});
 
 	});

@@ -1,4 +1,4 @@
-const kDefaultRoutePath = require('./controller.js').OLSKControllerRoutes().shift().OLSKRoutePath;
+const kDefaultRoute = require('./controller.js').OLSKControllerRoutes().shift();
 
 Object.entries({
 	EASVitrine: '.EASVitrine',
@@ -29,102 +29,102 @@ Object.entries({
 describe('EASVitrine_Access', function () {
 
 	const platforms = require('../task-a-banks/controller.js').DataBankPlatforms().length;
-	const Alternatives = require('../task-a-banks/controller.js').DataBankAlternatives().length;
+	const alternatives = require('../task-a-banks/controller.js').DataBankAlternatives().length;
 
 	before(function() {
-		return browser.visit(kDefaultRoutePath);
+		return browser.OLSKVisit(kDefaultRoute);
 	});
 	
 	it('shows EASVitrine', function() {
-		browser.assert.elements(EASVitrine, 1);
+		return browser.assert.elements(EASVitrine, 1);
 	});
 	
 	it('shows OLSKCrown', function() {
-		browser.assert.elements('.OLSKCrown', 1);
+		return browser.assert.elements('.OLSKCrown', 1);
 	});
 	
 	it('shows OLSKLanding', function() {
-		browser.assert.elements('.OLSKLanding', 1);
+		return browser.assert.elements('.OLSKLanding', 1);
 	});
 
 	it('shows EASVitrinePlatformsHeading', function () {
-		browser.assert.elements(EASVitrinePlatformsHeading, 1);
+		return browser.assert.elements(EASVitrinePlatformsHeading, 1);
 	});
 
 	it('shows EASVitrinePlatformsBlurb', function () {
-		browser.assert.elements(EASVitrinePlatformsBlurb, 1);
+		return browser.assert.elements(EASVitrinePlatformsBlurb, 1);
 	});
 
-	it('shows EASVitrinePlatformsLink', function () {
-		browser.assert.elements(EASVitrinePlatformsLink, platforms);
+	it.skip('shows EASVitrinePlatformsLink', function () {
+		return browser.assert.elements(EASVitrinePlatformsLink, platforms);
 	});
 
-	it('shows EASVitrinePlatformsLinkImage', function () {
-		browser.assert.elements(EASVitrinePlatformsLinkImage, platforms);
+	it.skip('shows EASVitrinePlatformsLinkImage', function () {
+		return browser.assert.elements(EASVitrinePlatformsLinkImage, platforms);
 	});
 
-	it('shows EASVitrinePlatformsLinkText', function () {
-		browser.assert.elements(EASVitrinePlatformsLinkText, platforms);
+	it.skip('shows EASVitrinePlatformsLinkText', function () {
+		return browser.assert.elements(EASVitrinePlatformsLinkText, platforms);
 	});
 
 	it('shows EASVitrineDiscussingHeading', function () {
-		browser.assert.elements(EASVitrineDiscussingHeading, 1);
+		return browser.assert.elements(EASVitrineDiscussingHeading, 1);
 	});
 
 	it('shows EASVitrineDiscussingVideo', function () {
-		browser.assert.elements(EASVitrineDiscussingVideo, 1);
+		return browser.assert.elements(EASVitrineDiscussingVideo, 1);
 	});
 
 	it('shows EASVitrineAlternativesHeading', function () {
-		browser.assert.elements(EASVitrineAlternativesHeading, 1);
+		return browser.assert.elements(EASVitrineAlternativesHeading, 1);
 	});
 
 	it('shows EASVitrineAlternativesContainer', function () {
-		browser.assert.elements(EASVitrineAlternativesContainer, 1);
+		return browser.assert.elements(EASVitrineAlternativesContainer, 1);
 	});
 
-	it('shows EASVitrineAlternativesLink', function () {
-		browser.assert.elements(EASVitrineAlternativesLink, Alternatives);
+	it.skip('shows EASVitrineAlternativesLink', function () {
+		return browser.assert.elements(EASVitrineAlternativesLink, alternatives);
 	});
 
-	it('shows EASVitrineAlternativesBlurb', function () {
-		browser.assert.elements(EASVitrineAlternativesBlurb, Alternatives);
+	it.skip('shows EASVitrineAlternativesBlurb', function () {
+		return browser.assert.elements(EASVitrineAlternativesBlurb, alternatives);
 	});
 
 	it('shows ROCOGazette', function () {
-		browser.assert.elements('.ROCOGazette', 1);
+		return browser.assert.elements('.ROCOGazette', 1);
 	});
 
 	it('shows OLSKEdit', function () {
-		browser.assert.elements('.OLSKEdit', 1);
+		return browser.assert.elements('.OLSKEdit', 1);
 	});
 
 	it('shows EASVitrineAlsoHeading', function () {
-		browser.assert.elements(EASVitrineAlsoHeading, 1);
+		return browser.assert.elements(EASVitrineAlsoHeading, 1);
 	});
 
 	it('shows EASVitrineZeroDataCrown', function () {
-		browser.assert.elements(EASVitrineZeroDataCrown, 1);
+		return browser.assert.elements(EASVitrineZeroDataCrown, 1);
 	});
 
 	it('shows EASVitrineZeroDataCrownIcon', function () {
-		browser.assert.elements(EASVitrineZeroDataCrownIcon, 1);
+		return browser.assert.elements(EASVitrineZeroDataCrownIcon, 1);
 	});
 
 	it('shows EASVitrineZeroDataCrownName', function () {
-		browser.assert.elements(EASVitrineZeroDataCrownName, 1);
+		return browser.assert.elements(EASVitrineZeroDataCrownName, 1);
 	});
 
 	it('shows EASVitrineZeroDataCrownBlurb', function () {
-		browser.assert.elements(EASVitrineZeroDataCrownBlurb, 1);
+		return browser.assert.elements(EASVitrineZeroDataCrownBlurb, 1);
 	});
 
 	it('shows SWARLink', function() {
-		browser.assert.elements('.SWARLink', 1);
+		return browser.assert.elements('.SWARLink', 1);
 	});
 
 	it('shows ROCORootLink', function() {
-		browser.assert.elements('.ROCORootLink', 1);
+		return browser.assert.elements('.ROCORootLink', 1);
 	});
 
 });

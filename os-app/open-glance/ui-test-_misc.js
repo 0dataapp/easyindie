@@ -23,13 +23,13 @@ describe('EASGlance_Misc', function () {
 	});
 
 	it('sets meta:viewport', function () {
-		browser.assert.attribute('meta[name=viewport]', 'content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0');
+		return browser.assert.attribute('meta[name=viewport]', 'content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0');
 	});
 
 	describe('EASGlance', function () {
 		
 		it('classes OLSKDecor', function () {
-			browser.assert.hasClass(EASGlance, 'OLSKDecor');
+			return browser.assert.hasClass(EASGlance, 'OLSKDecor');
 		});
 	
 	});
@@ -37,11 +37,11 @@ describe('EASGlance_Misc', function () {
 	describe('EASGlanceHeader', function test_EASGlanceHeader () {
 
 		it('classes OLSKCommonEdgeBottom', function () {
-			browser.assert.hasClass(EASGlanceHeader, 'OLSKCommonEdgeBottom');
+			return browser.assert.hasClass(EASGlanceHeader, 'OLSKCommonEdgeBottom');
 		});
 
 		it('classes OLSKDecorFixedHeader', function () {
-			browser.assert.hasClass(EASGlanceHeader, 'OLSKDecorFixedHeader');
+			return browser.assert.hasClass(EASGlanceHeader, 'OLSKDecorFixedHeader');
 		});
 	
 	});
@@ -49,7 +49,7 @@ describe('EASGlance_Misc', function () {
 	describe('EASGlanceRootLink', function test_EASGlanceRootLink () {
 
 		it('sets href', function () {
-			browser.assert.attribute(EASGlanceRootLink, 'href', require('../open-vitrine/controller.js').OLSKControllerRoutes().shift().OLSKRoutePath);
+			return browser.assert.attribute(EASGlanceRootLink, 'href', require('../open-vitrine/controller.js').OLSKControllerRoutes().shift().OLSKRoutePath);
 		});
 	
 	});
@@ -57,7 +57,7 @@ describe('EASGlance_Misc', function () {
 	describe('EASGlanceRootLinkImage', function test_EASGlanceRootLinkImage () {
 
 		it('sets src', function () {
-			browser.assert.attribute(EASGlanceRootLinkImage, 'src', process.env.EAS_VITRINE_IDENTITY_URL);
+			return browser.assert.attribute(EASGlanceRootLinkImage, 'src', process.env.EAS_VITRINE_IDENTITY_URL);
 		});
 	
 	});
@@ -65,21 +65,21 @@ describe('EASGlance_Misc', function () {
 	describe('EASGlanceFilterInput', function test_EASGlanceFilterInput () {
 
 		it('sets type', function () {
-			browser.assert.attribute(EASGlanceFilterInput, 'type', 'search');
+			return browser.assert.attribute(EASGlanceFilterInput, 'type', 'search');
 		});
 
 		it('sets accesskey', function () {
-			browser.assert.attribute(EASGlanceFilterInput, 'accesskey', 'f');
+			return browser.assert.attribute(EASGlanceFilterInput, 'accesskey', 'f');
 		});
 
 		it('classes OLSKDecorInput', function () {
-			browser.assert.hasClass(EASGlanceFilterInput, 'OLSKDecorInput');
+			return browser.assert.hasClass(EASGlanceFilterInput, 'OLSKDecorInput');
 		});
 
 		context('input', function () {
 			
 			before(function () {
-				browser.assert.elements('.EASGlanceListItem', count);
+				return browser.assert.elements('.EASGlanceListItem', count);
 			});
 
 			before(function () {
@@ -87,7 +87,7 @@ describe('EASGlance_Misc', function () {
 			});
 
 			it.skip('filters list', function () {
-				browser.assert.elements('.EASGlanceListItem', 1);
+				return browser.assert.elements('.EASGlanceListItem', 1);
 			});
 		
 		});
@@ -99,11 +99,11 @@ describe('EASGlance_Misc', function () {
 			});
 
 			it('filters list', function () {
-				browser.assert.elements('.EASGlanceListItem', count);
+				return browser.assert.elements('.EASGlanceListItem', count);
 			});
 
 			it('sets filter text', function () {
-				browser.assert.text(EASGlanceFilterInput, '');
+				return browser.assert.text(EASGlanceFilterInput, '');
 			});
 		
 		});
@@ -113,11 +113,11 @@ describe('EASGlance_Misc', function () {
 	describe('EASGlanceProjectsCompilationLink', function test_EASGlanceProjectsCompilationLink () {
 		
 		it('sets href', function () {
-			browser.assert.attribute(EASGlanceProjectsCompilationLink, 'href', require('../api-projects/controller.js').OLSKControllerRoutes().shift().OLSKRoutePath);
+			return browser.assert.attribute(EASGlanceProjectsCompilationLink, 'href', require('../api-projects/controller.js').OLSKControllerRoutes().shift().OLSKRoutePath);
 		});
 
 		it('sets text', function () {
-			browser.assert.text(EASGlanceProjectsCompilationLink, 'JSON');
+			return browser.assert.text(EASGlanceProjectsCompilationLink, 'JSON');
 		});
 	
 	});
@@ -125,7 +125,7 @@ describe('EASGlance_Misc', function () {
 	describe.skip('EASGlanceListSort', function test_EASGlanceListSort () {
 
 		before(function () {
-			browser.assert.text('.EASGlanceListItem:first-of-type .EASGlanceListItemName', item.EASProjectName);
+			return browser.assert.text('.EASGlanceListItem:first-of-type .EASGlanceListItemName', item.EASProjectName);
 		});
 
 		before(function () {
@@ -133,7 +133,7 @@ describe('EASGlance_Misc', function () {
 		});
 
 		it.skip('sorts list', function () {
-			browser.assert.text('.EASGlanceListItem:first-of-type .EASGlanceListItemName', count);
+			return browser.assert.text('.EASGlanceListItem:first-of-type .EASGlanceListItemName', count);
 		});
 	
 	});

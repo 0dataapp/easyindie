@@ -9,7 +9,7 @@ describe('EASRootLink_Misc', function () {
 	describe('OLSKRootLink', function () {
 		
 		it('sets OLSKRootLinkImageURL', function () {
-			browser.assert.attribute('.OLSKRootLinkImage', 'src', process.env.EAS_VITRINE_IDENTITY_URL);
+			return browser.assert.attribute('.OLSKRootLinkImage', 'src', process.env.EAS_VITRINE_IDENTITY_URL);
 		});
 	
 	});

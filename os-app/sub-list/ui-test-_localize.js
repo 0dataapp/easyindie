@@ -15,7 +15,7 @@ kDefaultRoute.OLSKRouteLanguageCodes.forEach(function (OLSKRoutingLanguage) {
 		});
 
 		it('localizes EASGlanceListEmpty', function () {
-			browser.assert.text(EASGlanceListEmpty, uLocalized('EASGlanceListEmptyText'));
+			return browser.assert.text(EASGlanceListEmpty, uLocalized('EASGlanceListEmptyText'));
 		});
 
 		context.skip('EASGlanceListData', function () {
@@ -30,7 +30,7 @@ kDefaultRoute.OLSKRouteLanguageCodes.forEach(function (OLSKRoutingLanguage) {
 			});
 
 			it('localizes EASGlanceListHeadName', function () {
-				browser.assert.text(EASGlanceListHeadName, uLocalized('EASGlanceListHeadNameText'));
+				return browser.assert.text(EASGlanceListHeadName, uLocalized('EASGlanceListHeadNameText'));
 			});
 
 		});

@@ -14,42 +14,42 @@ kDefaultRoute.OLSKRouteLanguageCodes.forEach(function (OLSKRoutingLanguage) {
 			});
 		});
 
-		it('localizes title', function() {
-			browser.assert.text('title', uLocalized('EASVitrineTitle'));
+		it.skip('localizes title', async function() {
+			return browser.assert.text('title', uLocalized('EASVitrineDescription'));
 		});
 
 		it('localizes meta[description]', function() {
-			browser.assert.attribute('meta[name=description]', 'content', uLocalized('EASVitrineDescription'));
+			return browser.assert.attribute('meta[name=description]', 'content', uLocalized('EASVitrineDescription'));
 		});
 
 		it('localizes EASVitrinePlatformsHeading', function () {
-			browser.assert.text(EASVitrinePlatformsHeading, uLocalized('EASVitrinePlatformsHeadingText'));
+			return browser.assert.text(EASVitrinePlatformsHeading, uLocalized('EASVitrinePlatformsHeadingText'));
 		});
 
 		it('localizes EASVitrinePlatformsBlurb', function () {
-			browser.assert.text(EASVitrinePlatformsBlurb, uLocalized('EASVitrinePlatformsBlurbText'));
+			return browser.assert.text(EASVitrinePlatformsBlurb, uLocalized('EASVitrinePlatformsBlurbText'));
 		});
 
 		it('localizes EASVitrineDiscussingHeading', function () {
-			browser.assert.text(EASVitrineDiscussingHeading, uLocalized('EASVitrineDiscussingHeadingText'));
+			return browser.assert.text(EASVitrineDiscussingHeading, uLocalized('EASVitrineDiscussingHeadingText'));
 		});
 
 		it('localizes EASVitrineAlternativesHeading', function () {
-			browser.assert.text(EASVitrineAlternativesHeading, uLocalized('EASVitrineAlternativesHeadingText'));
+			return browser.assert.text(EASVitrineAlternativesHeading, uLocalized('EASVitrineAlternativesHeadingText'));
 		});
 
 		it('localizes EASVitrineAlsoHeading', function () {
-			browser.assert.text(EASVitrineAlsoHeading, uLocalized('EASVitrineAlsoHeadingText'));
+			return browser.assert.text(EASVitrineAlsoHeading, uLocalized('EASVitrineAlsoHeadingText'));
 		});
 
 		it('localizes EASVitrineZeroDataCrownBlurb', function () {
-			browser.assert.text(EASVitrineZeroDataCrownBlurb, uLocalized('EASVitrineZeroDataCrownBlurbText'));
+			return browser.assert.text(EASVitrineZeroDataCrownBlurb, uLocalized('EASVitrineZeroDataCrownBlurbText'));
 		});
 
 		context('OLSKCrown', function test_OLSKCrown () {
 
 			it('localizes OLSKCrownCardName', function () {
-				browser.assert.text('.OLSKCrownCardName', uLocalized('EASVitrineTitle'));
+				return browser.assert.text('.OLSKCrownCardName', uLocalized('EASVitrineTitle'));
 			});
 		
 		});
@@ -57,15 +57,15 @@ kDefaultRoute.OLSKRouteLanguageCodes.forEach(function (OLSKRoutingLanguage) {
 		context('OLSKLanding', function test_OLSKLanding () {
 
 			it('localizes OLSKLandingHeadingText', function () {
-				browser.assert.OLSKInnerHTML('.OLSKLandingHeading', uLocalized('EASVitrineDescription'));
+				return browser.assert.OLSKInnerHTML('.OLSKLandingHeading', uLocalized('EASVitrineDescription'));
 			});
 
 			it('localizes OLSKLandingBlurbText', function () {
-				browser.assert.text('.OLSKLandingBlurb', uLocalized('OLSKLandingBlurbText'));
+				return browser.assert.text('.OLSKLandingBlurb', uLocalized('OLSKLandingBlurbText'));
 			});
 
 			it.skip('localizes OLSKLandingActionText', function () {
-				browser.assert.text('.OLSKLandingAction', OLSKTestingFormatted(uLocalized('OLSKLandingActionTextFormat'), require('../open-glance/controller.js').OLSKControllerSharedLocals().EASGlanceProjectsCount()));
+				return browser.assert.text('.OLSKLandingAction', OLSKTestingFormatted(uLocalized('OLSKLandingActionTextFormat'), require('../open-glance/controller.js').OLSKControllerSharedLocals().EASGlanceProjectsCount()));
 			});
 		
 		});

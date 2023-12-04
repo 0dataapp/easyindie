@@ -19,15 +19,15 @@ kDefaultRoute.OLSKRouteLanguageCodes.forEach(function (OLSKRoutingLanguage) {
 		});
 
 		it('localizes EASInstallSite', function () {
-			browser.assert.text(EASInstallSite, uLocalized('EASInstallSiteText'));
+			return browser.assert.text(EASInstallSite, uLocalized('EASInstallSiteText'));
 		});
 
 		it('localizes EASInstallContribute', function () {
-			browser.assert.text(EASInstallContribute, uLocalized('EASInstallContributeText'));
+			return browser.assert.text(EASInstallContribute, uLocalized('EASInstallContributeText'));
 		});
 
 		it('localizes EASInstallPlatformsHeading', function () {
-			browser.assert.text(EASInstallPlatformsHeading, uLocalized('EASInstallPlatformsHeadingText'));
+			return browser.assert.text(EASInstallPlatformsHeading, uLocalized('EASInstallPlatformsHeadingText'));
 		});
 
 	});
