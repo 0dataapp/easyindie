@@ -37,10 +37,10 @@ locals.OLSKPageAssets = [
 <h1 class="EASVitrineDiscussingHeading"><%= OLSKLocalized('EASVitrineDiscussingHeadingText') %></h1>
 <iframe class="EASVitrineDiscussingVideo" src="<%= process.env.EAS_VITRINE_DISCUSSING_VIDEO_URL %>" allowfullscreen></iframe>
 
-<script src="https://olsk.rosano.ca/OLSKLatest/master/main.js"></script>
+<script src="https://olsk.rosano.ca/OSFeedbox/master/main.js"></script>
 <div class="EASVitrineLatest"></div>
 <script type="text/javascript">
-OLSKLatest.load({
+OSFeedbox.load({
 	parent: document.querySelector('.EASVitrineLatest'),
 	feed: '<%= process.env.ROCO_FEED_URL %>',
 	limit: 5,
