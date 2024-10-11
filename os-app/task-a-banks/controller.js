@@ -114,7 +114,7 @@ const mod = {
 							}).shift();
 
 							return {
-								EASProjectURL: e.manifest.url,
+								EASProjectURL: e.manifest.upstream.website,
 								EASProjectPlatforms: {
 									EASPlatformYunohost: Object.assign({
 										EASPlatformName: e.manifest.name,
